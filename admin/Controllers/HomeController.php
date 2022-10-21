@@ -12,16 +12,14 @@ class HomeController extends BaseController
         $this->model("HomeModel");
         $this->homeModel = new HomeModel();
     }
-    public function index($a=0, $b=0)
+    public function index()
     {
-        $sum = $this->homeModel->showoHome($a ,$b);
-        $this->view('','index',["number" => $sum]);
+        $this->view('','index');
     }
 
     public function show($a=0, $b=0)
     {
-       $sum = $this->homeModel->showoHome($a ,$b);
-        $this->view('','index',["number" => $sum]);
+     
        
     }
 }
