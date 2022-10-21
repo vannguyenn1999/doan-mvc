@@ -10,7 +10,7 @@
 
         const PASSWORD = '';
 
-        const DB_NAME = 'quanlybanhang';
+        const DB_NAME = 'php0722_apple123';
 
        
 

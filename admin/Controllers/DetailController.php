@@ -9,9 +9,14 @@ class DetailController extends BaseController {
         $this->detailModel = new DetailModel();
     }
     public function Index(){
+        $this->main_content =  $this->detailModel->getTable();;
         $this->view("",'index');
-        $this->main_content =  $this->detailModel->home();;
-       
         $this->view("Detail",'main',$this->main_content);
+    }
+
+    public function GetDetail($id){
+        $this->main_content = $this->detailModel->getbyId($id);
+        $this->view("",'index');
+        $this->view("Detail",'detail',$this->main_content);
     }
 }

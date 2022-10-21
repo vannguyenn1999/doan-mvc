@@ -28,6 +28,21 @@ class ProductController extends BaseController
             'content' => 'thu them moi'
         ];
         $this->productModel->addProduct($data);
+        $this->view("",'index');
         $this->view('Product', 'create');
     }
+
+    public function GetProduct($id){
+        $this->main_content = $this->productModel->getbyId($id);
+        $this->view('','index');
+        $this->view('Product','detail', $this->main_content);
+    }
+
+    public function DeleteProduct($id){
+        $this->main_content = $this->productModel->deletebyId($id);
+        $this->view('','index');
+        $this->view("Product", 'main', $this->main_content);
+    }
+
+    
 }
