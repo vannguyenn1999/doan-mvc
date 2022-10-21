@@ -23,16 +23,6 @@ class BaseModel extends Database{
         return $data;
     }
 
-    public function _Insert($tableName, $data = []){
-        $columns = implode(', ',array_keys($data));          
-        $valueStr = array_map(function($value){
-            return "'" . $value ."'";
-        }, array_values($data));
-        $values = implode(', ', array_values($valueStr));
-        $sql = "INSERT INTO ${tableName}(${columns}) Values (${values})";
-        $this->_query($sql);
-    }
-
     public function _Delete($tableName, $id){
 
         $sql = "DELETE FROM ${tableName} WHERE ma_san_pham = '${id}'";

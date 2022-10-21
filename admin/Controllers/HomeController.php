@@ -11,15 +11,16 @@ class HomeController extends BaseController
 
         $this->model("HomeModel");
         $this->homeModel = new HomeModel();
+        $message = "Chào Mừng Bạn Đến Với Trang Chủ";
+        echo "<script type='text/javascript'>alert('$message');</script>";
     }
     public function index()
     {
-        $this->view('','index');
+        $this->main_content = "Shop123";
+        $this->view('', 'index', $this->main_content);
     }
 
-    public function show($a=0, $b=0)
+    public function show($a = 0, $b = 0)
     {
-     
-       
     }
 }
