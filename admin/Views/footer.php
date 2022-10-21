@@ -1,3 +1,3 @@
 <div class="footer">
-    ạhdkhsjd
+    Đây là Footer
   </div>

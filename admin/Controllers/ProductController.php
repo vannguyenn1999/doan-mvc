@@ -1,22 +1,26 @@
 <?php
 
-class ProductController extends BaseController {
+class ProductController extends BaseController
+{
 
     protected $productModel;
-    
+
 
     public function __construct()
     {
         $this->model("ProductModel");
         $this->productModel = new ProductModel();
     }
-    public function index(){
+    public function index()
+    {
         $product = $this->productModel->getTable();
-        // var_dump($product);
-        $this->view("Product",'main',$product);
+        $this->view("",'index');
+        $this->main_content = $product;
+        $this->view("Product", 'main', $this->main_content);
     }
 
-    public function add(){
+    public function AddProduct()
+    {
         $data = [
             'title' => 'test',
             'price' => 10000,
@@ -24,8 +28,6 @@ class ProductController extends BaseController {
             'content' => 'thu them moi'
         ];
         $this->productModel->addProduct($data);
-        $this->view('Product','create');
+        $this->view('Product', 'create');
     }
-
-    
 }

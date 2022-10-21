@@ -9,8 +9,8 @@
   </label>
   <div id="sidebarMenu">
     <ul class="sidebarMenuInner">
-      <a href="index.php"><li>APPLE 123<span>Chức Năng</span></li></a>
-      <a href="Product/Home"><li>Danh Sách Sản Phẩm Điện Thoại</li></a>
+      <a href="http://localhost/doan-mvc/HomeController/index"><li>APPLE 123<span>Chức Năng</span></li></a>
+      <a href="http://localhost/doan-mvc/ProductController/Index"><li>Danh Sách Sản Phẩm Điện Thoại</li></a>
       <a href="QuanLy/quanlythongtinsanpham/danhsachthongtin.php"><li>Danh Sách Thông Tin Sản Phẩm</li></a>
       <a href="QuanLy/quanlyhang/danhsachhangsanpham.php"><li>Danh Sách Hãng Điện Thoại</li></a>
       <!-- <a href="" >Danh Sách Hãng Laptop</a> -->
