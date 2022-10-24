@@ -2,7 +2,7 @@
     <div class="product">
         <h1>Thêm Sản Phẩm</h1>
         <table class="table table-dark table-hover">
-            <form action="themsanpham.php" method="POST" id="add" enctype="multipart/form-data">
+            <form action="" method="POST" id="add" enctype="multipart/form-data">
                 <div class="form-group">
                     <label for="masp">Mã Sản Phẩm</label>
                     <input type="text" name="masp" class="form-control" value="<?php echo isset($_POST['masp']) ? $_POST['masp'] : '' ?>">

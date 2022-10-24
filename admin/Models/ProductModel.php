@@ -22,13 +22,29 @@ class ProductModel extends BaseModel {
         ':masp' => $this->ma_san_pham,
         ':tensp' => $this->ten_san_pham,
         ':anh' => $this->anh,
-        ':kieu' => $this->id_kieu,
+        ':kieu' => $this->kieu,
+        ':sl' => $this->so_luong,
         ':tennh' => $this->ten_nhan_hieu,
         ':tt' => $this->thong_tin,
         ':gia' => $this->gia
        ];
        return $obj_insert->execute($arr_insert);
        
+    }
+
+    public function updateProduct($id){
+        $obj_update = $this->connect->prepare("UPDATE san_pham SET ten_san_pham = :tensp , anh = :anh, so_luong = :sl, id_kieu = :kieu, ten_nhan_hieu = :tennh, thong_tin = :tt , gia = :gia WHERE ma_san_pham = :id ");
+        $arr_update = [
+            ':id' => $id,
+            ':tensp' => $this->ten_san_pham,
+            ':anh' => $this->anh,
+            ':kieu' => $this->kieu,
+            ':sl' => $this->so_luong,
+            ':tennh' => $this->ten_nhan_hieu,
+            ':tt' => $this->thong_tin,
+            ':gia' => $this->gia
+           ];
+           return $obj_update->execute($arr_update);
     }
 
     public function getbyId($id){

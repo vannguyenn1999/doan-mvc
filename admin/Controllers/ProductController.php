@@ -52,7 +52,7 @@ class ProductController extends BaseController
                 }
 
                 $dir_uploads = __DIR__ . '/../Views/Product/upload';
-                $filename = time() . '-product-' . $_FILES['avatar']['name'];
+                $filename = time() . '-product-' . $_FILES['anh']['name'];
                 move_uploaded_file($_FILES['anh']['tmp_name'], $dir_uploads . '/' . $filename);
             }
             $this->productModel->ma_san_pham  = $ma_san_pham;
@@ -65,9 +65,9 @@ class ProductController extends BaseController
             $this->productModel->so_luong = $so_luong;
             $is_insert = $this->productModel->addProduct();
             if ($is_insert) {
-                $_SESSION['success'] = 'Insert dữ liệu thành công';
+                $_SESSION['success'] = 'Thêm thành công';
               } else {
-                $_SESSION['error'] = 'Insert dữ liệu thất bại';
+                $_SESSION['error'] = 'Thêm thất bại';
               }
               header('Location: http://localhost/doan-mvc/ProductController/Index');
               exit();
@@ -81,6 +81,10 @@ class ProductController extends BaseController
             'brand' => $brand,
         ]);
     }
+
+    // public function UpdateProduct($id){
+    //     if(is)
+    // }
 
     public function GetProduct($id)
     {
