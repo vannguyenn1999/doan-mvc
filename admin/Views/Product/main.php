@@ -21,9 +21,8 @@
          <tr>
            <td><?php echo $product['ma_san_pham'] ?></td>
            <td><?php echo $product['ten_san_pham'] ?></td>
-           <td><?php echo "<img src='http://localhost/doan-mvc/admin/Views/Product/upload/" . $product['anh'] . "'  width='150' height='150'>" ?></td>
+           <td><?php echo "<img src='http://localhost/doan-mvc/admin/assets/image/uploads/" . $product['anh'] . "'  width='150' height='150'>" ?></td>
            <td><?php echo $product['so_luong'] ?></td>
-
            <td><?php echo $product['ten_nhan_hieu'] ?></td>
            <td><?php echo $product['thong_tin'] ?></td>
            <td><?php echo $product['gia'] ?></td>

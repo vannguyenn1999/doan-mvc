@@ -17,10 +17,9 @@ class HomeController extends BaseController
     public function index()
     {
         $this->main_content = "Shop123";
-        $this->view('', 'index', $this->main_content);
+        $this->view('', 'index', );
+        $this->view('', 'main', $this->main_content);
     }
 
-    public function show($a = 0, $b = 0)
-    {
-    }
+    
 }

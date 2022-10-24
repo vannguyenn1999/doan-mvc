@@ -14,7 +14,7 @@
                 <div class="form-group">
                     <label for="">Ảnh</label>
                     <br>
-                    <?php echo "<img src='http://localhost/doan-mvc/admin/Views/Product/upload/" . $data['content']['anh'] . "'  width='150' height='150'>" ?><br><br>
+                    <?php echo "<img src='http://localhost/doan-mvc/admin/assets/image/uploads/" . $data['content']['anh'] . "'  width='150' height='150'>" ?><br><br>
                     <input type="file" name="avatar" class="form-control-file">
                 </div>
                 <div class="form-group">
