@@ -2,27 +2,28 @@
 
     class Database {
         
-        private $connect;
+        protected $connect;
 
-        const HOST_NAME = 'localhost';
+        const DB_DSN = 'mysql:host=localhost;dbname=php0722_apple123;charset=utf8';
 
         const USERNAME = 'root';
 
         const PASSWORD = '';
 
-        const DB_NAME = 'php0722_apple123';
+      
 
        
 
         protected function connection(){
-            $this->connect =  mysqli_connect(self::HOST_NAME, self::USERNAME, self::PASSWORD, self::DB_NAME);
-
-            mysqli_set_charset($this->connect, "utf8");
-            if(mysqli_connect_errno() === 0){
-                return  $this->connect;
+            try {
+                $this->connect = new PDO(Database::DB_DSN, Database::USERNAME, Database::PASSWORD);
+              } catch (PDOException $e) {
+                die("Kết nối CSDL theo PDO thất bại: " . $e->getMessage());
+              }
+          
+              return $this->connect;
             }
-            return false;
-        } 
+        
 
         protected function close_connection(){
             $this->connect = null;

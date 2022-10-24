@@ -1,12 +1,14 @@
 <?php
 
 class ProductModel extends BaseModel {
-    protected $id;
-    protected $title;
-    protected $price;
-    protected $avatar;
-    protected $content;
-    protected $create_at;
+    public $ma_san_pham;
+    public $ten_san_pham;
+    public $anh;
+    public $so_luong;
+    public $kieu;
+    public $ten_nhan_hieu;
+    public $thong_tin;
+    public $gia;
 
     const  TABLE_NAME = 'san_pham';
 
@@ -14,19 +16,33 @@ class ProductModel extends BaseModel {
         return $this->_SelectAll(self::TABLE_NAME);
     }
     public function addProduct(){
-        $sql_insert = "INSERT INTO san_pham(title, price, avatar,content) VALUES ('$this->title', '$this->price' , '$this->avatar' ,'$this->content)";
-        $isInsert = mysqli_query($this->conn , $sql_insert);
-        return $isInsert;
+       $obj_insert = $this->connect->prepare("INSERT INTO san_pham(ma_san_pham, ten_san_pham, anh, so_luong, id_kieu, ten_nhan_hieu, thong_tin, gia) VALUES
+       (:masp, :tensp, :anh, :sl ,:kieu ,:tennh, :tt, :gia)");
+       $arr_insert = [
+        ':masp' => $this->ma_san_pham,
+        ':tensp' => $this->ten_san_pham,
+        ':anh' => $this->anh,
+        ':kieu' => $this->id_kieu,
+        ':tennh' => $this->ten_nhan_hieu,
+        ':tt' => $this->thong_tin,
+        ':gia' => $this->gia
+       ];
+       return $obj_insert->execute($arr_insert);
        
     }
 
     public function getbyId($id){
-        $sql_select = "SELECT * FROM san_pham WHERE ma_san_pham = '$id'";
-        $result = mysqli_query($this->conn, $sql_select);
+        // $sql_select = "SELECT * FROM san_pham WHERE ma_san_pham = '$id'";
+        $obj_select = $this->connect
+            ->prepare("SELECT * FROM san_pham WHERE ma_san_pham = '$id'");
+
+        $obj_select->execute();
+        $result =  $obj_select->fetch(PDO::FETCH_ASSOC);
+        
         return $result;
     }
 
     public function deletebyId($id){
-        return $this->_Delete(self::HOST_NAME,$id);
+        return $this->_Delete(self::TABLE_NAME,$id);
     }
 }

@@ -2,7 +2,8 @@
 
 class CompanyModel extends BaseModel{
 
-    public function Info(){
-        return "Đây là trang thông tin hãng sản phẩm";
+    const TABLE_NAME = 'nhan_hieu';
+    public function getTable(){
+        return $this->_SelectAll(self::TABLE_NAME);
     }
 }

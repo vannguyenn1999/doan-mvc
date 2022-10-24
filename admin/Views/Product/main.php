@@ -1,5 +1,5 @@
    <div class="container">
-     <br>
+    <div class="product">
      <h1>Danh Sách Sản Phẩm </h1>
 
      <a href="http://localhost/doan-mvc/ProductController/AddProduct" class="btn btn-success" id="a_func"><i class="fa-solid fa-circle-plus"></i> Thêm Sản Phẩm</a>
@@ -34,4 +34,5 @@
          </tr>
        <?php endforeach; ?>
      </table>
+   </div>
    </div>
