@@ -16,13 +16,14 @@ class ProductController extends BaseController
         $this->companyModel = new CompanyModel();
         $this->brandModel = new BrandModel();
     }
-    public function index()
+    public function Index()
     {
         $product = $this->productModel->getTable();
         $this->view("", 'index');
         $this->main_content = $product;
         $this->view("Product", 'main', $this->main_content);
     }
+
 
     public function AddProduct()
     {
@@ -51,7 +52,7 @@ class ProductController extends BaseController
                     $this->error = 'File upload không được quá 2MB';
                 }
 
-                $dir_uploads = __DIR__ . '/../Views/Product/upload';
+                $dir_uploads = __DIR__ . '/../assets/image/uploads';
                 $filename = time() . '-product-' . $_FILES['anh']['name'];
                 move_uploaded_file($_FILES['anh']['tmp_name'], $dir_uploads . '/' . $filename);
             }
@@ -66,11 +67,11 @@ class ProductController extends BaseController
             $is_insert = $this->productModel->addProduct();
             if ($is_insert) {
                 $_SESSION['success'] = 'Thêm thành công';
-              } else {
+            } else {
                 $_SESSION['error'] = 'Thêm thất bại';
-              }
-              header('Location: http://localhost/doan-mvc/ProductController/Index');
-              exit();
+            }
+            header('Location: http://localhost/doan-mvc/ProductController/Index');
+            exit();
         }
         // $this->productModel->addProduct($data);
         $this->view("", 'index');
@@ -82,9 +83,60 @@ class ProductController extends BaseController
         ]);
     }
 
-    // public function UpdateProduct($id){
-    //     if(is)
-    // }
+    public function UpdateProduct($id)
+    {
+       
+     
+        if (isset($_POST['submit'])) {
+            $ten_san_pham = $_POST['tensp'];
+            $gia = $_POST['giasp'];
+            $so_luong = $_POST['soluong'];
+            $kieu = $_POST['kieu'];
+            $nhan_hieu = $_POST['nhanhieu'];
+            $thong_tin = $_POST['thongtin'];
+
+            $anh = $this->productModel->getImage($id);
+
+            if ($_FILES['anh']['error'] == 0) {
+                //validate khi có file upload lên thì bắt buộc phải là ảnh và dung lượng không quá 2 Mb
+                $extension = pathinfo($_FILES['anh']['name'], PATHINFO_EXTENSION);
+                $extension = strtolower($extension);
+                $arr_extension = ['jpg', 'jpeg', 'png', 'gif'];
+
+                $file_size_mb = $_FILES['anh']['size'] / 1024 / 1024;
+                //làm tròn theo đơn vị thập phân
+                $file_size_mb = round($file_size_mb, 2);
+
+                if (!in_array($extension, $arr_extension)) {
+                    $this->error = 'Cần upload file định dạng ảnh';
+                } else if ($file_size_mb > 2) {
+                    $this->error = 'File upload không được quá 2MB';
+                }
+
+                $dir_uploads = __DIR__ . '/../assets/image/uploads';
+                $filename = time() . '-product-' . $_FILES['anh']['name'];
+                move_uploaded_file($_FILES['anh']['tmp_name'], $dir_uploads . '/' . $filename);
+            } else {
+                $filename = $anh['anh'];
+            }
+            $this->productModel->ten_san_pham = $ten_san_pham;
+            $this->productModel->anh = $filename;
+            $this->productModel->gia = $gia;
+            $this->productModel->kieu = $kieu;
+            $this->productModel->ten_nhan_hieu = $nhan_hieu;
+            $this->productModel->thong_tin = $thong_tin;
+            $this->productModel->so_luong = $so_luong;
+            $is_update = $this->productModel->updateProduct($id);
+            if ($is_update) {
+                $_SESSION['success'] = 'Sửa thành công';
+            } else {
+                $_SESSION['error'] = 'Sửa thất bại';
+            }
+            header('Location: http://localhost/doan-mvc/ProductController/Index');
+            exit();
+        }
+        $this->GetProduct($id);
+    }
 
     public function GetProduct($id)
     {
@@ -92,18 +144,22 @@ class ProductController extends BaseController
         $this->view('', 'index');
         $company = $this->companyModel->getTable();
         $brand = $this->brandModel->getTable();
-        $this->view('Product', 'detail', [
+        $this->view('Product', 'update', [
             'content' => $this->main_content,
             'company' => $company,
             'brand' => $brand,
         ]);
-        // var_dump($data);
     }
 
     public function DeleteProduct($id)
     {
-        $this->main_content = $this->productModel->deletebyId($id);
-        $this->view('', 'index');
-        $this->view("Product", 'main', $this->main_content);
+        $is_delete = $this->productModel->deletebyId($id);
+        if ($is_delete) {
+          $_SESSION['success'] = 'Xóa thành công';
+        } else {
+          $_SESSION['error'] = 'Xóa thất bại';
+        }
+        header('Location: http://localhost/doan-mvc/ProductController/Index');
+        exit();
     }
 }

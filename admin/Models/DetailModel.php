@@ -18,6 +18,8 @@ class DetailModel extends BaseModel {
 
     }
 
+   
+
     public function getbyId($id){
         $obj_select = $this->connect
         ->prepare("SELECT san_pham.ten_san_pham , thong_tin_chi_tiet.* FROM san_pham INNER JOIN thong_tin_chi_tiet ON san_pham.ma_san_pham = thong_tin_chi_tiet.ma_san_pham where thong_tin_chi_tiet.ma_san_pham = '$id'");

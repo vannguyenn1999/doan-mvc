@@ -5,8 +5,8 @@
   <title>Quản Lý</title>
   <!-- Required meta tags -->
   <meta charset="utf-8">
-  <link rel="stylesheet" href="http://localhost/doan-mvc/admin/assets/Css/style.css">
-  <link rel="stylesheet" href="http://localhost/doan-mvc/admin/assets/Css/css.css">
+  <link rel="stylesheet" href="http://localhost/doan-mvc/admin/assets/css/style.css">
+  <link rel="stylesheet" href="http://localhost/doan-mvc/admin/assets/css/css.css">
 
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 

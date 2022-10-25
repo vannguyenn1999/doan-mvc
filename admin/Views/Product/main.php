@@ -26,9 +26,9 @@
            <td><?php echo $product['ten_nhan_hieu'] ?></td>
            <td><?php echo $product['thong_tin'] ?></td>
            <td><?php echo $product['gia'] ?></td>
-           <td><?php echo $product['ngay_tao'] ?></td>
-           <td><a href="http://localhost/doan-mvc/ProductController/GetProduct/<?php echo $product['ma_san_pham'] ?>"><i class="fa fa-pencil fa-2x"></i></a></td>
-           <td><a onclick="return confirm('bạn có muốn xoá id này không ??')" href="http://localhost/doan-mvc/ProductController/GetProduct/DeleteProduct/<?php echo $product['ma_san_pham'] ?>" class="btn btn-danger"> <i class="fa fa-trash"></i></a></td>
+           <td><?php echo $product['create_at'] ?></td>
+           <td><a href="http://localhost/doan-mvc/ProductController/UpdateProduct/<?php echo $product['ma_san_pham'] ?>"><i class="fa fa-pencil fa-2x"></i></a></td>
+           <td><a onclick="return confirm('bạn có muốn xoá sản phẩm này không ??')" href="http://localhost/doan-mvc/ProductController/DeleteProduct/<?php echo $product['ma_san_pham'] ?>" class="btn btn-danger"> <i class="fa fa-trash"></i></a></td>
 
          </tr>
        <?php endforeach; ?>
