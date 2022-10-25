@@ -13,7 +13,7 @@
                     <textarea name="thongtin" id="add" rows="5" cols="40" class="form-control"><?php echo isset($_POST['thongtin']) ? $_POST['thongtin'] : '' ?></textarea>
                 </div>
                 <div class="form-group">
-                    <button type="submit" name="submit" class="btn btn-primary">Thêm Hâng Sản Phẩm</button>
+                    <button type="submit" name="submit" class="btn btn-primary">Thêm Hãng Sản Phẩm</button>
                     <button type="reset" class="btn btn-primary">Làm Mới</button>
                     <a class="btn btn-primary" href="http://localhost/doan-mvc/CompanyController/Index" role="button">Trở Lại</a>
 

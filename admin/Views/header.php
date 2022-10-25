@@ -9,7 +9,7 @@
   </label>
   <div id="sidebarMenu">
     <ul class="sidebarMenuInner">
-      <a href="http://localhost/doan-mvc/HomeController/index"><li>APPLE 123<span>Chức Năng</span></li></a>
+      <a href="http://localhost/doan-mvc/HomeController/index"><li>SHOP 123<span>Chức Năng</span></li></a>
       <a href="http://localhost/doan-mvc/ProductController/Index"><li>Danh Sách Sản Phẩm Điện Thoại</li></a>
       <a href="http://localhost/doan-mvc/DetailController/Index"><li>Danh Sách Thông Tin Sản Phẩm</li></a>
       <a href="http://localhost/doan-mvc/CompanyController/Index"><li>Danh Sách Hãng Điện Thoại</li></a>

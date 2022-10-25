@@ -24,7 +24,7 @@ class CompanyModel extends BaseModel{
 
     public function updateCompany($id)
     {
-        $obj_update = $this->connect->prepare("UPDATE nhan_hieu SET , thong_tin = :tt  WHERE ten_nhan_hieu = :id ");
+        $obj_update = $this->connect->prepare("UPDATE nhan_hieu SET thong_tin = :tt  WHERE ten_nhan_hieu = :id ");
         $arr_update = [
             ':id' => $id,
             ':tt' => $this->thong_tin,
@@ -40,5 +40,10 @@ class CompanyModel extends BaseModel{
         $result =  $obj_select->fetch(PDO::FETCH_ASSOC);
 
         return $result;
+    }
+    public function deletebyId($id){
+        $obj_delete = $this->connect
+            ->prepare("DELETE FROM nhan_hieu WHERE ten_nhan_hieu = '$id'");
+        return $obj_delete->execute();
     }
 }

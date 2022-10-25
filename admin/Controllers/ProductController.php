@@ -83,10 +83,15 @@ class ProductController extends BaseController
         ]);
     }
 
-    public function UpdateProduct($id)
+    public function UpdateProduct()
     {
-       
-     
+        $id = $_GET['id'];
+        if (empty($id)) {
+            $_SESSION['error'] = 'id không hợp lệ';
+            header('Location: http://localhost/doan-mvc/ProductController/Index');
+            exit();
+        }
+
         if (isset($_POST['submit'])) {
             $ten_san_pham = $_POST['tensp'];
             $gia = $_POST['giasp'];
@@ -155,9 +160,9 @@ class ProductController extends BaseController
     {
         $is_delete = $this->productModel->deletebyId($id);
         if ($is_delete) {
-          $_SESSION['success'] = 'Xóa thành công';
+            $_SESSION['success'] = 'Xóa thành công';
         } else {
-          $_SESSION['error'] = 'Xóa thất bại';
+            $_SESSION['error'] = 'Xóa thất bại';
         }
         header('Location: http://localhost/doan-mvc/ProductController/Index');
         exit();

@@ -17,7 +17,7 @@
            <td><?php echo $company['ten_nhan_hieu'] ?></td>
            <td><?php echo $company['thong_tin'] ?></td>
            <td><?php echo $company['create_at'] ?></td>
-           <td><a href="http://localhost/doan-mvc/CompanyController/UpdateCompany/<?php echo $company['ten_nhan_hieu'] ?>"><i class="fa fa-pencil fa-2x"></i></a></td>
+           <td><a href="http://localhost/doan-mvc/CompanyController/UpdateCompany?id=<?php echo $company['ten_nhan_hieu'] ?>"><i class="fa fa-pencil fa-2x"></i></a></td>
            <td><a onclick="return confirm('bạn có muốn xoá hãng này không ??')" href="http://localhost/doan-mvc/CompanyController/DeleteCompany/<?php echo $company['ten_nhan_hieu'] ?>" class="btn btn-danger"> <i class="fa fa-trash"></i></a></td>
 
          </tr>
