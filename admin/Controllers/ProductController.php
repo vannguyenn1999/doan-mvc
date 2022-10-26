@@ -167,4 +167,15 @@ class ProductController extends BaseController
         header('Location: http://localhost/doan-mvc/ProductController/Index');
         exit();
     }
+
+    public function test(){
+        $this->model("LoginModel");
+        $loginModel = new LoginModel;
+
+        $loginModel->username_admin = 'admin';
+        $loginModel->password_admin = 'admin';
+
+        $result = $loginModel->Login();
+        $this->view('Detail','test',$result);
+    }
 }
