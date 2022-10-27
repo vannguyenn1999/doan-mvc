@@ -17,7 +17,43 @@ class DetailController extends BaseController {
     public function GetDetail($id){
         $this->main_content = $this->detailModel->getbyId($id);
         $this->view("",'index');
-        $this->view("Detail",'detail',$this->main_content);
+        $this->view("Detail",'update',$this->main_content);
+    }
+
+    public function UpdateDetail(){
+        $id = $_GET['id'];
+        if (empty($id)) {
+            $_SESSION['error'] = 'id không hợp lệ';
+            header('Location: http://localhost/doan-mvc/DetailController/Index');
+            exit();
+        }
+
+        if(isset($_POST['submit'])){
+            $cauhinh = $_POST['cauhinh'];
+            $camsau = $_POST['camsau'];
+            $camtruoc = $_POST['camtruoc'];
+            $ram = $_POST['ram'];
+            $dungluong = $_POST['dungluong'];
+            $giamgia = $_POST['giamgia'];
+
+            $this->detailModel->cau_hinh = $cauhinh;
+            $this->detailModel->cam_sau = $camsau;
+            $this->detailModel->cam_truoc = $camtruoc;
+            $this->detailModel->ram = $ram;
+            $this->detailModel->dung_luong = $dungluong;
+            $this->detailModel->giam_gia = $giamgia;
+            $is_update = $this->detailModel->updateDetail($id);
+
+            if ($is_update) {
+                $_SESSION['success'] = 'Sửa thành công';
+            } else {
+                $_SESSION['error'] = 'Sửa thất bại';
+            }
+            header('Location: http://localhost/doan-mvc/DetailController/Index');
+            exit();
+        }
+
+        $this->GetDetail($id);
     }
 
     public function AddDetail(){

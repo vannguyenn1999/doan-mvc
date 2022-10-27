@@ -71,9 +71,28 @@ class ProductModel extends BaseModel
 
     public function deletebyId($id)
     {
-        $obj_delete = $this->connect
+        $obj_select = $this->connect
+        ->prepare("SELECT ma_san_pham FROM thong_tin_chi_tiet WHERE ma_san_pham = '$id'");
+        $obj_select->execute();
+        $count = $obj_select->rowCount();
+
+        if($count == 1 ){
+            $obj_deletes = $this->connect
+            ->prepare("DELETE FROM thong_tin_chi_tiet WHERE ma_san_pham = '$id'");
+
+            $obj_delete = $this->connect
             ->prepare("DELETE FROM san_pham WHERE ma_san_pham = '$id'");
-        return $obj_delete->execute();
+
+        $dels = $obj_deletes->execute();
+        $del = $obj_delete->execute();
+
+        return array($dels,$del);
+        }else{
+            $obj_delete = $this->connect
+                ->prepare("DELETE FROM san_pham WHERE ma_san_pham = '$id'");
+            return $obj_delete->execute();
+        }
+
     }
 
     public function search(){

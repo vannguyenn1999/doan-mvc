@@ -90,11 +90,11 @@ class DetailModel extends BaseModel
 
     public function updateDetail($id)
     {
-        $obj_update = $this->connect->prepare("UPDATE thong_tin_san_pham SET cau_hinh = :cauhinh, cam_truoc = :camt ,cam_sau = :cams, ram = :ram ,dung_luong = :dl ,  giam_gia = :gg  )
+        $obj_update = $this->connect->prepare("UPDATE thong_tin_chi_tiet SET cau_hinh = :cauhinh, cam_truoc = :camt ,cam_sau = :cams, ram = :ram ,dung_luong = :dl ,  giam_gia = :gg  
          WHERE ma_san_pham = :id");
         $arr_update = [
             ':id' => $id,
-            ':cauhinh' => $this->ma_san_pham,
+            ':cauhinh' => $this->cau_hinh,
             ':camt' => $this->cam_truoc,
             ':cams' => $this->cam_sau,
             ':ram' => $this->ram,
