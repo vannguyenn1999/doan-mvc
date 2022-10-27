@@ -3,6 +3,8 @@
      <h1>Danh Sách Sản Phẩm </h1>
 
      <a href="http://localhost/doan-mvc/ProductController/AddProduct" class="btn btn-success" id="a_func"><i class="fa-solid fa-circle-plus"></i> Thêm Sản Phẩm</a>
+     <a href="http://localhost/doan-mvc/ProductController/SearchProduct" class="btn btn-success" id="a_func"> <i class="fa fa-search"> </i> Tìm Kiếm Sản Phẩm </a>
+
      <br>
      <br>
      <table class="table table-dark table-hover">

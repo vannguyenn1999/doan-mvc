@@ -6,6 +6,7 @@ class DetailModel extends BaseModel
     const TABLE_NAME = 'thong_tin_san_pham';
 
     public $ma_san_pham;
+    public $ten_san_pham;
     public $cau_hinh;
     public $cam_truoc;
     public $cam_sau;
@@ -36,21 +37,38 @@ class DetailModel extends BaseModel
         return $result;
     }
 
+    function key_compare_func($a, $b)
+    {
+        if ($a === $b) {
+            return 0;
+        }
+        return ($a > $b) ? 1 : -1;
+    }
+
+   
+
     public function check()
     {
+        function key_compare_func($a, $b)
+        {
+            if ($a === $b) {
+                return 0;
+            }
+            return ($a > $b) ? 1 : -1;
+        }
         $obj_detail = $this->connect
-            ->prepare("SELECT ma_san_pham FROM thong_tin_chi_tiet");
+            ->prepare("SELECT san_pham.ten_san_pham , thong_tin_chi_tiet.ma_san_pham FROM san_pham INNER JOIN thong_tin_chi_tiet ON san_pham.ma_san_pham = thong_tin_chi_tiet.ma_san_pham");
 
         $arr_select = [];
         $obj_detail->execute($arr_select);
         $detail = $obj_detail->fetchAll(PDO::FETCH_ASSOC);
 
         $obj_product = $this->connect
-            ->prepare("SELECT ma_san_pham FROM san_pham");
+            ->prepare("SELECT ten_san_pham,ma_san_pham FROM san_pham");
         $obj_product->execute($arr_select);
         $product = $obj_product->fetchAll(PDO::FETCH_ASSOC);
 
-        $result =  array_diff($product, $detail) ;
+        $result =  array_diff_uassoc($product, $detail, "key_compare_func");
         return $result;
     }
 
@@ -84,6 +102,17 @@ class DetailModel extends BaseModel
             ':gg' => $this->giam_gia,
         ];
         return $obj_update->execute($arr_update);
+    }
+
+    public function search(){
+        $sql_obj = $this->connect->prepare("SELECT san_pham.ten_san_pham , thong_tin_chi_tiet.* FROM san_pham INNER JOIN thong_tin_chi_tiet ON san_pham.ma_san_pham = thong_tin_chi_tiet.ma_san_pham WHERE san_pham.ten_san_pham LIKE :tensp ");
+        $arr_select = [
+            ':tensp' => '%'.$this->ten_san_pham.'%',
+        ];
+        $sql_obj->execute($arr_select);
+        $count = $sql_obj->rowCount();
+        $result = $sql_obj->fetchAll(PDO::FETCH_ASSOC);
+        return array($count,$result) ;
     }
 
 

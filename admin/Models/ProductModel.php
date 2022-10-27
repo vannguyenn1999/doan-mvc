@@ -75,4 +75,15 @@ class ProductModel extends BaseModel
             ->prepare("DELETE FROM san_pham WHERE ma_san_pham = '$id'");
         return $obj_delete->execute();
     }
+
+    public function search(){
+        $sql_obj = $this->connect->prepare("SELECT * FROM san_pham Where ten_san_pham LIKE :tensp ");
+        $arr_select = [
+            ':tensp' => '%'.$this->ten_san_pham.'%',
+        ];
+        $sql_obj->execute($arr_select);
+        $count = $sql_obj->rowCount();
+        $result = $sql_obj->fetchAll(PDO::FETCH_ASSOC);
+        return array($count,$result) ;
+    }
 }

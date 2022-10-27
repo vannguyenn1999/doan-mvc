@@ -14,8 +14,8 @@ class LoginController extends BaseController
     public function Index()
     {
         if (isset($_POST['submit'])) {
-            $username = $_POST['username'];
-            $password = $_POST['password'];
+            $username = addslashes($_POST['username']);
+            $password = addslashes($_POST['password']);
 
             $this->loginModel->username_admin = $username;
             $this->loginModel->password_admin = $password;

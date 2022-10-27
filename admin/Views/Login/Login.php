@@ -1,48 +1,44 @@
-<?php
-if (isset($_SESSION['error'])) {
-    $message = $_SESSION['error'];
-    echo "<script type='text/javascript'>alert('$message');</script>";
-    unset($_SESSION['error']);
-}
-?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="http://localhost/doan-mvc/admin/assets/css/login.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Đăng Nhập Hệ Thống</title>
-    <link rel="stylesheet" href="http://localhost/doan-mvc/admin/assets/css/Admin_login.css">
-    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
-</head>
+    <!-- <script src="http://localhost/doan-mvc/admin/assets/js/validate.js"></script>
+    <script src="http://localhost/doan-mvc/admin/assets/js/login.js"></script> -->
+    <title>Đăng Nhập Hệ Thông</title>
 </head>
 
 <body>
-    <div class="wrapper">
-        <section class="form signup">
-            <header> Đăng Nhập Hệ Thống</header>
-            <form action="" method="POST">
-                <div class="field input">
-                    <label for=""> Tài Khoản :</label>
-                    <input type="text" name="username">
-                </div>
-                <div class="field input">
-                    <label for=""> Mật Khẩu :</label>
-                    <input type="password" name="password">
-                    <i class="fas fa-eye"></i>
-                </div>
-                <div class="field button">
-                    <input type="submit" name="submit" value="Đăng nhập"></br>
-                </div>
-                <div class="field button">
-                    <!-- <a href="index.php">Trang Chủ</a> -->
-                </div>
-            </form>
-        </section>
+    <div class="main">
+
+
+
+        <form action="" method="POST" class="form" id="form-2">
+            <h3 class="heading">Đăng nhập</h3>
+            <div class="spacer"></div>
+
+            <div class="form-group">
+                <label for="username" class="form-label">Tài Khoản</label>
+                <input id="username" name="username" type="text" placeholder="Nhập tài khoản" class="form-control">
+                <span class="form-message"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="password" class="form-label">Mật khẩu</label>
+                <input id="password" name="password" type="password" placeholder="Nhập mật khẩu" class="form-control">
+                <span class="form-message"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" name="submit" value="Đăng nhập" class="form-submit">
+            </div>
+        </form>
+
     </div>
-    <!-- <script src="JS\hide-show-password.js"></script> -->
+    <!-- <script src="http://localhost/doan-mvc/admin/assets/js/validate.js"></script>
+    <script src="http://localhost/doan-mvc/admin/assets/js/login.js"></script> -->
 
 </body>
 

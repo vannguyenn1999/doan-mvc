@@ -30,14 +30,9 @@
                             ?>
                         </option>
                         <?php foreach ($data['company'] as $company) : ?>
-                            <option value="<?php if ($company['ten_nhan_hieu'] == $data['content']['ten_nhan_hieu']) {
-                                                continue;
-                                            }
-                                            echo $company['ten_nhan_hieu']; ?>">
+                            <option value="<?php echo $company['ten_nhan_hieu']; ?>">
                                 <?php
-                                if ($company['ten_nhan_hieu'] == $data['content']['ten_nhan_hieu']) {
-                                    continue;
-                                }
+                               
                                 echo $company['ten_nhan_hieu'];
                                 ?>
                             </option>

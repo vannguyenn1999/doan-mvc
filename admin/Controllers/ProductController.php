@@ -155,6 +155,21 @@ class ProductController extends BaseController
             'brand' => $brand,
         ]);
     }
+    public function SearchProduct(){
+        $result = [0,[]];
+        if(isset($_POST['submit'])){
+            $search = addslashes($_POST['search']);
+
+            $this->productModel->ten_san_pham = $search;
+            $result = $this->productModel->search();
+        }
+        $this->view('','index');
+        $this->view('Product','search',[
+            'search' => $search,
+            'count' => $result[0],
+            'info' => $result[1],
+        ]);
+    }
 
     public function DeleteProduct($id)
     {
@@ -168,14 +183,5 @@ class ProductController extends BaseController
         exit();
     }
 
-    public function test(){
-        $this->model("LoginModel");
-        $loginModel = new LoginModel;
-
-        $loginModel->username_admin = 'admin';
-        $loginModel->password_admin = 'admin';
-
-        $result = $loginModel->Login();
-        $this->view('Detail','test',$result);
-    }
+   
 }

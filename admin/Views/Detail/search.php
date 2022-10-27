@@ -1,15 +1,20 @@
 <div class="container">
     <div class="product">
+        <h1>Tìm Kiếm Thông Tin Sản Phẩm</h1>
         <br>
-        <h1>Danh Sách Thông Tin Sản Phẩm</h1>
-        <a href="http://localhost/doan-mvc/DetailController/AddDetail" class="btn btn-success" id="a_func"><i class="fa-solid fa-circle-plus"></i> Thêm Thông Tin Sản Phẩm</a>
-        <a href="http://localhost/doan-mvc/DetailController/SearchDetail" class="btn btn-success" id="a_func"> <i class="fa fa-search"> </i> Tìm Kiếm Thông Tin Sản Phẩm </a>
-        <br>
-        <br>
-        <table class="table table-dark table-striped">
+        <div align="center">
 
-            <thead>
-            <tr>
+            <form action="" method="POST">
+                Tìm Kiếm: <input type="text" name="search" />
+                <input type="submit" name="submit" value="Tìm" />
+                <input type="reset" value="Làm Mới" />
+            </form>
+        </div>
+        <br>
+        <h4><?php echo $data['count']?> kết quả trả về với từ khoá <b><?php echo $data['search'] ?></b></h4>
+        <br>
+        <table class="table table-dark table-hover">
+        <tr>
                     <th>TÊN SẢN PHẨM</th>
                     <TH>CẤU HÌNH</TH>
                     <TH>CAM TRƯỚC</TH>
@@ -19,10 +24,11 @@
                     <TH>GIẢM GIÁ</TH>
                     <TH colspan="2">THAO TÁC</TH>
                 </tr>
-            </thead>
-            <tbody>
-                <?php foreach ($data as $r) : ?>
-                    <tr>
+            
+            <?php
+            foreach ($data['info'] as $r) :
+            ?>
+                 <tr>
                         <td><?php echo $r['ten_san_pham'] ?></td>
                         <td><?php echo $r['cau_hinh'] ?></td>
                         <td><?php echo $r['cam_truoc'] ?></td>
@@ -34,9 +40,10 @@
                         <td><a onclick="return confirm('bạn có muốn xoá thông tin này không ??')" href="http://localhost/doan-mvc/DetailController/DeleteDetail/<?php echo $r['ma_san_pham'] ?>" class="btn btn-danger"> <i class="fa fa-trash"></i></a></td>
                     </tr>
 
-                <?php endforeach; ?>
+            <?php endforeach; ?>
 
-            </tbody>
+
+
 
         </table>
     </div>

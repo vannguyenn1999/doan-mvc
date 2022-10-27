@@ -7,9 +7,9 @@
       </div>
       <div class="address-footer-wrap col-md-6">
         <strong>Thông tin liên hệ</strong>
-        Tòa nhà CMC, Số 11, Phố Duy Tân, Phường Dịch Vọng Hậu, Cầu Giấy, Hà Nội <br />
-        Hotline: 0999999999 <br />
-        Email: abc@gmail.com
+        Hà Đông - Hà Nội <br />
+        Hotline: 0528448515 <br />
+        Email: vannguyenn2809@gmail.com
       </div>
       <div class="social-footer-wrap col-md-3">
         <strong>Kết nối với chúng tôi</strong>
@@ -33,7 +33,8 @@
       </div>
     </div>
     <p class="footer-copyright">
-      Copyright 2020 by nvmanh. All rights reserved
+      © 2018. Công ty cổ phần shop 123. GPDKKD: 0965969085 do sở KH & ĐT TP.HN cấp ngày 03/02/2003. GPMXH: 2003/MID do Bộ Thông Tin và Truyền Thông cấp ngày 28/09/1999.
+      Địa chỉ: Hà Đông - Hà Nội . Điện thoại: 0528448515. Email: vannguyenn2809@gmail.com. Chịu trách nhiệm nội dung: Nguyễn Hoa Văn. Xem chính sách sử dụng
     </p>
   </div>
 </div>
@@ -43,7 +44,7 @@
 
 <ul class="icon-service-wrap">
   <li data-toggle="tooltip" data-placement="left" title="Gọi ngay cho chúng tôi">
-    <a href="tel:0999999999">
+    <a href="tel:0528448515">
       <img src="assets/images/icon-phone.png" class="icon-service-img" />
     </a>
   </li>
