@@ -14,7 +14,10 @@
                 <div class="form-group">
                     <label for="">Ảnh</label>
                     <br>
-                    <?php echo "<img src='http://localhost/doan-mvc/admin/assets/image/uploads/" . $data['content']['anh'] . "'  width='150' height='150'>" ?><br><br>
+                    <td><img class="img-hover" src="http://localhost/doan-mvc/admin/assets/image/uploads/<?php echo $data['content']['anh'] ?>" /></td>
+                    <br>
+                    <br>
+                    <!-- <?php echo "<img class='img-hover' src='http://localhost/doan-mvc/admin/assets/image/uploads/" . $data['content']['anh'] . "'  width='150' height='150'>" ?><br><br> -->
                     <input type="file" name="anh" class="form-control-file">
                 </div>
                 <div class="form-group">
@@ -32,7 +35,7 @@
                         <?php foreach ($data['company'] as $company) : ?>
                             <option value="<?php echo $company['ten_nhan_hieu']; ?>">
                                 <?php
-                               
+
                                 echo $company['ten_nhan_hieu'];
                                 ?>
                             </option>

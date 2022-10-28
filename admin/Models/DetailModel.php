@@ -146,4 +146,10 @@ class DetailModel extends BaseModel
 
         return $result;
     }
+
+    public function deletebyId($id){
+        $obj_delete = $this->connect
+            ->prepare("DELETE FROM thong_tin_chi_tiet WHERE ma_san_pham = '$id'");
+        return $obj_delete->execute();
+    }
 }

@@ -113,13 +113,13 @@ class DetailController extends BaseController {
 
     public function DeleteDetail($id)
     {
-        $is_delete = $this->productModel->deletebyId($id);
+        $is_delete = $this->detailModel->deletebyId($id);
         if ($is_delete) {
             $_SESSION['success'] = 'Xóa thành công';
         } else {
             $_SESSION['error'] = 'Xóa thất bại';
         }
-        header('Location: http://localhost/doan-mvc/ProductController/Index');
+        header('Location: http://localhost/doan-mvc/DetailController/Index');
         exit();
     }
 
