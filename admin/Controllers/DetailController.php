@@ -21,8 +21,11 @@ class DetailController extends BaseController {
     }
 
     public function UpdateDetail(){
+
+        $check = $this->detailModel->getMaSP();
+
         $id = $_GET['id'];
-        if (empty($id)) {
+        if (empty($id) || !in_array($id, $check)) {
             $_SESSION['error'] = 'id không hợp lệ';
             header('Location: http://localhost/doan-mvc/DetailController/Index');
             exit();
@@ -57,14 +60,39 @@ class DetailController extends BaseController {
     }
 
     public function AddDetail(){
-        // $san_pham =  $this->detailModel->getSP();
-        $result = $this->detailModel->check();
-        ;
+        $result = $this->detailModel->getSP();
+
+        if(isset($_POST['submit'])){
+            $masp = $_POST['masp'];
+            $cauhinh = $_POST['cauhinh'];
+            $sau = $_POST['sau'];
+            $truoc = $_POST['truoc'];
+            $ram = $_POST['ram'];
+            $dungluong = $_POST['dungluong'];
+            $khuyenmai = $_POST['khuyenmai'];
+            
+
+            $this->detailModel->ma_san_pham = $masp;
+            $this->detailModel->cau_hinh = $cauhinh;
+            $this->detailModel->cam_sau = $sau;
+            $this->detailModel->cam_truoc = $truoc;
+            $this->detailModel->ram = $ram;
+            $this->detailModel->dung_luong = $dungluong;
+            $this->detailModel->giam_gia = $khuyenmai;
+
+            $is_insert = $this->detailModel->addDetail();
+            if ($is_insert) {
+                $_SESSION['success'] = 'Thêm thành công';
+            } else {
+                $_SESSION['error'] = 'Thêm thất bại';
+            }
+            header('Location: http://localhost/doan-mvc/DetailController/Index');
+            exit();
+
+        }
+
         $this->view("",'index');
-        $this->view("Detail",'create',[
-            // 'san-pham' => $san_pham,
-            'result' => $result,
-        ]);
+        $this->view("Detail",'create',$result);
     }
 
     public function SearchDetail(){
@@ -83,7 +111,7 @@ class DetailController extends BaseController {
         ]);
     }
 
-    public function DeleteProduct($id)
+    public function DeleteDetail($id)
     {
         $is_delete = $this->productModel->deletebyId($id);
         if ($is_delete) {
@@ -95,5 +123,12 @@ class DetailController extends BaseController {
         exit();
     }
 
+    public function test(){
+        // $result = [];
+        $result = $this->detailModel->check();
+
+       
+        $this->view('Detail','1',$result);
+    }
    
 }

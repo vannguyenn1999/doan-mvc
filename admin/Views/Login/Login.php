@@ -1,3 +1,11 @@
+<?php
+ if (!isset($_SESSION['admin_login'])) {
+    $message = "Vui Lòng Đăng Nhập";
+    echo "<script type='text/javascript'>alert('$message');</script>";
+    
+  }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 

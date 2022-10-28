@@ -27,49 +27,53 @@ class DetailModel extends BaseModel
         return $result;
     }
 
-    public function getSP()
-    {
-        $sql_obj = $this->connect->prepare("SELECT ma_san_pham, ten_san_pham FROM san_pham ");
-        $arr_select = [];
-        $sql_obj->execute($arr_select);
-        $result = $sql_obj->fetchAll(PDO::FETCH_ASSOC);
-
-        return $result;
-    }
-
-    function key_compare_func($a, $b)
-    {
-        if ($a === $b) {
-            return 0;
-        }
-        return ($a > $b) ? 1 : -1;
-    }
-
-   
 
     public function check()
     {
-        function key_compare_func($a, $b)
-        {
-            if ($a === $b) {
-                return 0;
-            }
-            return ($a > $b) ? 1 : -1;
-        }
-        $obj_detail = $this->connect
-            ->prepare("SELECT san_pham.ten_san_pham , thong_tin_chi_tiet.ma_san_pham FROM san_pham INNER JOIN thong_tin_chi_tiet ON san_pham.ma_san_pham = thong_tin_chi_tiet.ma_san_pham");
 
+        $sql_obj = $this->connect->prepare("SELECT ma_san_pham FROM thong_tin_chi_tiet ");
         $arr_select = [];
-        $obj_detail->execute($arr_select);
-        $detail = $obj_detail->fetchAll(PDO::FETCH_ASSOC);
+        $sql_obj->execute($arr_select);
+        $detail = $sql_obj->fetchAll(PDO::FETCH_ASSOC);
 
         $obj_product = $this->connect
             ->prepare("SELECT ten_san_pham,ma_san_pham FROM san_pham");
         $obj_product->execute($arr_select);
         $product = $obj_product->fetchAll(PDO::FETCH_ASSOC);
 
-        $result =  array_diff_uassoc($product, $detail, "key_compare_func");
+        $data_detail = [];
+        $data_product = [];
+
+        for ($i = 0; $i < count($detail); $i++) {
+            $data_detail[$i] = $detail[$i]['ma_san_pham'];
+        }
+        for ($i = 0; $i < count($product); $i++) {
+            $data_product[$i] = $product[$i]['ma_san_pham'];
+        }
+
+        $result =  array_diff($data_product, $data_detail);
+
         return $result;
+    }
+
+
+    public function getSP()
+    {
+        $id = $this->check();
+        $test = implode("/", $id);
+        $data = explode("/", $test);
+        $a = [];
+        for ($i = 0; $i < count($data); $i++) {
+            $sql_obj = $this->connect->prepare("SELECT ma_san_pham, ten_san_pham FROM san_pham WHERE ma_san_pham = :id ");
+
+            $arr_select = [
+                ':id' => $data[$i],
+            ];
+            $sql_obj->execute($arr_select);
+            $result = $sql_obj->fetchAll(PDO::FETCH_ASSOC);
+           $a[$i] = $result;
+        }
+        return $a;
     }
 
     public function addDetail()
@@ -86,6 +90,20 @@ class DetailModel extends BaseModel
             ':gg' => $this->giam_gia,
         ];
         return $obj_insert->execute($arr_insert);
+    }
+    public function getMaSP()
+    {
+        $obj_select = $this->connect->prepare("SELECT ma_san_pham FROM thong_tin_chi_tiet");
+        $arr_select = [];
+        $obj_select->execute($arr_select);
+        $result = $obj_select->fetchAll(PDO::FETCH_ASSOC);
+        $data = [];
+
+        for ($i = 0; $i < count($result); $i++) {
+            $data[$i] = $result[$i]['ma_san_pham'];
+        }
+
+        return $data;
     }
 
     public function updateDetail($id)
@@ -104,15 +122,16 @@ class DetailModel extends BaseModel
         return $obj_update->execute($arr_update);
     }
 
-    public function search(){
+    public function search()
+    {
         $sql_obj = $this->connect->prepare("SELECT san_pham.ten_san_pham , thong_tin_chi_tiet.* FROM san_pham INNER JOIN thong_tin_chi_tiet ON san_pham.ma_san_pham = thong_tin_chi_tiet.ma_san_pham WHERE san_pham.ten_san_pham LIKE :tensp ");
         $arr_select = [
-            ':tensp' => '%'.$this->ten_san_pham.'%',
+            ':tensp' => '%' . $this->ten_san_pham . '%',
         ];
         $sql_obj->execute($arr_select);
         $count = $sql_obj->rowCount();
         $result = $sql_obj->fetchAll(PDO::FETCH_ASSOC);
-        return array($count,$result) ;
+        return array($count, $result);
     }
 
 

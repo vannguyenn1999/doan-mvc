@@ -85,8 +85,10 @@ class ProductController extends BaseController
 
     public function UpdateProduct()
     {
+        $check = $this->productModel->getMaSP();
+
         $id = $_GET['id'];
-        if (empty($id)) {
+        if (empty($id) || !in_array($id, $check)) {
             $_SESSION['error'] = 'id không hợp lệ';
             header('Location: http://localhost/doan-mvc/ProductController/Index');
             exit();

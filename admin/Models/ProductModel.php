@@ -68,6 +68,20 @@ class ProductModel extends BaseModel
         $result =  $obj_select->fetch(PDO::FETCH_ASSOC);
         return $result;
     }
+    public function getMaSP()
+    {
+        $obj_select = $this->connect->prepare("SELECT ma_san_pham FROM san_pham");
+        $arr_select = [];
+        $obj_select->execute($arr_select);
+        $result = $obj_select->fetchAll(PDO::FETCH_ASSOC);
+        $data = [];
+
+        for($i=0;$i < count($result);$i++){
+            $data[$i] = $result[$i]['ma_san_pham'];
+        }
+      
+        return $data;
+    }
 
     public function deletebyId($id)
     {

@@ -1,21 +1,21 @@
 <div class="container">
     <div class="product">
+    
         <h1>Thêm Thông Tin Sản Phẩm</h1>
         <table class="table table-dark table-hover">
-            <form action="themthongtin.php" method="POST" id="add" enctype="multipart/form-data">
+            <form action="" method="POST" id="add" enctype="multipart/form-data">
                 <div class="form-group">
-                    <label for="hang">Tên Sản Phẩm</label><br>
+                    <label for="masp">Tên Sản Phẩm</label><br>
                     <select name="masp" id="">
-                        <?php foreach ($data['result'] as $row) : ?>
-                            <option value="<?php echo $row['ma_san_pham']; ?>">
+                        <?php for ($i = 0; $i < count($data); $i++) { ?>
+                            <option value="<?php
+                                            echo $data[$i][0]['ma_san_pham'];
+                                            ?>">
                                 <?php
-                                // if($row['ten_san_pham'] == $data['thong-tin']['ten_san_pham']){
-                                //     continue;
-                                // }
-                                echo $row['ten_san_pham'];
+                                echo $data[$i][0]['ten_san_pham'];
                                 ?>
                             </option>
-                        <?php endforeach; ?>
+                        <?php } ?>
                     </select>
                 </div>
                 <div class="form-group">
