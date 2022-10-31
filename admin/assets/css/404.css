@@ -1,0 +1,20 @@
+.container{
+    margin: 0 300px;
+}
+
+.main{
+    align-items: center;
+    display: flex;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 145px 0 130px;
+    text-align: center;
+}
+
+.main-p{
+    color: #30425B;
+    font-size: 48px;
+    font-weight: 500;
+    line-height: 57px;
+    max-width: 460px;
+}

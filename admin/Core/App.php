@@ -7,7 +7,7 @@ class App
 
 
 
-    protected $controller = 'HomeController';
+    protected $controller = 'UserHomeController';
     protected $action = 'index';
     protected $param = [];
 
@@ -26,12 +26,14 @@ class App
         if (file_exists("./admin/Controllers/" . $url[0] . ".php")) {
             $this->controller = $url[0];
             unset($url[0]);
+            require_once "./admin/Controllers/" . $this->controller . ".php";
         }
-        // if(empty)
+        else {
+            require_once './admin/Controllers/404.php';
+        }
 
-
-        require_once "./admin/Controllers/" . $this->controller . ".php";
-        // $this->controller = new $this->controller;
+        // require_once "./admin/Controllers/" . $this->controller . ".php";
+       
         // ! Xử Lý Action (Function)
         // kiểm tra xem phương thúc có tồn tại hay không ?
         // ! Tên class và tên file phải trùng nhau
@@ -48,11 +50,6 @@ class App
         // ! Xử Lý Params
 
         $this->param = $url ? array_values($url) : [];
-
-        // echo $this->controller . "<br>";
-        // echo $this->action . "<br>";
-        // print_r($this->param);
-
 
         // ! tạo ra 1 lớp có tên là controller vả chạy phương thức action
 

@@ -8,7 +8,6 @@ function Validator(options) {
             element = element.parentElement;
         }
     }
-
     var selectorRules = {};
 
     // Hàm thực hiện validate
@@ -131,9 +130,6 @@ function Validator(options) {
     }
 
 }
-
-
-
 // Định nghĩa rules
 // Nguyên tắc của các rules:
 // 1. Khi có lỗi => Trả ra message lỗi

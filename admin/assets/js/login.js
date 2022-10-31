@@ -1,7 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
     // Mong muốn của chúng ta
-   
-
 
     Validator({
         form: '#form-2',
@@ -11,9 +9,6 @@ document.addEventListener('DOMContentLoaded', function() {
             Validator.isRequired('#username'),
             Validator.isRequired('#password'),
         ],
-        // onSubmit: function(data) {
-        //     // Call API
-        //     console.log(data);
-        // }
+        
     });
 });

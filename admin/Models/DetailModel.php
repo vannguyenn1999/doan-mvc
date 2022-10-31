@@ -18,12 +18,10 @@ class DetailModel extends BaseModel
     {
         $obj_select = $this->connect
             ->prepare("SELECT san_pham.ten_san_pham , thong_tin_chi_tiet.* FROM san_pham INNER JOIN thong_tin_chi_tiet ON san_pham.ma_san_pham = thong_tin_chi_tiet.ma_san_pham
-                    ");
-
+                    ORDER BY create_at DESC");
         $arr_select = [];
         $obj_select->execute($arr_select);
         $result = $obj_select->fetchAll(PDO::FETCH_ASSOC);
-
         return $result;
     }
 
@@ -37,7 +35,7 @@ class DetailModel extends BaseModel
         $detail = $sql_obj->fetchAll(PDO::FETCH_ASSOC);
 
         $obj_product = $this->connect
-            ->prepare("SELECT ten_san_pham,ma_san_pham FROM san_pham");
+            ->prepare("SELECT ma_san_pham FROM san_pham");
         $obj_product->execute($arr_select);
         $product = $obj_product->fetchAll(PDO::FETCH_ASSOC);
 

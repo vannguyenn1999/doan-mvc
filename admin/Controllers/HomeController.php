@@ -20,14 +20,13 @@ class HomeController extends BaseController
             $message = $_SESSION['admin_login'];
             echo "<script type='text/javascript'>alert('$message');</script>";
         }
-
-       
         if (!isset($_SESSION['admin_login'])) {
             $message = "Vui Lòng Đăng Nhập";
             echo "<script type='text/javascript'>alert('$message');</script>";
             header('Location: http://localhost/doan-mvc/LoginController/Login');
             exit();
         }
+
         $this->main_content = "SHOP 123";
         $this->view('', 'index',);
         $this->view('', 'main', $this->main_content);

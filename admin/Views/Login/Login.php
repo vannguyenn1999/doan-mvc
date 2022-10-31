@@ -1,13 +1,15 @@
 <?php
- if (!isset($_SESSION['admin_login'])) {
-    $message = "Vui Lòng Đăng Nhập";
-    echo "<script type='text/javascript'>alert('$message');</script>";
-    
-  }
-  if (isset($_SESSION['logout'])) {
+
+if (isset($_SESSION['logout'])) {
     $message = $_SESSION['logout'];
     echo "<script type='text/javascript'>alert('$message');</script>";
     unset($_SESSION['logout']);
+}
+
+if (isset($_SESSION['error'])) {
+    $message = $_SESSION['error'];
+    echo "<script type='text/javascript'>alert('$message');</script>";
+    unset($_SESSION['error']);
 }
 
 ?>
@@ -19,6 +21,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link rel="stylesheet" href="http://localhost/doan-mvc/admin/assets/css/login.css">
+    <link rel="shortcut icon" href="https://img.freepik.com/vector-premium/logo-apple-gradient-estilo-colorido_116762-694.jpg" />
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- <script src="http://localhost/doan-mvc/admin/assets/js/validate.js"></script>
     <script src="http://localhost/doan-mvc/admin/assets/js/login.js"></script> -->
@@ -27,9 +31,6 @@
 
 <body>
     <div class="main">
-
-
-
         <form action="" method="POST" class="form" id="form-2">
             <h3 class="heading">Đăng nhập</h3>
             <div class="spacer"></div>
@@ -53,7 +54,6 @@
     </div>
     <!-- <script src="http://localhost/doan-mvc/admin/assets/js/validate.js"></script>
     <script src="http://localhost/doan-mvc/admin/assets/js/login.js"></script> -->
-
 </body>
 
 </html>
