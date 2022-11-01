@@ -1,6 +1,7 @@
 <?php
 
-class DetailController extends BaseController {
+class DetailController extends BaseController
+{
 
     protected $detailModel;
     public function __construct()
@@ -8,19 +9,22 @@ class DetailController extends BaseController {
         $this->model("DetailModel");
         $this->detailModel = new DetailModel();
     }
-    public function Index(){
+    public function Index()
+    {
         $this->main_content =  $this->detailModel->getTable();
-        $this->view("",'index');
-        $this->view("Detail",'main',$this->main_content);
+        $this->view("", 'index');
+        $this->view("Detail", 'main', $this->main_content);
     }
 
-    public function GetDetail($id){
+    public function GetDetail($id)
+    {
         $this->main_content = $this->detailModel->getbyId($id);
-        $this->view("",'index');
-        $this->view("Detail",'update',$this->main_content);
+        $this->view("", 'index');
+        $this->view("Detail", 'update', $this->main_content);
     }
 
-    public function UpdateDetail(){
+    public function UpdateDetail()
+    {
 
         $check = $this->detailModel->getMaSP();
 
@@ -31,7 +35,7 @@ class DetailController extends BaseController {
             exit();
         }
 
-        if(isset($_POST['submit'])){
+        if (isset($_POST['submit'])) {
             $cauhinh = $_POST['cauhinh'];
             $camsau = $_POST['camsau'];
             $camtruoc = $_POST['camtruoc'];
@@ -59,10 +63,11 @@ class DetailController extends BaseController {
         $this->GetDetail($id);
     }
 
-    public function AddDetail(){
+    public function AddDetail()
+    {
         $result = $this->detailModel->getSP();
 
-        if(isset($_POST['submit'])){
+        if (isset($_POST['submit'])) {
             $masp = $_POST['masp'];
             $cauhinh = $_POST['cauhinh'];
             $sau = $_POST['sau'];
@@ -70,41 +75,60 @@ class DetailController extends BaseController {
             $ram = $_POST['ram'];
             $dungluong = $_POST['dungluong'];
             $khuyenmai = $_POST['khuyenmai'];
-            
 
-            $this->detailModel->ma_san_pham = $masp;
-            $this->detailModel->cau_hinh = $cauhinh;
-            $this->detailModel->cam_sau = $sau;
-            $this->detailModel->cam_truoc = $truoc;
-            $this->detailModel->ram = $ram;
-            $this->detailModel->dung_luong = $dungluong;
-            $this->detailModel->giam_gia = $khuyenmai;
-
-            $is_insert = $this->detailModel->addDetail();
-            if ($is_insert) {
-                $_SESSION['success'] = 'Thêm thành công';
-            } else {
-                $_SESSION['error'] = 'Thêm thất bại';
+            if(empty($cauhinh)){
+                $this->error['cauhinh'] = "Mời Bạn Nhập Thông Tin";
             }
-            header('Location: http://localhost/doan-mvc/DetailController/Index');
-            exit();
+            if(empty($sau)){
+                $this->error['sau'] = "Mời Bạn Nhập Thông Tin";
+            }
+            if(empty($truoc)){
+                $this->error['truoc'] = "Mời Bạn Nhập Thông Tin";
+            }
+            if(empty($ram)){
+                $this->error['ram'] = "Mời Bạn Nhập Thông Tin";
+            }
+            if(empty($dungluong)){
+                $this->error['dungluong'] = "Mời Bạn Nhập Thông Tin";
+            }
 
+            if (empty($this->error)) {
+                $this->detailModel->ma_san_pham = $masp;
+                $this->detailModel->cau_hinh = $cauhinh;
+                $this->detailModel->cam_sau = $sau;
+                $this->detailModel->cam_truoc = $truoc;
+                $this->detailModel->ram = $ram;
+                $this->detailModel->dung_luong = $dungluong;
+                $this->detailModel->giam_gia = $khuyenmai;
+                $is_insert = $this->detailModel->addDetail();
+                if ($is_insert) {
+                    $_SESSION['success'] = 'Thêm thành công';
+                } else {
+                    $_SESSION['error'] = 'Thêm thất bại';
+                }
+                header('Location: http://localhost/doan-mvc/DetailController/Index');
+                exit();
+            }
         }
 
-        $this->view("",'index');
-        $this->view("Detail",'create',$result);
+        $this->view("", 'index');
+        $this->view("Detail", 'create', [
+            'data' => $result,
+            'error' => $this->error,
+        ]);
     }
 
-    public function SearchDetail(){
-        $result = [0,[]];
-        if(isset($_POST['submit'])){
+    public function SearchDetail()
+    {
+        $result = [0, []];
+        if (isset($_POST['submit'])) {
             $search = addslashes($_POST['search']);
 
             $this->detailModel->ten_san_pham = $search;
             $result = $this->detailModel->search();
         }
-        $this->view('','index');
-        $this->view('Detail','search',[
+        $this->view('', 'index');
+        $this->view('Detail', 'search', [
             'search' => $search,
             'count' => $result[0],
             'info' => $result[1],
@@ -123,12 +147,12 @@ class DetailController extends BaseController {
         exit();
     }
 
-    public function test(){
+    public function test()
+    {
         // $result = [];
         $result = $this->detailModel->check();
 
-       
-        $this->view('Detail','1',$result);
+
+        $this->view('Detail', '1', $result);
     }
-   
 }

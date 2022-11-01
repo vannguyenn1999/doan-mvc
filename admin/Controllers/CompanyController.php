@@ -23,22 +23,36 @@ class CompanyController extends BaseController
 
             $nhan_hieu = $_POST['nhanhieu'];
             $thong_tin = $_POST['thongtin'];
-            $this->companyModel->ten_nhan_hieu = $nhan_hieu;
-            $this->companyModel->thong_tin = $thong_tin;
 
-            $is_insert = $this->companyModel->addCompany();
-            if ($is_insert) {
-                $_SESSION['success'] = 'Thêm thành công';
-            } else {
-                $_SESSION['error'] = 'Thêm thất bại';
+            if (empty($nhan_hieu)) {
+                $this->error['nhanhieu'] = 'Mời bạn nhập tên nhãn hiệu ';
+            } else if (strlen($nhan_hieu) < 3) {
+                $this->error['nhanhieu'] = 'Phải Lớn Hơn 3 Ký Tự ';
             }
-            header('Location: http://localhost/doan-mvc/CompanyController/Index');
-            exit();
+
+            if (empty($thong_tin)) {
+                $this->error['thongtin'] = 'Mời bạn nhập tên nhãn hiệu ';
+            }
+
+
+            if (empty($this->error)) {
+                $this->companyModel->ten_nhan_hieu = $nhan_hieu;
+                $this->companyModel->thong_tin = $thong_tin;
+
+                $is_insert = $this->companyModel->addCompany();
+                if ($is_insert) {
+                    $_SESSION['success'] = 'Thêm thành công';
+                } else {
+                    $_SESSION['error'] = 'Thêm thất bại';
+                }
+                header('Location: http://localhost/doan-mvc/CompanyController/Index');
+                exit();
+            }
         }
         // $this->productModel->addProduct($data);
         $this->view("", 'index');
 
-        $this->view('Company', 'create');
+        $this->view('Company', 'create',$this->error);
     }
 
     public function UpdateCompany()
@@ -73,7 +87,8 @@ class CompanyController extends BaseController
         $this->view('Company', 'update', $result);
     }
 
-    public function DeleteCompany($id){
+    public function DeleteCompany($id)
+    {
         $is_delete = $this->companyModel->deletebyId($id);
         if ($is_delete) {
             $_SESSION['success'] = 'Xóa thành công';

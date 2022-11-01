@@ -1,22 +1,28 @@
 .product {
-    padding-top: 60px;
+  padding-top: 60px;
 }
 
 .form-message {
-    font-size: 1.2rem;
-    line-height: 1.6rem;
-    padding: 4px 0 0;
-  }
+  font-size: 1.2rem;
+  line-height: 1.6rem;
+  padding: 4px 0 0;
+}
 
-  .img-hover {
-    width: 150px;
-    height: 150px;
-    transition: transform .2s; /* Animation */
-  }
+.img-hover {
+  width: 150px;
+  height: 150px;
+  transition: transform 0.2s; /* Animation */
+}
 
-  .img-hover:hover {
-    /* align-items: center; */
-    width: 300px;
-    transform: scale(1.5);
-    height: 300px;
-  }
+.img-hover:hover {
+  /* align-items: center; */
+  width: 300px;
+  transform: scale(1.5);
+  height: 300px;
+}
+
+.err {
+  margin-top: 5px;
+  color: red;
+  font-weight: bold;
+}

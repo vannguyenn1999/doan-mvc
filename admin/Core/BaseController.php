@@ -4,7 +4,7 @@ class BaseController
 
 {
     protected $main_content;
-    public $error;
+    public $error = [];
     public function model($model)
     {
         require_once './admin/Models/'.$model.'.php';
