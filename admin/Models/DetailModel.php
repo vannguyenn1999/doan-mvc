@@ -96,7 +96,7 @@ class DetailModel extends BaseModel
         $obj_select->execute($arr_select);
         $result = $obj_select->fetchAll(PDO::FETCH_ASSOC);
         $data = [];
-
+        // chuyển từ mảng đa chiều thành mảng 1 chiều
         for ($i = 0; $i < count($result); $i++) {
             $data[$i] = $result[$i]['ma_san_pham'];
         }

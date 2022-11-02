@@ -30,6 +30,11 @@
     echo "<script type='text/javascript'>alert('$message');</script>";
     unset($_SESSION['success']);
   }
+  if (isset($_SESSION['error'])) {
+    $message = $_SESSION['error'];
+    echo "<script type='text/javascript'>alert('$message');</script>";
+    unset($_SESSION['error']);
+  }
 
   require_once 'header.php';
 

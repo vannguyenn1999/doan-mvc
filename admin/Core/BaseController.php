@@ -15,4 +15,12 @@ class BaseController
         require_once './admin/Views/'.$viewFile.'/'.$view.'.php';
         
     }
+   
+    public function render($file_path, $data = []){
+        extract($data);
+        ob_start();
+        require_once $file_path;
+        $view = ob_get_clean();
+        return $view;
+    }
 }

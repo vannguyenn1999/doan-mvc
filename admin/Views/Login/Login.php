@@ -21,9 +21,6 @@ if (isset($_SESSION['error'])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link rel="stylesheet" href="http://localhost/doan-mvc/admin/assets/css/login.css">
-    <style>
-       
-    </style>
     <link rel="shortcut icon" href="https://img.freepik.com/vector-premium/logo-apple-gradient-estilo-colorido_116762-694.jpg" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -42,23 +39,24 @@ if (isset($_SESSION['error'])) {
                 <label for="username" class="form-label">Tài Khoản</label>
                 <input id="username" name="username" type="text" placeholder="Nhập tài khoản" class="form-control">
                 <?php
-                    if (isset($data['username'])) {
-                        echo '<label class="form-message">' . $data['username'] . '</label>';
-                    }
-                    ?>
+                if (isset($data['username'])) {
+                    echo '<label class="form-message">' . $data['username'] . '</label>';
+                }
+                ?>
             </div>
 
             <div class="form-group">
                 <label for="password" class="form-label">Mật khẩu</label>
                 <input id="password" name="password" type="password" placeholder="Nhập mật khẩu" class="form-control">
                 <?php
-                    if (isset($data['password'])) {
-                        echo '<label class="form-message">' . $data['password'] . '</label>';
-                    }
-                    ?>
+                if (isset($data['password'])) {
+                    echo '<label class="form-message">' . $data['password'] . '</label>';
+                }
+                ?>
             </div>
             <div class="form-group">
                 <input type="submit" name="submit" value="Đăng nhập" class="form-submit">
+                <button class="form-submit"><a href="http://localhost/doan-mvc">Trang Chủ</a></button>
             </div>
         </form>
 

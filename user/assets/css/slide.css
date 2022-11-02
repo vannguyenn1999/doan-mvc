@@ -1,0 +1,51 @@
+
+
+.main-ads-banner_1 {
+  display: flex;
+  justify-content: center;
+  width: 33.33%;
+  cursor: pointer;
+  border-radius: 10px;
+} 
+
+.main-slideshow {
+  width: 100%;
+  margin-top: 10px;
+}
+.main-slideshow-content {
+  display: flex;
+  column-gap: 10px;
+  position: relative;
+  padding: 10px;
+  overflow: hidden;
+  height: 250px;
+  margin: 0 auto;
+  cursor: pointer;
+}
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-250px * 6));
+  }
+} 
+.slideshow-wrapper {
+  display: flex;
+  width: calc(250px * 12);
+  animation: scroll 15s linear infinite;
+}
+.slide {
+  height: 200px;
+  width: 300px;
+  padding: 15px;
+  perspective: 100px;
+}
+#slide-img {
+  width: 200px;
+  height: 200px;
+  transition: transform 0.5s;
+}
+#slide-img:hover {
+  transform: translateZ(5px);
+}

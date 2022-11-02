@@ -36,7 +36,9 @@ class HomeController extends BaseController
     {
         $_SESSION['logout'] = "Đăng Xuất Thành Công";
         unset($_SESSION['admin_login']);
-        header('Location: http://localhost/doan-mvc');
+        header('Location: http://localhost/doan-mvc/LoginController');
         exit();
     }
+
+    
 }

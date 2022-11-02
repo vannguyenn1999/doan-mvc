@@ -4265,6 +4265,9 @@ a:hover {
     width: 20px;
     height: 20px;
 }
+.main-table {
+    width: 100%;
+}
 
 .secondary-title {
     width: 85%;

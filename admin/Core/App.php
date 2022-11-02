@@ -7,7 +7,7 @@ class App
 
 
 
-    protected $controller = 'HomeController';
+    protected $controller = 'UserHomeController';
     protected $action = 'index';
     protected $param = [];
 
