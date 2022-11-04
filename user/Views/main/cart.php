@@ -1,10 +1,10 @@
+
 <div class="main-content">
     <div class="container">
         <h1 class="post-list-title">
             Giỏ hàng của bạn
         </h1>
         <div class="main-content-wrapper">
-            <!--CONTENT-->
             <div class="main">
                 <form action="" method="post">
                     <table class="table table-bordered">
@@ -16,60 +16,42 @@
                                 <th>Thành tiền</th>
                                 <th></th>
                             </tr>
-
+                            <?php foreach($data as $r) : ?>
                             <tr>
                                 <td>
                                     <a href="product.html" class="content-product-a">
                                         <img class="product-avatar img-responsive" src="assets/images/samsung-galaxy-note-10-plus-silver-400x460.png" height="80">
                                         <span class="content-product">
-                                            Samsung Note 10
+                                            <?php echo $r['TenDT'] ?>
                                         </span>
                                     </a>
                                 </td>
                                 <td>
-                                    <input type="number" min="0" name="92084" class="product-amount form-control" value="1">
+                                    <input type="number" min="0" name="92084" class="product-amount form-control" value="<?php echo $r['Amount'] ?>">
                                 </td>
                                 <td>
-                                    60.000đ
+                                <?php echo $r['Gia']?>
                                 </td>
                                 <td>
-                                    60.000đ
+                                <?php echo $r['Gia'] * $r['Amount'] ?>
                                 </td>
                                 <td>
-                                    <a class="content-product-a" href="#">
-                                        Xóa
+                                    <a class="content-product-a" href="">
+                                    <i class="fa fa-trash"></i>
                                     </a>
                                 </td>
                             </tr>
+                            <?php endforeach; ?>
+                           
                             <tr>
-                                <td>
-                                    <a href="product_detail.html" class="content-product-a">
-                                        <img class="product-avatar img-responsive" src="assets/images/samsung-galaxy-note-10-plus-silver-400x460.png" height="80">
-                                        <span class="content-product">
-                                            Lều cắm trại 6 người
-                                        </span>
-                                    </a>
-                                </td>
-                                <td>
-                                    <input type="number" min="0" name="91995" class="product-amount form-control" value="1">
-                                </td>
-                                <td>
-                                    100.000đ
-                                </td>
-                                <td>
-                                    100.000đ
-                                </td>
-                                <td>
-                                    <a class="content-product-a" href="#">
-                                        Xóa
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
+                                <?php for($i=0;$i<count($data);$i++){
+                                    $sum = 0;
+                                    $sum += $data[$i]['Gia']; }?>
                                 <td colspan="5" style="text-align: right">
                                     Tổng giá trị đơn hàng:
+
                                     <span class="product-price">
-                                        160.000đ
+                                        <?php echo $sum ?>
                                     </span>
                                 </td>
                             </tr>
@@ -83,8 +65,7 @@
                     </table>
                 </form>
             </div>
-            <!--END CONTENT-->
-            <!--END MAIN LEFT-->
+
         </div>
     </div>
 </div>

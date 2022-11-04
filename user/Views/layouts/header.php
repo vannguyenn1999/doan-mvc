@@ -24,7 +24,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="cart.html" class="cart-link">
+                        <a href="http://localhost/doan-mvc/UserHomeController/Cart" class="cart-link">
                             <i class="fa fa-cart-plus"></i>
                             <span class="cart-amount">
                                 0 </span>
@@ -59,7 +59,7 @@
             <!-- header left menu start -->
             <ul class="header-navigation" data-show-menu-on-mobile>
                 <li>
-                    <a href="" class="home-link material-button submenu-toggle">
+                    <a href="http://localhost/doan-mvc" class="home-link material-button submenu-toggle">
                         <img src="http://localhost/doan-mvc/user/assets/images/logo.webp" alt="" height="50px" width="50px" /></a>
                     </a>
                 </li>
@@ -79,9 +79,7 @@
                     <a href="http://localhost/doan-mvc/UserHomeController/Quality" class="material-button submenu-toggle">Chất Lượng</a>
                 </li>
                 </li>
-                <li>
-                    <a href="http://localhost/doan-mvc/UserHomeController/Login" class="material-button submenu-toggle">Đăng nhập</a>
-                </li>
+               
             </ul>
             <!-- header left menu end -->
         </div>
@@ -89,11 +87,12 @@
             <!-- header right menu start -->
             <ul class="header-navigation">
                 <li>
-                    <a href="/gio-hang.html" class="">
+                    <a href="http://localhost/doan-mvc/UserHomeController/Cart" class="">
                         <i class="fa fa-cart-plus"></i>
                         <span class="cart-amount-mobile">
                             0
                         </span>
+                        
                     </a>
                 </li>
             </ul>
@@ -139,9 +138,7 @@
             <li>
                 <a href="http://localhost/doan-mvc/UserHomeController/Quality" class="material-button submenu-toggle">Chất Lượng</a>
             </li>
-            <li>
-                <a href="http://localhost/doan-mvc/UserHomeController/Login" class="material-button submenu-toggle">Đăng nhập</a>
-            </li>
+            
         </ul>
         <!-- sidebar menu end -->
         <div class="sidebar-seperate"></div>

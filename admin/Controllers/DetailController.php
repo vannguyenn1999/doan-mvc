@@ -66,6 +66,7 @@ class DetailController extends BaseController
     public function AddDetail()
     {
         $result = $this->detailModel->getSP();
+       
 
         if (isset($_POST['submit'])) {
             $masp = $_POST['masp'];
@@ -76,19 +77,19 @@ class DetailController extends BaseController
             $dungluong = $_POST['dungluong'];
             $khuyenmai = $_POST['khuyenmai'];
 
-            if(empty($cauhinh)){
+            if (empty($cauhinh)) {
                 $this->error['cauhinh'] = "Mời Bạn Nhập Thông Tin";
             }
-            if(empty($sau)){
+            if (empty($sau)) {
                 $this->error['sau'] = "Mời Bạn Nhập Thông Tin";
             }
-            if(empty($truoc)){
+            if (empty($truoc)) {
                 $this->error['truoc'] = "Mời Bạn Nhập Thông Tin";
             }
-            if(empty($ram)){
+            if (empty($ram)) {
                 $this->error['ram'] = "Mời Bạn Nhập Thông Tin";
             }
-            if(empty($dungluong)){
+            if (empty($dungluong)) {
                 $this->error['dungluong'] = "Mời Bạn Nhập Thông Tin";
             }
 

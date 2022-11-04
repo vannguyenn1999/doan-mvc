@@ -69,33 +69,8 @@
                               </span>
                             </td>
                         </tr>
-                        <tr>
-                            <td>
-                                <a href="product_detail.html" class="content-product-a">
-                                    <img class="product-avatar img-responsive"
-                                         src="assets/images/samsung-galaxy-note-10-plus-silver-400x460.png"
-                                         width="60"/>
-                                    <span class="content-product">
-                                        Lều cắm trại 6 người
-                                    </span>
-                                </a>
-                            </td>
-                            <td>
-                              <span class="product-amount">
-                                  1
-                              </span>
-                            </td>
-                            <td>
-                              <span class="product-price-payment">
-                                 100.000 đ
-                              </span>
-                            </td>
-                            <td>
-                              <span class="product-price-payment">
-                                  100.000 đ
-                              </span>
-                            </td>
-                        </tr>
+                        
+                        
                         <tr>
                             <td colspan="5" class="product-total">
                                 Tổng giá trị đơn hàng:

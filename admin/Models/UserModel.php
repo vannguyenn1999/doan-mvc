@@ -4,7 +4,7 @@ class UserModel extends BaseModel {
     
     
     public function getTable(){
-        $obj_select = $this->connect->prepare("SELECT * FROM san_pham LIMIT 8");
+        $obj_select = $this->connect->prepare("SELECT * FROM san_pham ORDER BY create_at DESC LIMIT 8");
         $arr = [];
         $obj_select->execute($arr);
         $result = $obj_select->fetchAll(PDO::FETCH_ASSOC);
@@ -26,8 +26,13 @@ class UserModel extends BaseModel {
         return $data;
     }
 
-    public function getName($id){
-
+    public function getProduct($id){
+        $obj_sql = $this->connect->prepare("SELECT ma_san_pham, ten_san_pham, so_luong, gia FROM san_pham WHERE ma_san_pham = :id");
+        $arr = [
+            ':id' => $id,
+        ];
+        $obj_sql->execute($arr);
+        return  $obj_sql->fetch(PDO::FETCH_ASSOC);
     }
 
     public function moreProduct($id){
@@ -53,5 +58,17 @@ class UserModel extends BaseModel {
         $obj_sql->execute($arr);
         $result =  $obj_sql->fetch(PDO::FETCH_ASSOC);
         return $result;
+    }
+
+    public function page($id){
+        $page = ($id - 1) * 8;
+        $obj_select = $this->connect->prepare("SELECT * FROM san_pham LIMIT $page , 8");
+        $arr = [
+            // ':id' => $page,
+        ];
+        $obj_select->execute($arr);
+        $result = $obj_select->fetchAll(PDO::FETCH_ASSOC);
+        return $result;
+    
     }
 }
