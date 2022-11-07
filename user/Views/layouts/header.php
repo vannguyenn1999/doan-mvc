@@ -27,7 +27,11 @@
                         <a href="http://localhost/doan-mvc/UserHomeController/Cart" class="cart-link">
                             <i class="fa fa-cart-plus"></i>
                             <span class="cart-amount">
-                                0 </span>
+                                <?php if (isset($_SESSION['cart'])) {
+                                    echo count($_SESSION['cart']);
+                                } else {
+                                    echo '0';
+                                } ?></span>
                         </a>
                     </li>
                 </ul>
@@ -79,7 +83,7 @@
                     <a href="http://localhost/doan-mvc/UserHomeController/Quality" class="material-button submenu-toggle">Chất Lượng</a>
                 </li>
                 </li>
-               
+
             </ul>
             <!-- header left menu end -->
         </div>
@@ -90,9 +94,13 @@
                     <a href="http://localhost/doan-mvc/UserHomeController/Cart" class="">
                         <i class="fa fa-cart-plus"></i>
                         <span class="cart-amount-mobile">
-                            0
+                            <?php if (isset($_SESSION['cart'])) {
+                                echo count($_SESSION['cart']);
+                            } else {
+                                echo '0';
+                            } ?>
                         </span>
-                        
+
                     </a>
                 </li>
             </ul>
@@ -138,7 +146,7 @@
             <li>
                 <a href="http://localhost/doan-mvc/UserHomeController/Quality" class="material-button submenu-toggle">Chất Lượng</a>
             </li>
-            
+
         </ul>
         <!-- sidebar menu end -->
         <div class="sidebar-seperate"></div>

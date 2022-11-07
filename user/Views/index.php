@@ -60,6 +60,7 @@
     require_once 'layouts/footer.php';
     ?>
 
+
 </body>
 
 </html>

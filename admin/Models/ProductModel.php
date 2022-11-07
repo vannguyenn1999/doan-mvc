@@ -59,7 +59,7 @@ class ProductModel extends BaseModel
 
         return $result;
     }
-    
+
     public function getImage($id)
     {
         $obj_select = $this->connect
@@ -76,47 +76,29 @@ class ProductModel extends BaseModel
         $result = $obj_select->fetchAll(PDO::FETCH_ASSOC);
         $data = [];
 
-        for($i=0;$i < count($result);$i++){
+        for ($i = 0; $i < count($result); $i++) {
             $data[$i] = $result[$i]['ma_san_pham'];
         }
-      
+
         return $data;
     }
 
     public function deletebyId($id)
     {
-        $obj_select = $this->connect
-        ->prepare("SELECT ma_san_pham FROM thong_tin_chi_tiet WHERE ma_san_pham = '$id'");
-        $obj_select->execute();
-        $count = $obj_select->rowCount();
-
-        if($count == 1 ){
-            $obj_deletes = $this->connect
-            ->prepare("DELETE FROM thong_tin_chi_tiet WHERE ma_san_pham = '$id'");
-
-            $obj_delete = $this->connect
+        $obj_delete = $this->connect
             ->prepare("DELETE FROM san_pham WHERE ma_san_pham = '$id'");
-
-        $dels = $obj_deletes->execute();
-        $del = $obj_delete->execute();
-
-        return array($dels,$del);
-        }else{
-            $obj_delete = $this->connect
-                ->prepare("DELETE FROM san_pham WHERE ma_san_pham = '$id'");
-            return $obj_delete->execute();
-        }
-
+        return $obj_delete->execute();
     }
 
-    public function search(){
+    public function search()
+    {
         $sql_obj = $this->connect->prepare("SELECT * FROM san_pham Where ten_san_pham LIKE :tensp ");
         $arr_select = [
-            ':tensp' => '%'.$this->ten_san_pham.'%',
+            ':tensp' => '%' . $this->ten_san_pham . '%',
         ];
         $sql_obj->execute($arr_select);
         $count = $sql_obj->rowCount();
         $result = $sql_obj->fetchAll(PDO::FETCH_ASSOC);
-        return array($count,$result) ;
+        return array($count, $result);
     }
 }

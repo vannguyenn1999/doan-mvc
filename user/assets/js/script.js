@@ -449,3 +449,8 @@ $(document).ready(function () {
     $('[data-toggle="tooltip"]').tooltip()
 
 });
+
+
+function addCart(id){
+    alert(id);
+}

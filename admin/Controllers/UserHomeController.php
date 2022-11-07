@@ -58,48 +58,57 @@ class UserHomeController extends BaseController
   }
   public function Product()
   {
-    if(isset($_GET['trang'])){
+    if (isset($_GET['trang'])) {
       $id = $_GET['trang'];
-    }else{
+    } else {
       $id = 1;
     }
-    if($_GET['trang'] < 1){
+    if ($_GET['trang'] < 1) {
       $id = 1;
     }
-   
+
     $result = $this->userHomeModel->page($id);
     $this->main_content = $this->render('./user/Views/main/product.php', $result);
     require_once './user/Views/index.php';
   }
 
-
-  public function getCart(){
-    $productId = $_GET['id'];
-    $_SESSION['cart']['id'] = $productId;
-
-    echo "<pre>";
-    print_r($_SESSION['cart']);
-    echo "</pre>";
-  }
-
   public function Cart()
   {
-    // $id = $_GET['id'] ;
-    // $result = $this->userHomeModel->getProduct($id);
-    $result = $_SESSION['giohang'] = [
-      0 => ['TenDT' => 'OPPO A93', 'Amount' => 3, 'Gia' => 7300000],
-      1 => ['TenDT' => 'Vsmart Aris', 'Amount' => 4, 'Gia' => 6300000],
-      2 => ['TenDT' => 'Realme 7 Pro', 'Amount' => 5, 'Gia' => 8300000]
-    ];
-    $this->main_content = $this->render('./user/Views/main/cart.php', $result);
+    if (isset($_GET['id'])) {
+      $productId = $_GET['id'];
+      $product = $this->userHomeModel->getProduct($productId);
+      $_SESSION['cart'][$productId] = $product;
+      $_SESSION['cart'][$productId]['tyt'] = 1;
+      $_SESSION['cart'][$productId]['tong'] =  $_SESSION['cart'][$productId]['tyt'] *  $_SESSION['cart'][$productId]['gia'];
+    }else{
+      $_SESSION['cart'];
+    }
+    // unset($_SESSION['cart']);
+
+    if(isset($_POST['submit'])){
+      $_SESSION['cart'][$productId]['tyt'] = $_POST['sl'];
+
+
+      $_SESSION['cart'][$productId]['tong'] =  $_SESSION['cart'][$productId]['tyt'] *  $_SESSION['cart'][$productId]['gia'];
+    }
+
+    $this->main_content = $this->render('./user/Views/main/cart.php');
     require_once './user/Views/index.php';
   }
 
-  
+
+  public function Remove()
+  {
+    $productId = $_GET['id'];
+    unset($_SESSION['cart'][$productId]);
+    $this->main_content = $this->render('./user/Views/main/cart.php');
+    require_once './user/Views/index.php';
+  }
+
 
   public function Payment()
   {
-    if(isset($_POST['submit'])){
+    if (isset($_POST['submit'])) {
       $_SESSION['success'] = 'Thanh Toán Thành Công';
       header('Location: http://localhost/doan-mvc/UserHomeController/Thank');
       exit();

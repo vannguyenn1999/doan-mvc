@@ -82,7 +82,7 @@
                         </tbody>
                     </table>
                     <input type="submit" name="submit" value="Thanh toán" class="btn btn-primary">
-                    <a href="cart.html" class="btn btn-secondary">Về trang giỏ hàng</a>
+                    <a href="http://localhost/doan-mvc/UserHomeController/Cart" class="btn btn-secondary">Về trang giỏ hàng</a>
                 </div>
             </div>
 

@@ -59,7 +59,7 @@
     </a>
   </li>
   <li data-toggle="tooltip" data-placement="left" title="Liên hệ với chúng tôi">
-    <a href="contact.html" target="_blank">
+    <a href="http://localhost/doan-mvc/UserHomeController/Contact" target="_blank">
       <img src="http://localhost/doan-mvc/user/assets/images/icon-map.png" class="icon-service-img" />
     </a>
   </li>

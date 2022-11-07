@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th10 25, 2022 lúc 05:29 AM
+-- Thời gian đã tạo: Th10 07, 2022 lúc 12:37 PM
 -- Phiên bản máy phục vụ: 10.4.21-MariaDB
 -- Phiên bản PHP: 8.0.11
 
@@ -33,16 +33,17 @@ CREATE TABLE `accounts` (
   `password` varchar(256) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email` varchar(256) COLLATE utf8mb4_unicode_ci NOT NULL,
   `phone` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `address` varchar(256) COLLATE utf8mb4_unicode_ci NOT NULL
+  `address` varchar(256) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `create_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `accounts`
 --
 
-INSERT INTO `accounts` (`name`, `username`, `password`, `email`, `phone`, `address`) VALUES
-('tưởng thảo', 'mid0203', 'e10adc3949ba59abbe56e057f20f883e', 'mid0203@gmail.com', '0965969085', 'hà nội'),
-('văn nguyễn ', 'Vannguyenn99', 'e10adc3949ba59abbe56e057f20f883e', 'vannguyenn2809@gmail.com', '0965969085', 'hà nội');
+INSERT INTO `accounts` (`name`, `username`, `password`, `email`, `phone`, `address`, `create_at`) VALUES
+('tưởng thảo', 'mid0203', 'e10adc3949ba59abbe56e057f20f883e', 'mid0203@gmail.com', '0965969085', 'hà nội', '2022-10-25 05:31:34'),
+('văn nguyễn ', 'Vannguyenn99', 'e10adc3949ba59abbe56e057f20f883e', 'vannguyenn2809@gmail.com', '0965969085', 'hà nội', '2022-10-25 05:31:34');
 
 -- --------------------------------------------------------
 
@@ -61,7 +62,10 @@ CREATE TABLE `admin_system` (
 --
 
 INSERT INTO `admin_system` (`username_admin`, `password_admin`, `name`) VALUES
-('admin', 'admin', 'admin');
+('admin', 'admin', 'admin'),
+('admintesst', 'admintesst', 'qq'),
+('qqqqqqqqqq', 'qqqqqqqqqq', 'qqqqqqqqqq'),
+('qqqqqqqqqq1', 'qqqqqqqqqq', 'qq');
 
 -- --------------------------------------------------------
 
@@ -72,6 +76,38 @@ INSERT INTO `admin_system` (`username_admin`, `password_admin`, `name`) VALUES
 CREATE TABLE `bang_hieu` (
   `id` int(10) NOT NULL,
   `anh` varchar(256) COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `chi_tiet_don_hang`
+--
+
+CREATE TABLE `chi_tiet_don_hang` (
+  `idCT` int(11) NOT NULL,
+  `ma_don_hang` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `ma_san_pham` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `ten_san_pham` varchar(40) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `so_luong` int(5) NOT NULL,
+  `gia` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `create_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `don_hang`
+--
+
+CREATE TABLE `don_hang` (
+  `ma_don_hang` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `ten_nguoi_dat` varchar(40) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email_nguoi_nhan` varchar(40) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `sdt_nguoi_nhan` varchar(11) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `dc_nguoi_nhan` varchar(40) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `ghi_chu` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `create_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -96,40 +132,24 @@ CREATE TABLE `gio_hang` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `hoa_don`
---
-
-CREATE TABLE `hoa_don` (
-  `ma_hoa_don` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `ma_san_pham` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `ten_san_pham` varchar(40) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `so_luong` varchar(3) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `username` varchar(40) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `thanh_tien` varchar(40) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `ngay_lap` datetime NOT NULL,
-  `ngay_mua` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- --------------------------------------------------------
-
---
 -- Cấu trúc bảng cho bảng `kieu`
 --
 
 CREATE TABLE `kieu` (
   `id_kieu` varchar(256) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `thong_tin` varchar(256) COLLATE utf8mb4_unicode_ci NOT NULL
+  `thong_tin` varchar(256) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `create_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `kieu`
 --
 
-INSERT INTO `kieu` (`id_kieu`, `thong_tin`) VALUES
-('Điện thoại', ''),
-('Ipad', ''),
-('Laptop', ''),
-('Phụ kiện', '');
+INSERT INTO `kieu` (`id_kieu`, `thong_tin`, `create_at`) VALUES
+('Điện thoại', '', '2022-10-28 14:40:50'),
+('Ipad', '', '2022-10-28 14:40:50'),
+('Laptop', '', '2022-10-28 14:40:50'),
+('Phụ kiện', '', '2022-10-28 14:40:50');
 
 -- --------------------------------------------------------
 
@@ -151,10 +171,9 @@ INSERT INTO `nhan_hieu` (`ten_nhan_hieu`, `thong_tin`, `create_at`) VALUES
 ('Iphone', ' Phân khúc cao cấp', '2022-10-25 02:50:46'),
 ('Nokia', ' Máy bần ', '2022-10-25 02:50:46'),
 ('Oppo', ' Máy cùi', '2022-10-25 02:50:46'),
-('Samsung', ' Phân khúc tầm trung', '2022-10-25 02:50:46'),
+('Samsung', ' Phân khúc tầm trung ', '2022-10-28 14:30:17'),
 ('ViVo', 'máy giá rẻ', '2022-10-25 02:50:46'),
-('Xiaomi', ' Phân khúc tầm trung', '2022-10-25 02:50:46'),
-('xxx', '[value-2]', '2022-10-25 02:50:46');
+('Xiaomi', ' Phân khúc tầm trung , nhưng chất', '2022-10-28 14:55:51');
 
 -- --------------------------------------------------------
 
@@ -179,8 +198,7 @@ CREATE TABLE `san_pham` (
 --
 
 INSERT INTO `san_pham` (`ma_san_pham`, `ten_san_pham`, `anh`, `so_luong`, `id_kieu`, `ten_nhan_hieu`, `thong_tin`, `gia`, `create_at`) VALUES
-('13123', '122', '1666610076-product-160579068_770339083880621_2672246343451563397_n.jpg', '213', 'Điện thoại', 'Oppo', '123123qeqweqwe', '1231233', '2022-10-25 02:48:51'),
-('eqweqw', 'eqwe', '1666665396-product-154709439_2807687692812593_8255724467718935460_n.jpg', '123', 'Ipad', 'Samsung', '13213', '213', '2022-10-25 02:36:36'),
+('ip-8', 'Iphone 8', '1667530452-product-samsung-galaxy-z-fold-3-silver-1-600x600.jpg', '5', 'Ipad', 'Xiaomi', 'Dù đã ra mắt từ nhiều năm trước, iPhone 8 Plus vẫn là chiếc điện thoại đáng để trải nghiệm. Mặc dù vẫn sở hữu thiết kế cũ qua nhiều năm nhưng iPhone 8 PLus lại có sự nâng cấp đáng kể về hiệu năng, màn hình và camera được nâng cấp đáng kể. Nếu bạn muốn mua trả góp iPhone 8 Plus thì Shop 123 đang hỗ trợ khách hàng tham gia chương trình trả góp với thủ tục đơn giản và thời gian duyệt hồ sơ nhanh chóng.', '5000000', '2022-11-04 02:54:12'),
 ('SP001', 'Iphone 14 Pro Max ', '2ed1bfecbbac9620b159ce5c0885f2d3.jpg', '5', 'Điện thoại', 'Iphone', 'máy mới chất lượng cao sang trọng', '30000000', '2022-10-14 12:56:15'),
 ('SP002', 'Iphone 12 Pro Max ', 'iphone-12-pro-max-xam-new-600x600-200x200.jpg', '10', 'Điện thoại', 'Iphone', 'máy mới 100%', '23000000', '2022-10-14 11:54:52'),
 ('SP003', 'xiaomi mi 12 pro max', 'Xiaomi-Redmi-Note-12-Pro-Max.jpg', '13', 'Điện thoại', 'Xiaomi', 'máy thuộc phân khúc tầm trung', '10000000', '2022-10-14 11:54:52'),
@@ -201,7 +219,6 @@ INSERT INTO `san_pham` (`ma_san_pham`, `ten_san_pham`, `anh`, `so_luong`, `id_ki
 ('SP018', 'Samsung Galaxy Z Fold3 5G', 'samsung-galaxy-z-fold-3-silver-1-600x600.jpg', '6', 'Điện thoại', 'Samsung', 'Sản phẩm sẽ là một “cú hit” của Samsung góp phần mang đến những trải nghiệm mới cho người dùng.', '3199000', '2022-10-14 11:54:52'),
 ('SP019', ' Samsung Galaxy Z Flip4 5G', '600x600-thumb-qua-dac-biet-600x600.jpg', '5', 'Điện thoại', 'Samsung', 'Samsung Galaxy Z Flip4 5G Đặc Biệt được cho ra mắt coi như lời cảm ơn dành cho người dùng vì đã dành nhiều sự quan tâm đến với các thiết bị di động của hãng,', '23000000', '2022-10-14 11:54:52'),
 ('SP020', 'Vivo X80', 'vivo-x80-xanh-thumb-600x600.jpg', '3', 'Điện thoại', 'ViVo', 'Vivo X80 được xem là thiết bị hướng đến đối tượng người dùng chuyên nhiếp ảnh trên điện thoại, bằng việc hợp tác cùng nhà sản xuất ống kính nổi tiếng mang thương hiệu ZEISS.', '19000000', '2022-10-14 11:54:52'),
-('SP021', 'iPhone 13 Pro Max', 'iphone13-pro-max.jfif', '10', 'Điện thoại', 'Iphone', 'iPhone 13 sở hữu hệ thống camera kép xuất sắc nhất từ trước đến nay, bộ vi xử lý Apple A15 nhanh nhất thế giới smartphone cùng thời lượng pin cực khủng, sẵn sàng đồng hành cùng bạn suốt cả ngày.', '19500000', '2022-10-14 11:54:52'),
 ('SP022', 'iPhone 12', 'iphone-12-blue-select-2020_cae77d30ac99435880af61542f7b1efd.webp', '10', 'Điện thoại', 'Iphone', 'iPhone 12 ra mắt với vai trò mở ra một kỷ nguyên hoàn toàn mới. Tốc độ mạng 5G siêu tốc, bộ vi xử lý A14 Bionic nhanh nhất thế giới smartphone, màn hình OLED tràn cạnh tuyệt đẹp và camera siêu chụp đêm, tất cả đều có mặt trên iPhone 12.\r\n\r\n', '16500000', '2022-10-14 12:27:00');
 
 -- --------------------------------------------------------
@@ -218,36 +235,35 @@ CREATE TABLE `thong_tin_chi_tiet` (
   `cam_sau` varchar(256) COLLATE utf8mb4_unicode_ci NOT NULL,
   `ram` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
   `dung_luong` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `giam_gia` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL
+  `giam_gia` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `create_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `thong_tin_chi_tiet`
 --
 
-INSERT INTO `thong_tin_chi_tiet` (`id`, `ma_san_pham`, `cau_hinh`, `cam_truoc`, `cam_sau`, `ram`, `dung_luong`, `giam_gia`) VALUES
-(4, 'SP001', 'OLED6.1', '12 MP', '2 camera 12 MP', 'Apple A15 Bionic', '128 GB ', '0'),
-(5, 'SP002', 'OLED6.1\"Super Retina XDR', '12 MP', '2 camera 12 MP', 'Apple A14 Bionic', '256 GB', '500000'),
-(6, 'SP003', 'HDR10 +, Dolby Vision, Độ sáng tối đa: 1500nit, Corning Gorilla Glass Victus', '32 MP', ' 50 MP, f/1.9, Dual Pixel PDAF, OIS Camera tele: 50 MP, f/1.9, PDAF,', 'Qualcomm SM8450 Snap', '256  GB', '0'),
-(7, 'SP004', 'Dynamic AMOLED 2X6.8', '40 MP', 'Chính 108 MP & Phụ 12 MP, 10 MP, 10 MP', 'Snapdragon 8 Gen 1', '256  GB', '0'),
-(9, 'SP010', 'AMOLED6.43\"Full HD+', '32 MP', 'Chính 64 MP & Phụ 2 MP, 2 MP', 'Snapdragon 680', '128  GB', '3000000'),
-(10, 'SP005', 'Dynamic AMOLED 2X6.8', '40 MP', 'Chính 108 MP & Phụ 12 MP, 10 MP, 10 MP', 'Exynos 2100', '128 GB', '0'),
-(11, 'SP011', 'IPS LCD6.1', '12 MP', '2 camera 12 MP', 'Apple A13 Bionic', '64 GB', '0'),
-(12, 'SP012', 'IPS LCD6.52\"HD+', '5 MP', 'Chính 8MP & Phụ QVGA', 'MediaTek MT6761 (Hel', '32  GB', '500000'),
-(13, 'SP013', 'Super AMOLED6.5\"Full HD+', '32 MP', 'Chính 64 MP & Phụ 12 MP, 5 MP, 5 MP', 'Exynos 1280', '128 GB', '500000'),
-(14, 'SP014', 'PLS TFT LCD6.6', '8 MP', 'Chính 50 MP & Phụ 5 MP, 2 MP, 2 M', 'Snapdragon 680', '128  GB', '0'),
-(15, 'SP016', 'AMOLED 6.44', '50 MP', 'Chính 64 MP & Phụ 8 MP, 2 MP', 'MediaTek Dimensity 9', '128 GB', '0'),
-(16, 'SP020', 'AMOLED6.78', '32 MP', 'Chính 50 MP & Phụ 12 MP, 12 MP', 'MediaTek Dimensity 9', '256 GB', '0'),
-(17, 'SP019', 'Chính: Dynamic AMOLED 2X, Phụ: Super AMOLEDChính 6.7', '10 MP', '2 camera 12 MP', 'Snapdragon 8+ Gen 1', '256 GB', '0'),
-(18, 'SP018', 'Dynamic AMOLED 2XChính 7.6', '10 MP & 4 MP', '3 camera 12 MP', 'Snapdragon 888', '256 GB', '0'),
-(19, 'SP017', 'AMOLED 6.7', '32 MP', 'Chính 50 MP & Phụ 8 MP, 2 MP', 'MediaTek Dimensity 8', '256 GB', '0'),
-(20, 'SP007', 'TFT LCD6.51\"HD+', '8 MP', 'Chính 50 MP & Phụ 2 MP', 'Unisoc T606', '32 GB', '1000000'),
-(21, 'SP006', ' 6.43 inch, AMOLED, FHD+, 1080 x 2400 Pixels', '13.0 MP', '50.0 MP + 8.0 MP + 2.0 MP + 2.0 MP', 'Snapdragon 680', '64 GB', '0'),
-(22, 'SP009', '6.43 inch, AMOLED, FHD+, 1080 x 2400 Pixels', '16.0 MP', '8.0 MP + 2.0 MP + 2.0 MP', 'Helio P95', '128 GB', '500000'),
-(23, 'SP008', '6.52 inch, IPS LCD, HD+, 720 x 1600 Pixels', '5.0 MP', '13.0 MP + 2.0 MP', 'Spreadtrum SC9863A', '32 GB', '500000'),
-(24, 'SP021', '6.1 inch, OLED, Super Retina XDR, 2532 x 1170 Pixels', '12.0 MP', '12.0 MP + 12.0 MP', 'Apple A15 Bionic', '128 GB', '1000000'),
-(25, 'SP022', '6.1 inch, OLED, Super Retina XDR, 2532 x 1170 Pixels', '12.0 MP', '12.0 MP + 12.0 MP', 'Apple A14 Bionic', '128 GB', '0'),
-(26, 'SP015', 'Super AMOLED6.4\"Full HD+', '13 MP', 'Chính 48 MP & Phụ 8 MP, 5 MP, 2 MP', 'Exynos 1280', '128 GB', '500000');
+INSERT INTO `thong_tin_chi_tiet` (`id`, `ma_san_pham`, `cau_hinh`, `cam_truoc`, `cam_sau`, `ram`, `dung_luong`, `giam_gia`, `create_at`) VALUES
+(4, 'SP001', 'OLED6.1', '12 MP', '2 camera 12 MP', 'Apple A15 Bionic', '128 GB ', '0', '2022-10-28 14:49:35'),
+(5, 'SP002', 'OLED6.1\"Super Retina XDR', '12 MP', '2 camera 12 MP', 'Apple A14 Bionic', '256 GB', '500000', '2022-10-28 14:49:35'),
+(6, 'SP003', 'HDR10 +, Dolby Vision, Độ sáng tối đa: 1500nit, Corning Gorilla Glass Victus', '32 MP', ' 50 MP, f/1.9, Dual Pixel PDAF, OIS Camera tele: 50 MP, f/1.9, PDAF,', 'Qualcomm SM8450 Snap', '256  GB', '0', '2022-10-28 14:49:35'),
+(7, 'SP004', 'Dynamic AMOLED 2X6.8', '40 MP', 'Chính 108 MP & Phụ 12 MP, 10 MP, 10 MP', 'Snapdragon 8 Gen 1', '256  GB', '0', '2022-10-28 14:49:35'),
+(9, 'SP010', 'AMOLED6.43\"Full HD+', '32 MP', 'Chính 64 MP & Phụ 2 MP, 2 MP', 'Snapdragon 680', '128  GB', '3000000', '2022-10-28 14:49:35'),
+(10, 'SP005', 'Dynamic AMOLED 2X6.8', '40 MP', 'Chính 108 MP & Phụ 12 MP, 10 MP, 10 MP', 'Exynos 2100', '128 GB', '0', '2022-10-28 14:49:35'),
+(12, 'SP012', 'IPS LCD6.52\"HD+', '5 MP', 'Chính 8MP & Phụ QVGA', 'MediaTek MT6761 (Hel', '32  GB', '500000', '2022-10-28 14:49:35'),
+(13, 'SP013', 'Super AMOLED6.5\"Full HD+', '32 MP', 'Chính 64 MP & Phụ 12 MP, 5 MP, 5 MP', 'Exynos 1280', '128 GB', '500000', '2022-10-28 14:49:35'),
+(14, 'SP014', 'PLS TFT LCD6.6', '8 MP', 'Chính 50 MP & Phụ 5 MP, 2 MP, 2 M', 'Snapdragon 680', '128  GB', '0', '2022-10-28 14:49:35'),
+(15, 'SP016', 'AMOLED 6.44', '50 MP', 'Chính 64 MP & Phụ 8 MP, 2 MP', 'MediaTek Dimensity 9', '128 GB', '0', '2022-10-28 14:49:35'),
+(16, 'SP020', 'AMOLED6.78', '32 MP', 'Chính 50 MP & Phụ 12 MP, 12 MP', 'MediaTek Dimensity 9', '256 GB', '0', '2022-10-28 14:49:35'),
+(17, 'SP019', 'Chính: Dynamic AMOLED 2X, Phụ: Super AMOLEDChính 6.7', '10 MP', '2 camera 12 MP', 'Snapdragon 8+ Gen 1', '256 GB', '0', '2022-10-28 14:49:35'),
+(18, 'SP018', 'Dynamic AMOLED 2XChính 7.6', '10 MP & 4 MP', '3 camera 12 MP', 'Snapdragon 888', '256 GB', '0', '2022-10-28 14:49:35'),
+(19, 'SP017', 'AMOLED 6.7', '32 MP', 'Chính 50 MP & Phụ 8 MP, 2 MP', 'MediaTek Dimensity 8', '256 GB', '0', '2022-10-28 14:49:35'),
+(20, 'SP007', 'TFT LCD6.51\"HD+', '8 MP', 'Chính 50 MP & Phụ 2 MP', 'Unisoc T606', '32 GB', '1000000', '2022-10-28 14:49:35'),
+(21, 'SP006', ' 6.43 inch, AMOLED, FHD+, 1080 x 2400 Pixels', '13.0 MP', '50.0 MP + 8.0 MP + 2.0 MP + 2.0 MP', 'Snapdragon 680', '64 GB', '0', '2022-10-28 14:49:35'),
+(22, 'SP009', '6.43 inch, AMOLED, FHD+, 1080 x 2400 Pixels', '16.0 MP', '8.0 MP + 2.0 MP + 2.0 MP', 'Helio P95', '128 GB', '500000', '2022-10-28 14:49:35'),
+(23, 'SP008', '6.52 inch, IPS LCD, HD+, 720 x 1600 Pixels', '5.0 MP', '13.0 MP + 2.0 MP', 'Spreadtrum SC9863A', '32 GB', '500000', '2022-10-28 14:49:35'),
+(25, 'SP022', '6.1 inch, OLED, Super Retina XDR, 2532 x 1170 Pixels', '12.0 MP', '12.0 MP + 12.0 MP', 'Apple A14 Bionic', '128 GB', '1000', '2022-10-28 14:49:35'),
+(26, 'SP015', 'Super AMOLED6.4', '13 MP', 'Chính 48 MP & Phụ 8 MP, 5 MP, 2 MP', 'Exynos 1280', '128 GB', '0', '2022-10-28 14:50:57');
 
 --
 -- Chỉ mục cho các bảng đã đổ
@@ -272,18 +288,24 @@ ALTER TABLE `bang_hieu`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Chỉ mục cho bảng `chi_tiet_don_hang`
+--
+ALTER TABLE `chi_tiet_don_hang`
+  ADD PRIMARY KEY (`idCT`),
+  ADD KEY `ma_don_hang` (`ma_don_hang`),
+  ADD KEY `ma_san_pham` (`ma_san_pham`);
+
+--
+-- Chỉ mục cho bảng `don_hang`
+--
+ALTER TABLE `don_hang`
+  ADD PRIMARY KEY (`ma_don_hang`);
+
+--
 -- Chỉ mục cho bảng `gio_hang`
 --
 ALTER TABLE `gio_hang`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `ma_san_pham` (`ma_san_pham`),
-  ADD KEY `username` (`username`);
-
---
--- Chỉ mục cho bảng `hoa_don`
---
-ALTER TABLE `hoa_don`
-  ADD PRIMARY KEY (`ma_hoa_don`),
   ADD KEY `ma_san_pham` (`ma_san_pham`),
   ADD KEY `username` (`username`);
 
@@ -325,6 +347,12 @@ ALTER TABLE `bang_hieu`
   MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT cho bảng `chi_tiet_don_hang`
+--
+ALTER TABLE `chi_tiet_don_hang`
+  MODIFY `idCT` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT cho bảng `gio_hang`
 --
 ALTER TABLE `gio_hang`
@@ -334,11 +362,18 @@ ALTER TABLE `gio_hang`
 -- AUTO_INCREMENT cho bảng `thong_tin_chi_tiet`
 --
 ALTER TABLE `thong_tin_chi_tiet`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- Các ràng buộc cho các bảng đã đổ
 --
+
+--
+-- Các ràng buộc cho bảng `chi_tiet_don_hang`
+--
+ALTER TABLE `chi_tiet_don_hang`
+  ADD CONSTRAINT `chi_tiet_don_hang_ibfk_1` FOREIGN KEY (`ma_don_hang`) REFERENCES `don_hang` (`ma_don_hang`),
+  ADD CONSTRAINT `chi_tiet_don_hang_ibfk_2` FOREIGN KEY (`ma_san_pham`) REFERENCES `san_pham` (`ma_san_pham`);
 
 --
 -- Các ràng buộc cho bảng `gio_hang`
@@ -348,24 +383,11 @@ ALTER TABLE `gio_hang`
   ADD CONSTRAINT `gio_hang_ibfk_2` FOREIGN KEY (`username`) REFERENCES `accounts` (`username`);
 
 --
--- Các ràng buộc cho bảng `hoa_don`
---
-ALTER TABLE `hoa_don`
-  ADD CONSTRAINT `hoa_don_ibfk_1` FOREIGN KEY (`ma_san_pham`) REFERENCES `san_pham` (`ma_san_pham`),
-  ADD CONSTRAINT `hoa_don_ibfk_2` FOREIGN KEY (`username`) REFERENCES `accounts` (`username`);
-
---
 -- Các ràng buộc cho bảng `san_pham`
 --
 ALTER TABLE `san_pham`
   ADD CONSTRAINT `san_pham_ibfk_1` FOREIGN KEY (`id_kieu`) REFERENCES `kieu` (`id_kieu`),
   ADD CONSTRAINT `san_pham_ibfk_2` FOREIGN KEY (`ten_nhan_hieu`) REFERENCES `nhan_hieu` (`ten_nhan_hieu`);
-
---
--- Các ràng buộc cho bảng `thong_tin_chi_tiet`
---
-ALTER TABLE `thong_tin_chi_tiet`
-  ADD CONSTRAINT `thong_tin_chi_tiet_ibfk_1` FOREIGN KEY (`ma_san_pham`) REFERENCES `san_pham` (`ma_san_pham`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

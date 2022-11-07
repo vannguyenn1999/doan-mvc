@@ -1,7 +1,4 @@
-<?php
-$trang = $_GET['trang'] ?? 1;
 
-?>
 <div class="main-content">
     <div class="container">
         <h1 class="post-list-title">
@@ -21,7 +18,7 @@ $trang = $_GET['trang'] ?? 1;
                     </span>
                     <!--  class="add-to-cart -->
                     <a href="http://localhost/doan-mvc/UserHomeController/Cart?id=<?php echo $product['ma_san_pham'] ?>" class="">
-                        <span data-id="92090"">Thêm vào giỏ</span>
+                        <span data-id="92090"  >Thêm vào giỏ</span>
                     </a>
                 </div>
             <?php endforeach; ?>

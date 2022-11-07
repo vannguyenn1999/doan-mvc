@@ -27,7 +27,7 @@ class UserModel extends BaseModel {
     }
 
     public function getProduct($id){
-        $obj_sql = $this->connect->prepare("SELECT ma_san_pham, ten_san_pham, so_luong, gia FROM san_pham WHERE ma_san_pham = :id");
+        $obj_sql = $this->connect->prepare("SELECT ma_san_pham, ten_san_pham, so_luong, gia ,anh FROM san_pham WHERE ma_san_pham = :id");
         $arr = [
             ':id' => $id,
         ];
