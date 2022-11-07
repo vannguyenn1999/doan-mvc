@@ -1,12 +1,11 @@
 <div class="main-content">
     <?php
-    echo "<pre>";
-    print_r($_SESSION['cart']);
-    echo "</pre>";
+    // echo "<pre>";
+    // print_r($_SESSION['cart']);
+    // echo "</pre>";
     if(isset($_SESSION['cart'])){
         $data = $_SESSION['cart'];
     }
-    echo count($data);
     ?>
     <div class="container">
         <h1 class="post-list-title">
@@ -28,7 +27,9 @@
                                 <tr> <td colspan="5" align="center"> Không có sản phẩm nào tồn tại trong giỏ hàng của bạn </td></tr>
                             <?php } else{ foreach ($data as $k=>$r) : 
                                 if(!$k == null) {?>
+                                 <input type="hidden" name='masp' value="<?php echo $r['ma_san_pham'] ?>">
                                 <tr>
+                                   
                                     <td>
                                         <a href="" class="content-product-a">
                                             <img class="product-avatar img-responsive" src="http://localhost/doan-mvc/admin/assets/image/uploads/<?php echo $r['anh'] ?>" height="80">
@@ -48,7 +49,7 @@
                                         <?php  echo   $r['gia'] * $r['tyt']; ?>
                                     </td>
                                     <td>
-                                        <a class="content-product-a" href="http://localhost/doan-mvc/UserHomeController/Remove?id=<?php echo $r['ma_san_pham'] ?>">
+                                        <a class="content-product-a" onclick="return confirm('bạn có muốn xoá sản phẩm này không ?')" href="http://localhost/doan-mvc/UserHomeController/Remove?id=<?php echo $r['ma_san_pham'] ?>">
                                             <i class="fa fa-trash"></i>
                                         </a>
                                     </td>
@@ -61,13 +62,16 @@
 
                                     <span class="product-price">
                                         <?php 
-                                        foreach ($data as $k=>$r) : 
-                                        for ($i=0;$i < count($data);$i++){
-                                            $sum = $r['tong'];
-                                            $sum += $r['tong'];
+                                        $sum = 0;
+                                        if($data == null){
+                                            echo $sum;
+                                        }else{
+                                           foreach ($data as $v ):
+                                                $sum += $v['tong'];
+                                           endforeach;
+                                           echo $sum;                                          
                                         }
-                                    endforeach;
-                                        echo $sum ?>
+                                        ?>
                                        
                                     </span>
                                 </td>

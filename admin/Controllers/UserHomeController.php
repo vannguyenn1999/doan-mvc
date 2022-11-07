@@ -79,16 +79,15 @@ class UserHomeController extends BaseController
       $product = $this->userHomeModel->getProduct($productId);
       $_SESSION['cart'][$productId] = $product;
       $_SESSION['cart'][$productId]['tyt'] = 1;
-      $_SESSION['cart'][$productId]['tong'] =  $_SESSION['cart'][$productId]['tyt'] *  $_SESSION['cart'][$productId]['gia'];
-    }else{
+      $_SESSION['cart'][$productId]['tong'] = $_SESSION['cart'][$productId]['gia'];
+    } else {
       $_SESSION['cart'];
     }
     // unset($_SESSION['cart']);
 
-    if(isset($_POST['submit'])){
+    if (isset($_POST['submit'])) {
+      $productId = $_POST['masp'];
       $_SESSION['cart'][$productId]['tyt'] = $_POST['sl'];
-
-
       $_SESSION['cart'][$productId]['tong'] =  $_SESSION['cart'][$productId]['tyt'] *  $_SESSION['cart'][$productId]['gia'];
     }
 
@@ -99,8 +98,11 @@ class UserHomeController extends BaseController
 
   public function Remove()
   {
-    $productId = $_GET['id'];
-    unset($_SESSION['cart'][$productId]);
+    if (isset($_GET['id'])) {
+      $productId = $_GET['id'];
+      unset($_SESSION['cart'][$productId]);
+      header('Location: http://localhost/doan-mvc/UserHomeController/Cart');
+    }
     $this->main_content = $this->render('./user/Views/main/cart.php');
     require_once './user/Views/index.php';
   }
@@ -109,6 +111,33 @@ class UserHomeController extends BaseController
   public function Payment()
   {
     if (isset($_POST['submit'])) {
+        $mahd =  date('dmY') .'-'. date('His');
+        $ten_nguoi_dat = $_POST['fullname'];
+        $email_nguoi_dat = $_POST['email'];
+        $sdt = $_POST['number'];
+        $dia_chi = $_POST['address'];
+        $note = $_POST['note'];
+        $phuong_thuc = $_POST['method'];
+
+        if(empty($this->error)){
+          $this->userHomeModel->mahd = $mahd;
+          $this->userHomeModel->ten_nguoi_dat = $ten_nguoi_dat;
+          $this->userHomeModel->email_nguoi_nhan = $email_nguoi_dat;
+          $this->userHomeModel->sdt_nguoi_nhan = $sdt;
+          $this->userHomeModel->dc_nguoi_nhan = $dia_chi;
+          $this->userHomeModel->ghi_chu = $note;
+          $this->userHomeModel->phuong_thuc = $phuong_thuc;
+
+          $is_insert = $this->userHomeModel->addCart();
+          if ($is_insert) {
+            $_SESSION['success'] = 'Thêm thành công';
+        } else {
+            $_SESSION['error'] = 'Thêm thất bại';
+        }
+        header('Location: http://localhost/doan-mvc/UserHomeController/Index');
+        exit();
+        }
+
       $_SESSION['success'] = 'Thanh Toán Thành Công';
       header('Location: http://localhost/doan-mvc/UserHomeController/Thank');
       exit();

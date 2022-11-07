@@ -38,36 +38,36 @@ class ProductController extends BaseController
 
             $check = $this->productModel->getMaSP();
 
-            if(empty($ma_san_pham)){
+            if (empty($ma_san_pham)) {
                 $this->error['ma_san_pham'] = "Mời Bạn Nhập Thông Tin";
-            }else if(strlen($ma_san_pham) < 4){
+            } else if (strlen($ma_san_pham) < 4) {
                 $this->error['ma_san_pham'] = "Số Ký Tự Lớn Hơn 4";
-            }else if (in_array($ma_san_pham , $check)){
+            } else if (in_array($ma_san_pham, $check)) {
                 $this->error['ma_san_pham'] = "Mã Sản Phẩm Này Đã Tồn Tại";
             }
 
-            if(empty($ten_san_pham)){
+            if (empty($ten_san_pham)) {
                 $this->error['ten_san_pham'] = "Mời Bạn Nhập Thông Tin";
-            }else if(strlen($ten_san_pham) < 4){
+            } else if (strlen($ten_san_pham) < 4) {
                 $this->error['ten_san_pham'] = "Số Ký Tự Lớn Hơn 4";
             }
 
-            if(empty($gia)){
+            if (empty($gia)) {
                 $this->error['gia'] = "Mời Bạn Nhập Thông Tin";
-            }else if(!is_numeric($gia)){
+            } else if (!is_numeric($gia)) {
                 $this->error['gia'] = "Phải Là 1 Số";
             }
 
-            if(empty($so_luong)){
+            if (empty($so_luong)) {
                 $this->error['sl'] = "Mời Bạn Nhập Thông Tin";
-            }else if(!is_numeric($so_luong)){
+            } else if (!is_numeric($so_luong)) {
                 $this->error['sl'] = "Phải Là 1 Số";
             }
 
-            if(empty($thong_tin)){
+            if (empty($thong_tin)) {
                 $this->error['tt'] = "Mời Bạn Nhập Thông Tin";
             }
-            
+
 
             if ($_FILES['anh']['error'] == 0) {
                 //validate khi có file upload lên thì bắt buộc phải là ảnh và dung lượng không quá 2 Mb
@@ -86,9 +86,12 @@ class ProductController extends BaseController
                 }
 
                 $dir_uploads = __DIR__ . '/../assets/image/uploads';
+                if (!file_exists($dir_uploads)) {
+                    mkdir($dir_uploads);
+                }
                 $filename = time() . '-product-' . $_FILES['anh']['name'];
                 move_uploaded_file($_FILES['anh']['tmp_name'], $dir_uploads . '/' . $filename);
-            }else {
+            } else {
                 $this->error['anh'] = "Mời Bạn Nhập Thông Tin";
             }
             if (empty($this->error)) {

@@ -28,7 +28,7 @@
         <div class="news-wrap">
             <div class="news container">
                 <h1 class="post-list-title">
-                    <a href="/news.html" class="link-category-item">Khuyễn Mãi Nhất</a>
+                    <a href="#" class="link-category-item">Khuyến Mãi Nhất</a>
                 </h1>
                 <div class="row">
                     <!-- <div class="col-md-4 col-sm-4 col-xs-12 category-two-item"> -->
@@ -87,7 +87,7 @@
         <div class="news-wrap">
             <div class="news container">
                 <h1 class="post-list-title">
-                    <a href="" class="link-category-item">Thương Hiệu Nổi Bật</a>
+                    <a href="#" class="link-category-item">Thương Hiệu Nổi Bật</a>
                 </h1>
                 <div class="row">
                     <div class="main-ads-banner_1">

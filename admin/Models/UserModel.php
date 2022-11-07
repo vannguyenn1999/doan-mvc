@@ -1,6 +1,14 @@
 <?php
 
 class UserModel extends BaseModel {
+
+    public $mahd ;
+    public $ten_nguoi_dat ;
+    public $email_nguoi_nhan ;
+    public $sdt_nguoi_nhan ;
+    public $dc_nguoi_nhan ;
+    public $ghi_chu ;
+    public $phuong_thuc ;
     
     
     public function getTable(){
@@ -70,5 +78,22 @@ class UserModel extends BaseModel {
         $result = $obj_select->fetchAll(PDO::FETCH_ASSOC);
         return $result;
     
+    }
+    public function addCart(){
+        $obj_insert = $this->connect->prepare("INSERT INTO don_hang (ma_don_hang, ten_nguoi_dat, email_nguoi_nhan, sdt_nguoi_nhan, dc_nguoi_nhan, ghi_chu, phuong_thuc) VALUES (:mahd, :fullname, :email, :phone, :dc, :note, :pt)");
+        $arr = [
+            ':mahd' => $this->mahd,
+            ':fullname' => $this->ten_nguoi_dat,
+            ':email' => $this->email_nguoi_nhan,
+            ':phone' => $this->sdt_nguoi_nhan,
+            ':dc' => $this->dc_nguoi_nhan,
+            ':note' => $this->ghi_chu,
+            ':pt' => $this->phuong_thuc,
+        ];
+        return $obj_insert->execute($arr);
+    }
+
+    public function addInvoice(){
+        
     }
 }
