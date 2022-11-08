@@ -18,7 +18,7 @@
                     </span>
                     <!--  class="add-to-cart -->
                     <a href="http://localhost/doan-mvc/UserHomeController/Cart?id=<?php echo $product['ma_san_pham'] ?>" class="">
-                        <span data-id="92090"  >Thêm vào giỏ</span>
+                        <span data-id="92090" class="add-to-cart-now"  >Thêm vào giỏ</span>
                     </a>
                 </div>
             <?php endforeach; ?>

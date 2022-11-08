@@ -14,7 +14,7 @@
                         </div>
                         <div class="product-cart">
                             <a href="http://localhost/doan-mvc/UserHomeController/Cart?id=<?php echo $data['detail']['ma_san_pham'] ?>" class="">
-                                <span data-id="92084" class="add-to-cart">
+                                <span data-id="92084" class="add-to-cart-now">
                                     <i class="fa fa-cart-plus"></i> &nbsp; Thêm vào giỏ</span>
                             </a>
                         </div>

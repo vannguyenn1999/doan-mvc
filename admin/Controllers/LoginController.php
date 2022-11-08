@@ -34,7 +34,7 @@ class LoginController extends BaseController
                 $this->loginModel->password_admin = $password;
                 $result = $this->loginModel->Login();
                 if ($result >= 1) {
-                    $_SESSION['admin_login'] = 'Đăng Nhập Thành Công';
+                    $_SESSION['admin_login'] = 'Chào Mừng Bạn Đến Với Trang Chủ';
                     header('Location: http://localhost/doan-mvc/HomeController/index');
                     exit();
                 } else {

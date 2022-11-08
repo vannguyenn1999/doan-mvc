@@ -107,48 +107,101 @@ class UserHomeController extends BaseController
     require_once './user/Views/index.php';
   }
 
+  public function test()
+  {
+    $msp = $tsp = $sl = $g = [];
+    foreach ($_SESSION['cart'] as $k => $v) :
+      $msp[] .=  $v['ma_san_pham'];
+
+    // $sl[] .=  $v['tyt'];
+
+    endforeach;
+    for ($i = 0; $i < count($_SESSION['cart']); $i++) {
+      $this->userHomeModel->ma_sp = $msp[$i];
+      // $this->userHomeModel->so_luong = $sl[$i];
+      $result = $this->userHomeModel->updateProduct();
+    }
+    $this->main_content = $this->render('./user/Views/main/test.php', $result);
+  }
+
 
   public function Payment()
   {
     if (isset($_POST['submit'])) {
-        $mahd =  date('dmY') .'-'. date('His');
-        $ten_nguoi_dat = $_POST['fullname'];
-        $email_nguoi_dat = $_POST['email'];
-        $sdt = $_POST['number'];
-        $dia_chi = $_POST['address'];
-        $note = $_POST['note'];
-        $phuong_thuc = $_POST['method'];
+      $mahd =  date('dmY') . '-' . date('Hi');
+      $ten_nguoi_dat = $_POST['fullname'];
+      $email_nguoi_dat = $_POST['email'];
+      $sdt = $_POST['mobile'];
+      $dia_chi = $_POST['address'];
+      $note = $_POST['note'];
+      $tong = $_POST['tong'];
+      $phuong_thuc = $_POST['method'];
 
-        if(empty($this->error)){
-          $this->userHomeModel->mahd = $mahd;
-          $this->userHomeModel->ten_nguoi_dat = $ten_nguoi_dat;
-          $this->userHomeModel->email_nguoi_nhan = $email_nguoi_dat;
-          $this->userHomeModel->sdt_nguoi_nhan = $sdt;
-          $this->userHomeModel->dc_nguoi_nhan = $dia_chi;
-          $this->userHomeModel->ghi_chu = $note;
-          $this->userHomeModel->phuong_thuc = $phuong_thuc;
+      if ($phuong_thuc == 0) {
+        $tt = 'Trực Tuyến';
+      } else if ($phuong_thuc == 1) {
+        $tt = 'COD';
+      }
 
-          $is_insert = $this->userHomeModel->addCart();
-          if ($is_insert) {
-            $_SESSION['success'] = 'Thêm thành công';
+      if (empty($this->error)) {
+        $this->userHomeModel->mahd = $mahd;
+        $this->userHomeModel->ten_nguoi_dat = $ten_nguoi_dat;
+        $this->userHomeModel->email_nguoi_nhan = $email_nguoi_dat;
+        $this->userHomeModel->sdt_nguoi_nhan = $sdt;
+        $this->userHomeModel->dc_nguoi_nhan = $dia_chi;
+        $this->userHomeModel->ghi_chu = $note;
+        $this->userHomeModel->phuong_thuc = $tt;
+        $this->userHomeModel->tong = $tong;
+
+        $is_insert = $this->userHomeModel->addCart();
+        if ($is_insert) {
+          $_SESSION['success'] = 'Thanh Toán thành công';
         } else {
-            $_SESSION['error'] = 'Thêm thất bại';
+          $_SESSION['error'] = 'Thanh Toán thất bại';
         }
-        header('Location: http://localhost/doan-mvc/UserHomeController/Index');
+        header('Location: http://localhost/doan-mvc/UserHomeController/Invoice');
         exit();
-        }
-
-      $_SESSION['success'] = 'Thanh Toán Thành Công';
-      header('Location: http://localhost/doan-mvc/UserHomeController/Thank');
-      exit();
+      }
     }
     $this->main_content = $this->render('./user/Views/main/payment.php');
     require_once './user/Views/index.php';
   }
 
+  public function Invoice()
+  {
+    $msp = $tsp = $sl = $g = [];
+    foreach ($_SESSION['cart'] as $k => $v) :
+      $msp[] .=  $v['ma_san_pham'];
+      $tsp[] .=  $v['ten_san_pham'];
+      $sl[] .=  $v['tyt'];
+      $g[] .=  $v['gia'];
+    endforeach;
+    $this->userHomeModel->mahd = date('dmY') . '-' . date('Hi');
+
+    for ($i = 0; $i < count($_SESSION['cart']); $i++) {
+
+      $this->userHomeModel->ma_sp = $msp[$i];
+      $this->userHomeModel->ten_san_pham = $tsp[$i];
+      $this->userHomeModel->so_luong = $sl[$i];
+      $this->userHomeModel->gia = $g[$i];
+      $this->userHomeModel->thanh_tien = $sl[$i] *  $g[$i];
+      $this->userHomeModel->addInvoice();
+      // $this->userHomeModel->updateProduct();
+    }
+    unset($_SESSION['cart']);
+    header('Location: http://localhost/doan-mvc/UserHomeController/Thank');
+    exit();
+  }
+
   public function Thank()
   {
-    $this->main_content = $this->render('./user/Views/main/thank.php');
+    $result = $this->userHomeModel->getInvoice();
+    $idDetail = $result['ma_don_hang'];
+    $detail = $this->userHomeModel->getDetailInvoice($idDetail);
+    $this->main_content = $this->render('./user/Views/main/thank.php', [
+      'result' => $result,
+      'detail' => $detail,
+    ]);
     require_once './user/Views/index.php';
   }
 }

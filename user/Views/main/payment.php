@@ -1,7 +1,5 @@
 <div class="main-content">
 <?php
- 
-    
     if(isset($_SESSION['cart'])){
         $data = $_SESSION['cart'];
     }
@@ -20,7 +18,7 @@
                     </div>
                     <div class="form-group">
                         <label>SĐT <span class="red">*</span> </label>
-                        <input type="number" min="0" max="10" name="mobile" value="" class="form-control" required="">
+                        <input type="number" min="0" name="mobile" value="" class="form-control" required="">
                     </div>
                     <div class="form-group">
                         <label>Email</label>
@@ -100,6 +98,7 @@
                             </span>
                             </td>
                         </tr>
+                        <input type="hidden" name='tong' value="<?php echo $sum ?>">
                         </tbody>
                     </table>
                     <input type="submit" name="submit" value="Thanh toán" class="btn btn-primary">

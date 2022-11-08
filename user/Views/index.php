@@ -6,7 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Shop 123</title>
     <link rel="shortcut icon" href="http://localhost/doan-mvc/user/assets/images/logo.webp" />
-
+    <style>
+        .add-to-cart-now {
+            display: block;
+            background: #21431e;
+            color: #fff;
+            font-size: 14px;
+            padding: 6px 15px;
+            margin: 8px auto;
+            cursor: pointer;
+        }
+    </style>
 
     <link rel="canonical" href="http://localhost" />
     <link rel="alternate" href="http://localhost" hreflang="vi-vn" />
@@ -45,7 +55,7 @@
 <body class="">
 
     <?php
-     if (isset($_SESSION['success'])) {
+    if (isset($_SESSION['success'])) {
         $message = $_SESSION['success'];
         echo "<script type='text/javascript'>alert('$message');</script>";
         unset($_SESSION['success']);

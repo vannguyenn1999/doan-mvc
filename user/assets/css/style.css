@@ -4825,7 +4825,17 @@ td .product-avatar.img-responsive {
     width: 100%;
 }
 
-.add-to-cart {
+/* .add-to-cart {
+    display: block;
+    background: #21431e;
+    color: #fff;
+    font-size: 14px;
+    padding: 6px 15px;
+    margin: 8px auto;
+    cursor: pointer;
+} */
+
+.add-to-cart-now {
     display: block;
     background: #21431e;
     color: #fff;

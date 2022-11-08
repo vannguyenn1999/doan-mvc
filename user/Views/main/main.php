@@ -18,7 +18,9 @@
                         <span class="shop-price">
                             <?php echo $product['gia'] ?>
                         </span>
-                        <span data-id="92090" class="add-to-cart">Thêm vào giỏ</span>
+                        <a href="http://localhost/doan-mvc/UserHomeController/Cart?id=<?php echo $product['ma_san_pham'] ?>" class="">
+                            <span data-id="92090" class="add-to-cart-now">Thêm vào giỏ</span>
+                        </a>
                     </div>
                 <?php endforeach; ?>
             </div>
@@ -31,8 +33,6 @@
                     <a href="#" class="link-category-item">Khuyến Mãi Nhất</a>
                 </h1>
                 <div class="row">
-                    <!-- <div class="col-md-4 col-sm-4 col-xs-12 category-two-item"> -->
-                    <!-- <div class="main-slideshow"> -->
                     <div class="main-slideshow-content">
                         <div class="slideshow-wrapper">
                             <div class="slide">
@@ -75,8 +75,6 @@
                                 <img id="slide-img" src="http://localhost/doan-mvc/user/assets/images/km/6.png" />
                             </div>
                         </div>
-                        <!-- </div> -->
-                        <!-- </div> -->
                     </div>
 
                 </div>

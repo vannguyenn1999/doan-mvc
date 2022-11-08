@@ -3,7 +3,7 @@
 
 <head>
   <title>Quản Lý SHOP 123</title>
- 
+
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <link rel="stylesheet" href="http://localhost/doan-mvc/admin/assets/css/style.css">
@@ -35,6 +35,14 @@
     echo "<script type='text/javascript'>alert('$message');</script>";
     unset($_SESSION['error']);
   }
+  // 
+  if (!isset($_SESSION['admin_login'])) {
+    $message = "Vui Lòng Đăng Nhập";
+    echo "<script type='text/javascript'>alert('$message');</script>";
+    header('Location: http://localhost/doan-mvc/LoginController/Login');
+    exit();
+  }
+
 
   require_once 'header.php';
 

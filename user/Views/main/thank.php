@@ -1,104 +1,98 @@
+
 <div class="main-content">
     <div class="container">
-        <h3>Cảm ơn bạn đã đặt hàng, <b>Mạnh Viết</b></h3>
+        <h3>Cảm ơn bạn đã đặt hàng, <b><?php echo $result['ten_nguoi_dat'] ?></b></h3>
         <p>
-            Mã đơn hàng của bạn: <b>#1561</b>
+            Mã đơn hàng của bạn: <b>#<?php echo $result['ma_don_hang'] ?></b>
         </p>
         <p>
-            Số tiền cần thanh toán: <b>160.000đ</b>
+            Số tiền cần thanh toán: <b><?php echo $result['tong'] ?></b>
         </p>
         <div>
             <p>
                 - Để thanh toán đơn hàng, bạn hãy chuyển khoản theo thông tin sau:
                 <br>
                 <b>
-                    BIDV NGUYEN VIET MANH <br>
-                    112121212121 <br>
+                    TECHCOMBANK NGUYEN HOA VAN <br>
+                    0203200328091999 <br>
                     Chi nhành Hà Nội <br>
                 </b>
-                Nội dung chuyển khoản: Thanh toán đơn hàng #1561 </p>
+                Nội dung chuyển khoản: Thanh toán đơn hàng #<?php echo $result['ma_don_hang'] ?>
+            </p>
             <p>
                 - Hoặc bạn có thể liên hệ trực tiếp với chúng tôi qua số điện thoại:
-                <a href="tel:0879123123">0879123123</a>
+                <a href="tel:0528448515">0528448515</a>
             </p>
         </div>
         <h4>Thông tin người mua hàng</h4>
         <table border="1" cellpadding="8" cellspacing="0">
             <tbody>
-            <tr>
-                <th>Họ tên</th>
-                <th>Số điện thoại</th>
-                <th>Email</th>
-                <th>Địa chỉ</th>
-            </tr>
-            <tr>
-                <td>Mạnh Viết</td>
-                <td>0987599921</td>
-                <td>nguyenvietmanhit@gmail.com</td>
-                <td>N/A</td>
-            </tr>
+                <tr>
+                    <th>Họ tên</th>
+                    <th>Số điện thoại</th>
+                    <th>Email</th>
+                    <th>Địa chỉ</th>
+                </tr>
+                <tr>
+                    <td><?php echo $result['ten_nguoi_dat'] ?></td>
+                    <td><?php echo $result['sdt_nguoi_nhan'] ?></td>
+                    <td><?php echo $result['email_nguoi_nhan'] ?></td>
+                    <td><?php echo $result['dc_nguoi_nhan'] ?></td>
+                </tr>
             </tbody>
         </table>
         <br>
         <h4>Thông tin đơn hàng</h4>
         <table border="1" cellpadding="8" cellspacing="0">
             <tbody>
-            <tr>
-                <th width="40%">Tên sản phẩm</th>
-                <th width="12%">Số lượng</th>
-                <th>Giá</th>
-                <th>Thành tiền</th>
-            </tr>
-
-            <tr>
-                <td>
-                    <a href="product_detail.html" class="content-product-a">
-                        <img class="product-avatar img-responsive"
-                             src="assets/images/samsung-galaxy-note-10-plus-silver-400x460.png" height="80">
-                        <span class="content-product">
-                                 Chèo xuồng
-                            </span>
-                    </a>
-                </td>
-                <td>
-                    1
-                </td>
-                <td>
-                    60.000đ
-                </td>
-                <td>
-                    60.000đ
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <a href="product_detail.html" class="content-product-a">
-                        <img class="product-avatar img-responsive"
-                             src="assets/images/samsung-galaxy-note-10-plus-silver-400x460.png"
-                             height="80">
-                        <span class="content-product">
-                                 Lều cắm trại 6 người
-                             </span>
-                    </a>
-                </td>
-                <td>
-                    1
-                </td>
-                <td>
-                    100.000đ
-                </td>
-                <td>
-                    100.000đ
-                </td>
-            </tr>
-            <tr>
-                <td colspan="5" style="text-align: right">
-                    Tổng giá trị đơn hàng:
-                    <span class="product-price">
-                      160.000đ
-                    </span>
-                </td>
-            </tr>
+                <tr>
+                    <th width="40%">Tên sản phẩm</th>
+                    <th width="12%">Số lượng</th>
+                    <th>Giá</th>
+                    <th>Thành tiền</th>
+                </tr>
+                <?php if($detail == null){ ?>
+                                <tr> <td colspan="5" align="center"> Không có sản phẩm nào tồn tại trong giỏ hàng của bạn </td></tr>
+                            <?php } else{ foreach ($detail as $v) : ?>
+                                
+                    <tr>
+                        <td>
+                            <a href="" class="content-product-a">
+                                <img class="product-avatar img-responsive" src="http://localhost/doan-mvc/admin/assets/image/uploads/<?php echo $v['anh'] ?>" height="80">
+                                <span class="content-product">
+                                    <?php echo $v['ten_san_pham'] ?>
+                                </span>
+                            </a>
+                        </td>
+                        <td>
+                            <?php echo $v['so_luong'] ?>
+                        </td>
+                        <td>
+                            <?php echo $v['gia'] ?>
+                        </td>
+                        <td>
+                            <?php echo ($v['so_luong'] * $v['gia']) ?>
+                        </td>
+                    </tr>
+                    <?php  endforeach; } ?>
+                <tr>
+                    <td colspan="5" style="text-align: right">
+                        Tổng giá trị đơn hàng:
+                        <span class="product-price">
+                            <?php
+                            $sum = 0;
+                            if ($detail == null) {
+                                echo $sum;
+                            } else {
+                                foreach ($detail as $v) :
+                                    $sum += $v['thanh_tien'];
+                                endforeach;
+                                echo $sum;
+                            }
+                            ?>
+                        </span>
+                    </td>
+                </tr>
             </tbody>
         </table>
     </div>
