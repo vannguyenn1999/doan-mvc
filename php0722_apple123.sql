@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th10 07, 2022 lúc 12:37 PM
+-- Thời gian đã tạo: Th10 08, 2022 lúc 09:51 AM
 -- Phiên bản máy phục vụ: 10.4.21-MariaDB
 -- Phiên bản PHP: 8.0.11
 
@@ -86,13 +86,24 @@ CREATE TABLE `bang_hieu` (
 
 CREATE TABLE `chi_tiet_don_hang` (
   `idCT` int(11) NOT NULL,
-  `ma_don_hang` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `ma_don_hang` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
   `ma_san_pham` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
   `ten_san_pham` varchar(40) COLLATE utf8mb4_unicode_ci NOT NULL,
   `so_luong` int(5) NOT NULL,
   `gia` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `thanh_tien` varchar(15) COLLATE utf8mb4_unicode_ci NOT NULL,
   `create_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `chi_tiet_don_hang`
+--
+
+INSERT INTO `chi_tiet_don_hang` (`idCT`, `ma_don_hang`, `ma_san_pham`, `ten_san_pham`, `so_luong`, `gia`, `thanh_tien`, `create_at`) VALUES
+(12, '08112022-1413', 'SP001', 'Iphone 14 Pro Max ', 1, '30000000', '30000000', '2022-11-08 07:13:24'),
+(13, '08112022-1414', 'SP003', 'xiaomi mi 12 pro max', 1, '10000000', '10000000', '2022-11-08 07:14:22'),
+(14, '08112022-1414', 'SP007', 'Nokia G11 Plus', 1, '9000000', '9000000', '2022-11-08 07:14:22'),
+(15, '08112022-1533', 'SP004', 'samsung s22 ultra', 1, '23000000', '23000000', '2022-11-08 08:33:40');
 
 -- --------------------------------------------------------
 
@@ -101,33 +112,27 @@ CREATE TABLE `chi_tiet_don_hang` (
 --
 
 CREATE TABLE `don_hang` (
-  `ma_don_hang` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `ma_don_hang` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
   `ten_nguoi_dat` varchar(40) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email_nguoi_nhan` varchar(40) COLLATE utf8mb4_unicode_ci NOT NULL,
   `sdt_nguoi_nhan` varchar(11) COLLATE utf8mb4_unicode_ci NOT NULL,
   `dc_nguoi_nhan` varchar(40) COLLATE utf8mb4_unicode_ci NOT NULL,
   `ghi_chu` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `phuong_thuc` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `tong` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `trang_thai` int(1) NOT NULL,
   `create_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- --------------------------------------------------------
-
 --
--- Cấu trúc bảng cho bảng `gio_hang`
+-- Đang đổ dữ liệu cho bảng `don_hang`
 --
 
-CREATE TABLE `gio_hang` (
-  `id` int(11) NOT NULL,
-  `ma_san_pham` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `ten_san_pham` varchar(40) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `anh` varchar(256) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `so_luong` int(3) NOT NULL,
-  `gia` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `giam_gia` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `thanh_tien` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `username` varchar(40) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `ngay_tao` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+INSERT INTO `don_hang` (`ma_don_hang`, `ten_nguoi_dat`, `email_nguoi_nhan`, `sdt_nguoi_nhan`, `dc_nguoi_nhan`, `ghi_chu`, `phuong_thuc`, `tong`, `trang_thai`, `create_at`) VALUES
+('08112022-1410', 'qưe', 'vannguyenn2809@gmail.com', '213213', '12321', '3213213', 'COD', '30000000', 1, '2022-11-08 08:25:44'),
+('08112022-1413', 'qưe', 'vannguyenn2809@gmail.com', '213213', '12321', '3213213', 'COD', '30000000', 1, '2022-11-08 08:25:44'),
+('08112022-1414', 'Nguyễn Hoa Văn', 'mid0203@gmail.com', '3123213', 'tổ 4 - phú lãm -hà đông - hà nội', '123', 'COD', '19000000', 1, '2022-11-08 08:25:44'),
+('08112022-1533', 'mid', 'mid0203@gmail.com', '0528448515', 'hà nội ', 'chuyển nhanh', 'COD', '23000000', 1, '2022-11-08 08:45:03');
 
 -- --------------------------------------------------------
 
@@ -200,9 +205,9 @@ CREATE TABLE `san_pham` (
 INSERT INTO `san_pham` (`ma_san_pham`, `ten_san_pham`, `anh`, `so_luong`, `id_kieu`, `ten_nhan_hieu`, `thong_tin`, `gia`, `create_at`) VALUES
 ('ip-8', 'Iphone 8', '1667530452-product-samsung-galaxy-z-fold-3-silver-1-600x600.jpg', '5', 'Ipad', 'Xiaomi', 'Dù đã ra mắt từ nhiều năm trước, iPhone 8 Plus vẫn là chiếc điện thoại đáng để trải nghiệm. Mặc dù vẫn sở hữu thiết kế cũ qua nhiều năm nhưng iPhone 8 PLus lại có sự nâng cấp đáng kể về hiệu năng, màn hình và camera được nâng cấp đáng kể. Nếu bạn muốn mua trả góp iPhone 8 Plus thì Shop 123 đang hỗ trợ khách hàng tham gia chương trình trả góp với thủ tục đơn giản và thời gian duyệt hồ sơ nhanh chóng.', '5000000', '2022-11-04 02:54:12'),
 ('SP001', 'Iphone 14 Pro Max ', '2ed1bfecbbac9620b159ce5c0885f2d3.jpg', '5', 'Điện thoại', 'Iphone', 'máy mới chất lượng cao sang trọng', '30000000', '2022-10-14 12:56:15'),
-('SP002', 'Iphone 12 Pro Max ', 'iphone-12-pro-max-xam-new-600x600-200x200.jpg', '10', 'Điện thoại', 'Iphone', 'máy mới 100%', '23000000', '2022-10-14 11:54:52'),
+('SP002', 'Iphone 12 Pro Max ', 'iphone-12-pro-max-xam-new-600x600-200x200.jpg', '1', 'Điện thoại', 'Iphone', 'máy mới 100%', '23000000', '2022-11-08 02:20:32'),
 ('SP003', 'xiaomi mi 12 pro max', 'Xiaomi-Redmi-Note-12-Pro-Max.jpg', '13', 'Điện thoại', 'Xiaomi', 'máy thuộc phân khúc tầm trung', '10000000', '2022-10-14 11:54:52'),
-('SP004', 'samsung s22 ultra', 'Galaxy-S22-Ultra-Black-600x600.jpg', '4', 'Điện thoại', 'Iphone', 'máy hàn quốc', '23000000', '2022-10-14 11:54:52'),
+('SP004', 'samsung s22 ultra', 'Galaxy-S22-Ultra-Black-600x600.jpg', '1', 'Điện thoại', 'Iphone', 'máy hàn quốc', '23000000', '2022-11-08 02:20:32'),
 ('SP005', 'Samsung Galaxy S21 Ultra 5G ', 'samsung-galaxy-s21-ultra-bac-600x600-1-200x200.jpg', '5', 'Điện thoại', 'Samsung', 'máy tốt', '20000000', '2022-10-14 11:54:52'),
 ('SP006', 'Xiaomi Redmi Note 11', 'Xiaomi-redmi-note-11-blue-600x600.jpg', '6', 'Điện thoại', 'Xiaomi', 'Redmi Note 11 (6GB/128GB) vừa được Xiaomi cho ra mắt, được xem là chiếc smartphone có giá tầm trung ấn tượng, với 1 cấu hình mạnh, cụm camera xịn sò, pin khỏe, sạc nhanh mà giá lại rất phải chăng.', '5290000', '2022-10-14 11:54:52'),
 ('SP007', 'Nokia G11 Plus', 'nokia-g11-plus-xanh-thumb-600x600.jpg', '7', 'Điện thoại', 'Nokia', 'máy bền', '9000000', '2022-10-14 11:54:52'),
@@ -292,22 +297,14 @@ ALTER TABLE `bang_hieu`
 --
 ALTER TABLE `chi_tiet_don_hang`
   ADD PRIMARY KEY (`idCT`),
-  ADD KEY `ma_don_hang` (`ma_don_hang`),
-  ADD KEY `ma_san_pham` (`ma_san_pham`);
+  ADD KEY `ma_san_pham` (`ma_san_pham`),
+  ADD KEY `ma_don_hang` (`ma_don_hang`);
 
 --
 -- Chỉ mục cho bảng `don_hang`
 --
 ALTER TABLE `don_hang`
   ADD PRIMARY KEY (`ma_don_hang`);
-
---
--- Chỉ mục cho bảng `gio_hang`
---
-ALTER TABLE `gio_hang`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `ma_san_pham` (`ma_san_pham`),
-  ADD KEY `username` (`username`);
 
 --
 -- Chỉ mục cho bảng `kieu`
@@ -350,13 +347,7 @@ ALTER TABLE `bang_hieu`
 -- AUTO_INCREMENT cho bảng `chi_tiet_don_hang`
 --
 ALTER TABLE `chi_tiet_don_hang`
-  MODIFY `idCT` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT cho bảng `gio_hang`
---
-ALTER TABLE `gio_hang`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idCT` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT cho bảng `thong_tin_chi_tiet`
@@ -372,15 +363,8 @@ ALTER TABLE `thong_tin_chi_tiet`
 -- Các ràng buộc cho bảng `chi_tiet_don_hang`
 --
 ALTER TABLE `chi_tiet_don_hang`
-  ADD CONSTRAINT `chi_tiet_don_hang_ibfk_1` FOREIGN KEY (`ma_don_hang`) REFERENCES `don_hang` (`ma_don_hang`),
-  ADD CONSTRAINT `chi_tiet_don_hang_ibfk_2` FOREIGN KEY (`ma_san_pham`) REFERENCES `san_pham` (`ma_san_pham`);
-
---
--- Các ràng buộc cho bảng `gio_hang`
---
-ALTER TABLE `gio_hang`
-  ADD CONSTRAINT `gio_hang_ibfk_1` FOREIGN KEY (`ma_san_pham`) REFERENCES `san_pham` (`ma_san_pham`),
-  ADD CONSTRAINT `gio_hang_ibfk_2` FOREIGN KEY (`username`) REFERENCES `accounts` (`username`);
+  ADD CONSTRAINT `chi_tiet_don_hang_ibfk_2` FOREIGN KEY (`ma_san_pham`) REFERENCES `san_pham` (`ma_san_pham`),
+  ADD CONSTRAINT `chi_tiet_don_hang_ibfk_3` FOREIGN KEY (`ma_don_hang`) REFERENCES `don_hang` (`ma_don_hang`);
 
 --
 -- Các ràng buộc cho bảng `san_pham`
