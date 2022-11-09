@@ -6,7 +6,7 @@ class BillModel extends BaseModel
 
     public function getTable()
     {
-        $sql_obj = $this->connect->prepare("SELECT * FROM don_hang WHERE trang_thai = 1 ORDER BY create_at DESC ");
+        $sql_obj = $this->connect->prepare("SELECT * FROM don_hang WHERE trang_thai = 'đã xử lý' ORDER BY create_at DESC ");
         $arr_select = [];
         $sql_obj->execute($arr_select);
         $result = $sql_obj->fetchAll(PDO::FETCH_ASSOC);
@@ -15,7 +15,7 @@ class BillModel extends BaseModel
     }
     public function getTableHandle()
     {
-        $sql_obj = $this->connect->prepare("SELECT * FROM don_hang WHERE trang_thai = 0 ORDER BY create_at DESC ");
+        $sql_obj = $this->connect->prepare("SELECT * FROM don_hang WHERE trang_thai = 'chờ xử lý' ORDER BY create_at DESC ");
         $arr_select = [];
         $sql_obj->execute($arr_select);
         $result = $sql_obj->fetchAll(PDO::FETCH_ASSOC);
@@ -50,7 +50,7 @@ class BillModel extends BaseModel
 
     public function update($id)
     {
-        $obj_update = $this->connect->prepare("UPDATE don_hang SET trang_thai = 1  WHERE ma_don_hang = :id ");
+        $obj_update = $this->connect->prepare("UPDATE don_hang SET trang_thai = 'đã xử lý'  WHERE ma_don_hang = :id ");
         $arr_update = [
             ':id' => $id,
         ];

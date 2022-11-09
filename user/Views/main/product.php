@@ -14,7 +14,7 @@
                         </span>
                     </a>
                     <span class="shop-price">
-                        <?php echo $product['gia'] ?> đ
+                        <?php echo number_format($product['gia']) ?> đ
                     </span>
                     <!--  class="add-to-cart -->
                     <a href="http://localhost/doan-mvc/UserHomeController/Cart?id=<?php echo $product['ma_san_pham'] ?>" class="">

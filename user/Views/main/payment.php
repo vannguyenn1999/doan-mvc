@@ -14,23 +14,23 @@
                     <h5 class="center-align">Thông tin khách hàng</h5>
                     <div class="form-group">
                         <label>Họ tên <span class="red">*</span></label>
-                        <input type="text" name="fullname" value="" class="form-control" required="">
+                        <input type="text" name="fullname" value="<?php echo isset($_POST['fullname']) ? $_POST['fullname'] : '' ?>" class="form-control" required="">
                     </div>
                     <div class="form-group">
                         <label>SĐT <span class="red">*</span> </label>
-                        <input type="number" min="0" name="mobile" value="" class="form-control" required="">
+                        <input type="number" min="0" name="mobile" value="<?php echo isset($_POST['mobile']) ? $_POST['mobile'] : '' ?>" class="form-control" required="">
                     </div>
                     <div class="form-group">
                         <label>Email</label>
-                        <input type="email" min="0" name="email" value="" class="form-control">
+                        <input type="email" min="0" name="email" value="<?php echo isset($_POST['email']) ? $_POST['email'] : '' ?>" class="form-control">
                     </div>
                     <div class="form-group">
                         <label>Địa chỉ nhận hàng</label>
-                        <input type="text" name="address" value="" class="form-control">
+                        <input type="text" name="address" value="<?php echo isset($_POST['address']) ? $_POST['address'] : '' ?>" class="form-control">
                     </div>
                     <div class="form-group">
                         <label>Ghi chú thêm</label>
-                        <textarea name="note" class="form-control" id='note'></textarea>
+                        <textarea name="note" class="form-control" id='note'><?php echo isset($_POST['note']) ? $_POST['note'] : '' ?></textarea>
                     </div>
                     <div class="form-group">
                         <label>Chọn phương thức thanh toán</label> <br/>
@@ -69,12 +69,12 @@
                             </td>
                             <td>
                               <span class="product-price-payment">
-                              <?php echo $r['gia'] ?>
+                              <?php echo number_format($r['gia']); ?> đ
                               </span>
                             </td>
                             <td>
                               <span class="product-price-payment">
-                              <?php  echo   $r['gia'] * $r['tyt']; ?>
+                              <?php  echo number_format($r['gia'] * $r['tyt']); ?> đ
                               </span>
                             </td>
                         </tr>
@@ -92,7 +92,7 @@
                                            foreach ($data as $v ):
                                                 $sum += $v['tong'];
                                            endforeach;
-                                           echo $sum;                                          
+                                           echo number_format($sum) . ' đ';                                 
                                         }
                                         ?>
                             </span>

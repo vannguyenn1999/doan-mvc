@@ -160,7 +160,8 @@ class ProductController extends BaseController
                 } else if ($file_size_mb > 2) {
                     $this->error = 'File upload không được quá 2MB';
                 }
-
+                $filename = $anh['anh'];
+                unlink($filename );
                 $dir_uploads = __DIR__ . '/../assets/image/uploads';
                 $filename = time() . '-product-' . $_FILES['anh']['name'];
                 move_uploaded_file($_FILES['anh']['tmp_name'], $dir_uploads . '/' . $filename);

@@ -43,10 +43,10 @@
                                     
                                     </td>
                                     <td>
-                                        <?php echo $r['gia'] ?>
+                                        <?php echo number_format($r['gia']); ?> đ
                                     </td>
                                     <td>
-                                        <?php  echo   $r['gia'] * $r['tyt']; ?>
+                                        <?php  echo number_format($r['gia'] * $r['tyt']); ?> đ
                                     </td>
                                     <td>
                                         <a class="content-product-a" onclick="return confirm('bạn có muốn xoá sản phẩm này không ?')" href="http://localhost/doan-mvc/UserHomeController/Remove?id=<?php echo $r['ma_san_pham'] ?>">
@@ -69,7 +69,7 @@
                                            foreach ($data as $v ):
                                                 $sum += $v['tong'];
                                            endforeach;
-                                           echo $sum;                                          
+                                           echo number_format($sum) . ' đ';                                       
                                         }
                                         ?>
                                        

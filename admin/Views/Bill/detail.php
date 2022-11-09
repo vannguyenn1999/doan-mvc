@@ -18,8 +18,8 @@
            <td><?php echo $r['ma_san_pham'] ?></td>
            <td><?php echo $r['ten_san_pham'] ?></td>
            <td><?php echo $r['so_luong'] ?></td>
-           <td><?php echo $r['gia'] ?></td>
-           <td><?php echo $r['thanh_tien'] ?></td>
+           <td><?php echo number_format($r['gia'])  ?></td>
+           <td><?php echo number_format($r['thanh_tien'])  ?></td>
            <td><?php echo $r['create_at'] ?></td>
          </tr>
        <?php endforeach; ?>

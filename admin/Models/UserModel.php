@@ -11,7 +11,7 @@ class UserModel extends BaseModel
     public $ghi_chu;
     public $phuong_thuc;
     public $tong;
-    public $trang_thai = 0;
+    public $trang_thai = 'chờ xử lý';
 
     public $ma_sp;
     public $ten_san_pham;
@@ -125,32 +125,6 @@ class UserModel extends BaseModel
         return $obj_insert->execute($arr);
     }
 
-
-    public function updateProduct()
-    {
-        $obj_sql = $this->connect->prepare("SELECT so_luong FROM san_pham WHERE ma_san_pham = :id");
-        $arr = [
-            ':id' => $this->ma_sp,
-
-        ];
-        $obj_sql->execute($arr);
-        $result =  $obj_sql->fetch(PDO::FETCH_ASSOC);
-        return $result;
-
-
-
-
-
-        // $obj_sql = $this->connect->prepare("UPDATE san_pham SET so_luong = :sl WHERE ma_san_pham = :id");
-        // $arr = [
-        //     ':id' =>$this->ma_sp ,
-        //     ':sl' => ($result - $this->so_luong),
-        // ];
-        // return $obj_sql->execute($arr);
-
-    }
-
-
     public function getInvoice()
     {
         $obj_sql = $this->connect->prepare("SELECT * FROM don_hang ORDER BY create_at DESC LIMIT 1");
@@ -166,11 +140,31 @@ class UserModel extends BaseModel
         $obj_sql = $this->connect->prepare("SELECT chi_tiet_don_hang.* , san_pham.anh FROM chi_tiet_don_hang INNER JOIN san_pham ON chi_tiet_don_hang.ma_san_pham = san_pham.ma_san_pham WHERE chi_tiet_don_hang.ma_don_hang = :id;
         
         ");
-        // $obj_sql = $this->connect->prepare("SELECT * FROM chi_tiet_don_hang WHERE ma_don_hang = :id");
         $arr = [
             ':id' => $id
         ];
         $obj_sql->execute($arr);
         return $obj_sql->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    
+    public function updateProduct($id)
+    {
+        $obj_sql = $this->connect->prepare("SELECT so_luong FROM san_pham WHERE ma_san_pham = :id");
+        $arr = [
+            ':id' => $id,
+        ];
+        $obj_sql->execute($arr);
+        $result = $obj_sql->fetch(PDO::FETCH_ASSOC);
+        foreach ($result as $value) :
+            $num = (int)$value;
+        endforeach;
+        $obj_sql = $this->connect->prepare("UPDATE san_pham SET so_luong = :sl WHERE ma_san_pham = :id");
+        $arr = [
+            ':id' =>$this->ma_sp ,
+            ':sl' => ($num - $this->so_luong),
+        ];
+        return $obj_sql->execute($arr);
+
     }
 }

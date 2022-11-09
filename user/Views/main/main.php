@@ -16,7 +16,7 @@
                             </span>
                         </a>
                         <span class="shop-price">
-                            <?php echo $product['gia'] ?>
+                            <?php echo number_format($product['gia']) ?> đ
                         </span>
                         <a href="http://localhost/doan-mvc/UserHomeController/Cart?id=<?php echo $product['ma_san_pham'] ?>" class="">
                             <span data-id="92090" class="add-to-cart-now">Thêm vào giỏ</span>

@@ -6,7 +6,7 @@
             Mã đơn hàng của bạn: <b>#<?php echo $result['ma_don_hang'] ?></b>
         </p>
         <p>
-            Số tiền cần thanh toán: <b><?php echo $result['tong'] ?></b>
+            Số tiền cần thanh toán: <b> <?php echo number_format($result['tong']) ?> đ</b>
         </p>
         <div>
             <p>
@@ -68,10 +68,10 @@
                             <?php echo $v['so_luong'] ?>
                         </td>
                         <td>
-                            <?php echo $v['gia'] ?>
+                        <?php  echo number_format($v['gia']); ?> đ 
                         </td>
                         <td>
-                            <?php echo ($v['so_luong'] * $v['gia']) ?>
+                        <?php  echo number_format($v['gia'] * $v['so_luong']); ?> đ
                         </td>
                     </tr>
                     <?php  endforeach; } ?>
@@ -87,7 +87,7 @@
                                 foreach ($detail as $v) :
                                     $sum += $v['thanh_tien'];
                                 endforeach;
-                                echo $sum;
+                                echo number_format($sum) . ' đ';
                             }
                             ?>
                         </span>

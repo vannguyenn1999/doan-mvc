@@ -10,12 +10,13 @@
                     <div class="product-info">
                         <h3 class="product-title"> <?php echo $data['detail']['ten_san_pham'] ?></h3>
                         <div class="product-price">
-                            <?php echo $data['detail']['gia'] ?> đ
+                            
+                            <?php echo number_format($data['detail']['gia']) ?> đ
                         </div>
                         <div class="product-cart">
                             <a href="http://localhost/doan-mvc/UserHomeController/Cart?id=<?php echo $data['detail']['ma_san_pham'] ?>" class="">
                                 <span data-id="92084" class="add-to-cart-now">
-                                    <i class="fa fa-cart-plus"></i> &nbsp; Thêm vào giỏ</span>
+                                    <i class="fa fa-cart-plus"></i> Thêm vào giỏ</span>
                             </a>
                         </div>
 
