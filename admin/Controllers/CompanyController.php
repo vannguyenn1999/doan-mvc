@@ -45,7 +45,7 @@ class CompanyController extends BaseController
                 } else {
                     $_SESSION['error'] = 'Thêm thất bại';
                 }
-                header('Location: http://localhost/doan-mvc/CompanyController/Index');
+                header('Location: '.DIR_HTTP.'/CompanyController/Index');
                 exit();
             }
         }
@@ -58,9 +58,10 @@ class CompanyController extends BaseController
     public function UpdateCompany()
     {
         $id = $_GET['id'];
-        if (empty($id)) {
+        $check = $this->companyModel->check();
+        if (empty($id) || !in_array($id,$check)) {
             $_SESSION['error'] = 'id không hợp lệ';
-            header('Location: http://localhost/doan-mvc/CompanyController/Index');
+            header('Location: '.DIR_HTTP.'/CompanyController/Index');
             exit();
         }
         if (isset($_POST['submit'])) {
@@ -74,7 +75,7 @@ class CompanyController extends BaseController
             } else {
                 $_SESSION['error'] = 'Sửa thất bại';
             }
-            header('Location: http://localhost/doan-mvc/CompanyController/Index');
+            header('Location: '.DIR_HTTP.'/CompanyController/Index');
             exit();
         }
         $this->GetCompany($id);
@@ -95,7 +96,7 @@ class CompanyController extends BaseController
         } else {
             $_SESSION['error'] = 'Xóa thất bại';
         }
-        header('Location: http://localhost/doan-mvc/CompanyController/Index');
+        header('Location: '.DIR_HTTP.'/CompanyController/Index');
         exit();
     }
 }

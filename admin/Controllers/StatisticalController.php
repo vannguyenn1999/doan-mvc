@@ -18,8 +18,17 @@ class StatisticalController extends BaseController {
         foreach($result as $row){
             $data[] = $row;
         }
-        // $data = json_encode($data);
         $this->view('','index');
         $this->view('Statistical','main', $data);
+    }
+
+    public function Chart(){
+        $result = $this->statisticalModel->getNum();
+        foreach($result as $row){
+            $data[] = $row;
+        }
+        $this->view('','index');
+        $this->view('Statistical','chart',$data);
+
     }
 }

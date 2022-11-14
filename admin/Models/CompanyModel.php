@@ -46,4 +46,19 @@ class CompanyModel extends BaseModel{
             ->prepare("DELETE FROM nhan_hieu WHERE ten_nhan_hieu = '$id'");
         return $obj_delete->execute();
     }
+
+    public function check()
+    {
+        $obj_select = $this->connect->prepare("SELECT ten_nhan_hieu FROM nhan_hieu");
+        $arr_select = [];
+        $obj_select->execute($arr_select);
+        $result = $obj_select->fetchAll(PDO::FETCH_ASSOC);
+        $data = [];
+
+        for ($i = 0; $i < count($result); $i++) {
+            $data[$i] = $result[$i]['ten_nhan_hieu'];
+        }
+
+        return $data;
+    }
 }

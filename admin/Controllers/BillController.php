@@ -25,7 +25,7 @@ class BillController extends BaseController {
         $id = $_GET['id'];
         if (empty($id) || !in_array($id, $check)) {
             $_SESSION['error'] = 'id không hợp lệ';
-            header('Location: http://localhost/doan-mvc/BillController/Index');
+            header('Location: BillController/Index');
             exit();
         }
         $this->main_content = $this->billModel->getbyId($id);
@@ -41,7 +41,7 @@ class BillController extends BaseController {
         } else {
             $_SESSION['error'] = 'Xử Lý thất bại';
         }
-        header('Location: http://localhost/doan-mvc/BillController/Handle');
+        header('Location: DIR_HTTP/BillController/Handle');
         exit();
         
     }

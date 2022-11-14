@@ -4836,6 +4836,7 @@ td .product-avatar.img-responsive {
 } */
 
 .add-to-cart-now {
+    border-radius: 20px;
     display: block;
     background: #21431e;
     color: #fff;

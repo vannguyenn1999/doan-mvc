@@ -2,8 +2,8 @@
     <div class="product">
         <br>
         <h1>Danh Sách Thông Tin Sản Phẩm</h1>
-        <a href="http://localhost/doan-mvc/DetailController/AddDetail" class="btn btn-success" id="a_func"><i class="fa-solid fa-circle-plus"></i> Thêm Thông Tin Sản Phẩm</a>
-        <a href="http://localhost/doan-mvc/DetailController/SearchDetail" class="btn btn-success" id="a_func"> <i class="fa fa-search"> </i> Tìm Kiếm Thông Tin Sản Phẩm </a>
+        <a href="<?php echo DIR_HTTP ?>/DetailController/AddDetail" class="btn btn-success" id="a_func"><i class="fa-solid fa-circle-plus"></i> Thêm Thông Tin Sản Phẩm</a>
+        <a href="<?php echo DIR_HTTP ?>/DetailController/SearchDetail" class="btn btn-success" id="a_func"> <i class="fa fa-search"> </i> Tìm Kiếm Thông Tin Sản Phẩm </a>
         <br>
         <br>
         <table class="table table-dark table-striped">
@@ -31,8 +31,8 @@
                         <td><?php echo $r['dung_luong'] ?></td>
                         <td><?php echo $r['giam_gia'] ?></td>
                         <td><?php echo $r['create_at'] ?></td>
-                        <td><a href="http://localhost/doan-mvc/DetailController/UpdateDetail?id=<?php echo $r['ma_san_pham'] ?>" class="btn btn-info">Sửa</a></td>
-                        <td><a onclick="return confirm('bạn có muốn xoá thông tin này không ??')" href="http://localhost/doan-mvc/DetailController/DeleteDetail/<?php echo $r['ma_san_pham'] ?>" class="btn btn-danger"> <i class="fa fa-trash"></i></a></td>
+                        <td><a href="<?php echo DIR_HTTP ?>/DetailController/UpdateDetail?id=<?php echo $r['ma_san_pham'] ?>" class="btn btn-info">Sửa</a></td>
+                        <td><a onclick="return confirm('bạn có muốn xoá thông tin này không ??')" href="<?php echo DIR_HTTP ?>/DetailController/DeleteDetail/<?php echo $r['ma_san_pham'] ?>" class="btn btn-danger"> <i class="fa fa-trash"></i></a></td>
                     </tr>
 
                 <?php endforeach; ?>

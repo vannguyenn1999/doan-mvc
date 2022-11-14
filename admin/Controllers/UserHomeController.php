@@ -21,7 +21,7 @@ class UserHomeController extends BaseController
     $check = $this->userHomeModel->check($id);
     if (empty($id) || (!in_array($id, $check))) {
       $_SESSION['error'] = 'mã sản phẩm không hợp lệ';
-      header('Location: http://localhost/doan-mvc/');
+      header('Location:'.DIR_HTTP.'');
       exit();
     }
     $more = $this->userHomeModel->moreProduct($id);
@@ -53,6 +53,9 @@ class UserHomeController extends BaseController
   }
   public function Contact()
   {
+    if(isset($_POST['submit'])){
+      $_SESSION['success'] = 'Cám Ơn Bạn Đã Đóng Góp Ý Kiến Cho Chúng Tôi !!';
+    }
     $this->main_content = $this->render('./user/Views/main/contact.php');
     require_once './user/Views/index.php';
   }
@@ -67,7 +70,6 @@ class UserHomeController extends BaseController
       $id = 1;
     }
 
-
     $result = $this->userHomeModel->page($id);
     $this->main_content = $this->render('./user/Views/main/product.php', $result);
     require_once './user/Views/index.php';
@@ -81,15 +83,15 @@ class UserHomeController extends BaseController
       $_SESSION['cart'][$productId] = $product;
       $_SESSION['cart'][$productId]['tyt'] = 1;
       $_SESSION['cart'][$productId]['tong'] = $_SESSION['cart'][$productId]['gia'];
-    } else {
-      $_SESSION['cart'];
-    }
-    // unset($_SESSION['cart']);
-
+    } 
+  
     if (isset($_POST['submit'])) {
+
       $productId = $_POST['masp'];
-      $_SESSION['cart'][$productId]['tyt'] = $_POST['sl'];
-      $_SESSION['cart'][$productId]['tong'] =  $_SESSION['cart'][$productId]['tyt'] *  $_SESSION['cart'][$productId]['gia'];
+      if(isset($_POST['sl'])){
+        $_SESSION['cart'][$productId]['tyt'] = $_POST['sl'];
+      }
+      $_SESSION['cart'][$productId]['tong'] =  (int)$_SESSION['cart'][$productId]['tyt'] *  (int)$_SESSION['cart'][$productId]['gia'];
     }
 
     $this->main_content = $this->render('./user/Views/main/cart.php');
@@ -102,7 +104,7 @@ class UserHomeController extends BaseController
     if (isset($_GET['id'])) {
       $productId = $_GET['id'];
       unset($_SESSION['cart'][$productId]);
-      header('Location: http://localhost/doan-mvc/UserHomeController/Cart');
+      header('Location: '.DIR_HTTP.'/UserHomeController/Cart');
     }
     $this->main_content = $this->render('./user/Views/main/cart.php');
     require_once './user/Views/index.php';
@@ -146,7 +148,7 @@ class UserHomeController extends BaseController
           } else {
             $_SESSION['error'] = 'Thanh Toán thất bại';
           }
-          header('Location: http://localhost/doan-mvc/UserHomeController/Invoice');
+          header('Location: '.DIR_HTTP.'/UserHomeController/Invoice');
           exit();
         }
       }
@@ -154,7 +156,7 @@ class UserHomeController extends BaseController
       require_once './user/Views/index.php';
     } else {
       $_SESSION['error'] = 'Bạn Cần Phải Có Sản Phẩm Trong Giỏ Hàng';
-      header('Location: http://localhost/doan-mvc/UserHomeController/Cart');
+      header('Location: '.DIR_HTTP.'/UserHomeController/Cart');
       exit();
     }
   }
@@ -181,7 +183,7 @@ class UserHomeController extends BaseController
       $this->userHomeModel->updateProduct($this->userHomeModel->ma_sp);
     }
     unset($_SESSION['cart']);
-    header('Location: http://localhost/doan-mvc/UserHomeController/Thank');
+    header('Location: '.DIR_HTTP.'/UserHomeController/Thank');
     exit();
   }
 

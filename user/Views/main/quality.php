@@ -2,9 +2,9 @@
     <div class="gird">
         <div class="main">
             <div class="main-header-h1">
-                <h1 style="margin-top: 150px;">QUAN ĐIỂM CHẤT LƯỢNG</h1>
+                <h1 style="margin-top: 150px; margin-bottom:10px">QUAN ĐIỂM CHẤT LƯỢNG</h1>
             </div>
-            <hr />
+            <hr/>
             <div class="main-content-p">
                 <p>
                     Sản phẩm iPhone, iPad, Watch tại Apple 123 đều là chính hãng do

@@ -109,7 +109,7 @@ class ProductController extends BaseController
                 } else {
                     $_SESSION['error'] = 'Thêm thất bại';
                 }
-                header('Location: http://localhost/doan-mvc/ProductController/Index');
+                header('Location: '.DIR_HTTP.'/ProductController/Index');
                 exit();
             }
         }
@@ -131,7 +131,7 @@ class ProductController extends BaseController
         $id = $_GET['id'];
         if (empty($id) || !in_array($id, $check)) {
             $_SESSION['error'] = 'id không hợp lệ';
-            header('Location: http://localhost/doan-mvc/ProductController/Index');
+            header('Location: '.DIR_HTTP.'/ProductController/Index');
             exit();
         }
 
@@ -181,7 +181,7 @@ class ProductController extends BaseController
             } else {
                 $_SESSION['error'] = 'Sửa thất bại';
             }
-            header('Location: http://localhost/doan-mvc/ProductController/Index');
+            header('Location: '.DIR_HTTP.'/ProductController/Index');
             exit();
         }
         $this->GetProduct($id);
@@ -224,7 +224,7 @@ class ProductController extends BaseController
         } else {
             $_SESSION['error'] = 'Xóa thất bại';
         }
-        header('Location: http://localhost/doan-mvc/ProductController/Index');
+        header('Location: '.DIR_HTTP.'/ProductController/Index');
         exit();
     }
 }

@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <link
       rel="stylesheet"
-      href="http://localhost/doan-mvc/admin/assets/css/404.css"
+      href="<?php echo DIR_HTTP ?>/admin/assets/css/404.css"
     />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ERROR 404</title>
@@ -15,7 +15,7 @@
       <div class="main">
         <div class="main-img">
           <img
-            src="http://localhost/doan-mvc/admin/assets/image/404.png"
+            src="<?php echo DIR_HTTP ?>/admin/assets/image/404.png"
             alt=""
             height="500px"
             width="500px"

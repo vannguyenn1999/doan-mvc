@@ -36,8 +36,8 @@
                         <td><?php echo $r['ram'] ?></td>
                         <td><?php echo $r['dung_luong'] ?></td>
                         <td><?php echo $r['giam_gia'] ?></td>
-                        <td><a href="http://localhost/doan-mvc/DetailController/UpdateDetail?id=<?php echo $r['ma_san_pham'] ?>" class="btn btn-info"> Sửa</a></td>
-                        <td><a onclick="return confirm('bạn có muốn xoá thông tin này không ??')" href="http://localhost/doan-mvc/DetailController/DeleteDetail?id=<?php echo $r['ma_san_pham'] ?>" class="btn btn-danger"> <i class="fa fa-trash"></i></a></td>
+                        <td><a href="<?php echo DIR_HTTP ?>/DetailController/UpdateDetail?id=<?php echo $r['ma_san_pham'] ?>" class="btn btn-info"> Sửa</a></td>
+                        <td><a onclick="return confirm('bạn có muốn xoá thông tin này không ??')" href="<?php echo DIR_HTTP ?>/DetailController/DeleteDetail?id=<?php echo $r['ma_san_pham'] ?>" class="btn btn-danger"> <i class="fa fa-trash"></i></a></td>
                     </tr>
 
             <?php endforeach; ?>

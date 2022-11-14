@@ -58,7 +58,7 @@
                     <tr>
                         <td>
                             <a href="" class="content-product-a">
-                                <img class="product-avatar img-responsive" src="http://localhost/doan-mvc/admin/assets/image/uploads/<?php echo $v['anh'] ?>" height="80">
+                                <img class="product-avatar img-responsive" src="<?php echo DIR_HTTP ?>/admin/assets/image/uploads/<?php echo $v['anh'] ?>" height="80">
                                 <span class="content-product">
                                     <?php echo $v['ten_san_pham'] ?>
                                 </span>

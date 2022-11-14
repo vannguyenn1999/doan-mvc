@@ -56,7 +56,7 @@
                             <td>
                                 <a href="product_detail.html" class="content-product-a">
                                     <img class="product-avatar img-responsive"
-                                         src="http://localhost/doan-mvc/admin/assets/image/uploads/<?php echo $r['anh'] ?>" width="60"/>
+                                         src="<?php echo DIR_HTTP ?>/admin/assets/image/uploads/<?php echo $r['anh'] ?>" width="60"/>
                                     <span class="content-product">
                                     <?php echo $r['ten_san_pham'] ?>
                                     </span>
@@ -102,7 +102,7 @@
                         </tbody>
                     </table>
                     <input type="submit" name="submit" value="Thanh toán" class="btn btn-primary">
-                    <a href="http://localhost/doan-mvc/UserHomeController/Cart" class="btn btn-secondary">Về trang giỏ hàng</a>
+                    <a href="<?php echo DIR_HTTP ?>/UserHomeController/Cart" class="btn btn-secondary">Về trang giỏ hàng</a>
                 </div>
             </div>
 

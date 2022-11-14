@@ -20,7 +20,7 @@ class HomeController extends BaseController
             $message = $_SESSION['admin_login'];
             echo "<script type='text/javascript'>alert('$message');</script>";
         }
-        $this->main_content = "SHOP 123";
+        $this->main_content = "SHOP 666";
         $this->view('', 'index',);
         $this->view('', 'main', $this->main_content);
     }
@@ -29,7 +29,7 @@ class HomeController extends BaseController
     {
         $_SESSION['logout'] = "Đăng Xuất Thành Công";
         unset($_SESSION['admin_login']);
-        header('Location: http://localhost/doan-mvc/LoginController');
+        header('Location: '.DIR_HTTP.'/LoginController');
         exit();
     }
 }

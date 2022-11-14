@@ -26,8 +26,8 @@
            <td><?php echo number_format($r['tong'])  ?></td>
            <td><?php echo $r['phuong_thuc'] ?></td>
            <td><?php echo $r['create_at'] ?></td>
-           <td><a href="http://localhost/doan-mvc/BillController/Detail?id=<?php echo $r['ma_don_hang'] ?>"><i class="fa fa-pencil fa-2x"></i></a></td>
-           <td><a onclick="return confirm('bạn có muốn xử lý đơn hàng này không ?')" href="http://localhost/doan-mvc/BillController/BillHandle?id=<?php echo $r['ma_don_hang'] ?>"><i class="fa-solid fa-dollar-sign fa-2x"></i></a></td>
+           <td><a href="<?php echo DIR_HTTP ?>/BillController/Detail?id=<?php echo $r['ma_don_hang'] ?>"><i class="fa fa-pencil fa-2x"></i></a></td>
+           <td><a onclick="return confirm('bạn có muốn xử lý đơn hàng này không ?')" href="<?php echo DIR_HTTP ?>/BillController/BillHandle?id=<?php echo $r['ma_don_hang'] ?>"><i class="fa-solid fa-dollar-sign fa-2x"></i></a></td>
 
 
          </tr>

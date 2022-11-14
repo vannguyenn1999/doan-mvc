@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th10 08, 2022 lúc 09:51 AM
+-- Thời gian đã tạo: Th10 13, 2022 lúc 05:14 AM
 -- Phiên bản máy phục vụ: 10.4.21-MariaDB
 -- Phiên bản PHP: 8.0.11
 
@@ -103,7 +103,10 @@ INSERT INTO `chi_tiet_don_hang` (`idCT`, `ma_don_hang`, `ma_san_pham`, `ten_san_
 (12, '08112022-1413', 'SP001', 'Iphone 14 Pro Max ', 1, '30000000', '30000000', '2022-11-08 07:13:24'),
 (13, '08112022-1414', 'SP003', 'xiaomi mi 12 pro max', 1, '10000000', '10000000', '2022-11-08 07:14:22'),
 (14, '08112022-1414', 'SP007', 'Nokia G11 Plus', 1, '9000000', '9000000', '2022-11-08 07:14:22'),
-(15, '08112022-1533', 'SP004', 'samsung s22 ultra', 1, '23000000', '23000000', '2022-11-08 08:33:40');
+(15, '08112022-1533', 'SP004', 'samsung s22 ultra', 1, '23000000', '23000000', '2022-11-08 08:33:40'),
+(16, '09112022-0815', 'SP005', 'Samsung Galaxy S21 Ultra 5G ', 2, '20000000', '40000000', '2022-11-09 01:15:06'),
+(17, '09112022-0815', 'SP001', 'Iphone 14 Pro Max ', 1, '30000000', '30000000', '2022-11-09 01:15:06'),
+(20, '09112022-1536', 'SP019', ' Samsung Galaxy Z Flip4 5G', 1, '23000000', '23000000', '2022-11-09 08:36:29');
 
 -- --------------------------------------------------------
 
@@ -120,7 +123,7 @@ CREATE TABLE `don_hang` (
   `ghi_chu` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `phuong_thuc` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
   `tong` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `trang_thai` int(1) NOT NULL,
+  `trang_thai` varchar(15) COLLATE utf8mb4_unicode_ci NOT NULL,
   `create_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -129,10 +132,12 @@ CREATE TABLE `don_hang` (
 --
 
 INSERT INTO `don_hang` (`ma_don_hang`, `ten_nguoi_dat`, `email_nguoi_nhan`, `sdt_nguoi_nhan`, `dc_nguoi_nhan`, `ghi_chu`, `phuong_thuc`, `tong`, `trang_thai`, `create_at`) VALUES
-('08112022-1410', 'qưe', 'vannguyenn2809@gmail.com', '213213', '12321', '3213213', 'COD', '30000000', 1, '2022-11-08 08:25:44'),
-('08112022-1413', 'qưe', 'vannguyenn2809@gmail.com', '213213', '12321', '3213213', 'COD', '30000000', 1, '2022-11-08 08:25:44'),
-('08112022-1414', 'Nguyễn Hoa Văn', 'mid0203@gmail.com', '3123213', 'tổ 4 - phú lãm -hà đông - hà nội', '123', 'COD', '19000000', 1, '2022-11-08 08:25:44'),
-('08112022-1533', 'mid', 'mid0203@gmail.com', '0528448515', 'hà nội ', 'chuyển nhanh', 'COD', '23000000', 1, '2022-11-08 08:45:03');
+('08112022-1410', 'qưe', 'vannguyenn2809@gmail.com', '213213', '12321', '3213213', 'COD', '30000000', 'đã xử lý', '2022-11-09 08:29:49'),
+('08112022-1413', 'qưe', 'vannguyenn2809@gmail.com', '213213', '12321', '3213213', 'COD', '30000000', 'đã xử lý', '2022-11-09 08:29:49'),
+('08112022-1414', 'Nguyễn Hoa Văn', 'mid0203@gmail.com', '3123213', 'tổ 4 - phú lãm -hà đông - hà nội', '123', 'COD', '19000000', 'đã xử lý', '2022-11-09 08:29:49'),
+('08112022-1533', 'mid', 'mid0203@gmail.com', '0528448515', 'hà nội ', 'chuyển nhanh', 'COD', '23000000', 'đã xử lý', '2022-11-09 08:29:49'),
+('09112022-0815', 'mimosa', 'mid0203@gmail.com', '0528448515', 'hà nội ', 'ship trong ngày', 'COD', '70000000', 'chờ xử lý', '2022-11-09 08:29:59'),
+('09112022-1536', 'tưởng vân', 'van123@gmail.com', '0123456789', 'hải dương', 'hoả tốc pls', 'Trực Tuyến', '23000000', 'đã xử lý', '2022-11-13 03:12:56');
 
 -- --------------------------------------------------------
 
@@ -204,10 +209,10 @@ CREATE TABLE `san_pham` (
 
 INSERT INTO `san_pham` (`ma_san_pham`, `ten_san_pham`, `anh`, `so_luong`, `id_kieu`, `ten_nhan_hieu`, `thong_tin`, `gia`, `create_at`) VALUES
 ('ip-8', 'Iphone 8', '1667530452-product-samsung-galaxy-z-fold-3-silver-1-600x600.jpg', '5', 'Ipad', 'Xiaomi', 'Dù đã ra mắt từ nhiều năm trước, iPhone 8 Plus vẫn là chiếc điện thoại đáng để trải nghiệm. Mặc dù vẫn sở hữu thiết kế cũ qua nhiều năm nhưng iPhone 8 PLus lại có sự nâng cấp đáng kể về hiệu năng, màn hình và camera được nâng cấp đáng kể. Nếu bạn muốn mua trả góp iPhone 8 Plus thì Shop 123 đang hỗ trợ khách hàng tham gia chương trình trả góp với thủ tục đơn giản và thời gian duyệt hồ sơ nhanh chóng.', '5000000', '2022-11-04 02:54:12'),
-('SP001', 'Iphone 14 Pro Max ', '2ed1bfecbbac9620b159ce5c0885f2d3.jpg', '5', 'Điện thoại', 'Iphone', 'máy mới chất lượng cao sang trọng', '30000000', '2022-10-14 12:56:15'),
-('SP002', 'Iphone 12 Pro Max ', 'iphone-12-pro-max-xam-new-600x600-200x200.jpg', '1', 'Điện thoại', 'Iphone', 'máy mới 100%', '23000000', '2022-11-08 02:20:32'),
+('SP001', 'Iphone 14 Pro Max ', '2ed1bfecbbac9620b159ce5c0885f2d3.jpg', '4', 'Điện thoại', 'Iphone', 'máy mới chất lượng cao sang trọng', '30000000', '2022-11-09 02:04:33'),
+('SP002', 'Iphone 12 Pro Max ', 'iphone-12-pro-max-xam-new-600x600-200x200.jpg', '5', 'Điện thoại', 'Iphone', 'máy mới 100%', '23000000', '2022-11-09 01:36:37'),
 ('SP003', 'xiaomi mi 12 pro max', 'Xiaomi-Redmi-Note-12-Pro-Max.jpg', '13', 'Điện thoại', 'Xiaomi', 'máy thuộc phân khúc tầm trung', '10000000', '2022-10-14 11:54:52'),
-('SP004', 'samsung s22 ultra', 'Galaxy-S22-Ultra-Black-600x600.jpg', '1', 'Điện thoại', 'Iphone', 'máy hàn quốc', '23000000', '2022-11-08 02:20:32'),
+('SP004', 'samsung s22 ultra', 'Galaxy-S22-Ultra-Black-600x600.jpg', '5', 'Điện thoại', 'Iphone', 'máy hàn quốc', '23000000', '2022-11-09 01:36:47'),
 ('SP005', 'Samsung Galaxy S21 Ultra 5G ', 'samsung-galaxy-s21-ultra-bac-600x600-1-200x200.jpg', '5', 'Điện thoại', 'Samsung', 'máy tốt', '20000000', '2022-10-14 11:54:52'),
 ('SP006', 'Xiaomi Redmi Note 11', 'Xiaomi-redmi-note-11-blue-600x600.jpg', '6', 'Điện thoại', 'Xiaomi', 'Redmi Note 11 (6GB/128GB) vừa được Xiaomi cho ra mắt, được xem là chiếc smartphone có giá tầm trung ấn tượng, với 1 cấu hình mạnh, cụm camera xịn sò, pin khỏe, sạc nhanh mà giá lại rất phải chăng.', '5290000', '2022-10-14 11:54:52'),
 ('SP007', 'Nokia G11 Plus', 'nokia-g11-plus-xanh-thumb-600x600.jpg', '7', 'Điện thoại', 'Nokia', 'máy bền', '9000000', '2022-10-14 11:54:52'),
@@ -216,14 +221,14 @@ INSERT INTO `san_pham` (`ma_san_pham`, `ten_san_pham`, `anh`, `so_luong`, `id_ki
 ('SP010', 'OPPO Reno7', 'OPPO-Reno7-4G-Thumb-cam-1-600x600.jpg', '7', 'Điện thoại', 'Oppo', 'máy rẻ', '5000000', '2022-10-14 11:54:52'),
 ('SP011', ' iPhone 11', 'iphone-xi-xanhla-600x600.jpg', '10', 'Điện thoại', 'Iphone', ' iPhone 11 64GB có mức giá rẻ nhất nhưng vẫn được nâng cấp mạnh mẽ như iPhone Xr ra mắt trước đó.', '11990000', '2022-10-14 11:54:52'),
 ('SP012', 'Xiaomi Redmi A1', 'Xiaomi-Redmi-A1-green-thumb-600x600.jpg', '5', 'Điện thoại', 'Xiaomi', 'Xiaomi Redmi A1 Xanh Lá được mở bán với mức giá cực kỳ ưu đãi dành cho người dùng nhằm mang lại những trải nghiệm tốt hơn trên các thiết bị giá rẻ, tích hợp bên trong là một viên pin có dung lượng lớn cùng màn hình đủ lớn để bạn có thể thỏa thích xem phim ', '2190000', '2022-10-14 11:54:52'),
-('SP013', 'Samsung Galaxy A53 5G', 'Samsung-Galaxy-A53-xanh-thumb-600x600.jpg', '2', 'Điện thoại', 'Samsung', 'Samsung Galaxy A53 5G 128GB trình làng với một thiết kế hiện đại, hiệu năng ổn định cùng một màn hình hiển thị sắc nét', '10000000', '2022-10-14 11:54:52'),
+('SP013', 'Samsung Galaxy A53 5G', 'Samsung-Galaxy-A53-xanh-thumb-600x600.jpg', '5', 'Điện thoại', 'Samsung', 'Samsung Galaxy A53 5G 128GB trình làng với một thiết kế hiện đại, hiệu năng ổn định cùng một màn hình hiển thị sắc nét', '10000000', '2022-11-09 01:37:03'),
 ('SP014', 'Samsung Galaxy A23 6GB', 'samsung-galaxy-a23-xanh-thumb-600x600.jpg', '7', 'Điện thoại', 'Iphone', 'Được Samsung cho ra mắt vào 03/2022 - Samsung Galaxy A23 6GB có một thiết kế trẻ trung cùng bộ thông số kỹ thuật khá ấn tượng trong tầm giá, đáp ứng nhu cầu sử dụng cả ngày một cách ổn định nhờ trang bị chipset đến từ nhà Qualcomm và một viên pin dung lượng', '6190000', '2022-10-14 11:54:52'),
-('SP015', 'Samsung Galaxy A33 5G 6GB', 'samsung-galaxy-a33-5g-xanh-thumb-600x600.jpg', '2', 'Điện thoại', 'Samsung', 'Samsung Galaxy A33 5G 6GB ra mắt vào ngày 17/03, được xem là bản cập nhật khá lớn so với thế hệ tiền nhiệm Galaxy A32 về thiết kế đến thông số kỹ thuật bên trong, nhằm mang đến vẻ ngoài đẹp mắt cũng như cạnh tranh trực tiếp ở phần hiệu năng đối với các đối thủ cùng phân khúc giá', '7290000', '2022-10-14 11:54:52'),
+('SP015', 'Samsung Galaxy A33 5G 6GB', 'samsung-galaxy-a33-5g-xanh-thumb-600x600.jpg', '5', 'Điện thoại', 'Samsung', 'Samsung Galaxy A33 5G 6GB ra mắt vào ngày 17/03, được xem là bản cập nhật khá lớn so với thế hệ tiền nhiệm Galaxy A32 về thiết kế đến thông số kỹ thuật bên trong, nhằm mang đến vẻ ngoài đẹp mắt cũng như cạnh tranh trực tiếp ở phần hiệu năng đối với các đối thủ cùng phân khúc giá', '7290000', '2022-11-09 01:37:14'),
 ('SP016', 'VIVO V25E', 'vivo-v25e-vang-thumb-1-2-600x600.jpg', '9', 'Điện thoại', 'ViVo', 'hàng mới về chất lượng\r\n', '8490000', '2022-10-14 11:54:52'),
 ('SP017', 'OPPO Reno8 Pro 5G', 'oppo-reno8-pro-thumb-xanh-1-600x600.jpg', '5', 'Điện thoại', 'Oppo', 'OPPO Reno8 Pro 5G ra mắt với sự đột phá về phần camera khi đây là thiết bị đầu tiên thuộc dòng Reno được tích hợp NPU MariSilicon X, được xem là NPU cao cấp nhất đến từ OPPO (2022) có khả năng xử lý hình ảnh đỉnh cao. ', '1899000', '2022-10-14 11:54:52'),
 ('SP018', 'Samsung Galaxy Z Fold3 5G', 'samsung-galaxy-z-fold-3-silver-1-600x600.jpg', '6', 'Điện thoại', 'Samsung', 'Sản phẩm sẽ là một “cú hit” của Samsung góp phần mang đến những trải nghiệm mới cho người dùng.', '3199000', '2022-10-14 11:54:52'),
-('SP019', ' Samsung Galaxy Z Flip4 5G', '600x600-thumb-qua-dac-biet-600x600.jpg', '5', 'Điện thoại', 'Samsung', 'Samsung Galaxy Z Flip4 5G Đặc Biệt được cho ra mắt coi như lời cảm ơn dành cho người dùng vì đã dành nhiều sự quan tâm đến với các thiết bị di động của hãng,', '23000000', '2022-10-14 11:54:52'),
-('SP020', 'Vivo X80', 'vivo-x80-xanh-thumb-600x600.jpg', '3', 'Điện thoại', 'ViVo', 'Vivo X80 được xem là thiết bị hướng đến đối tượng người dùng chuyên nhiếp ảnh trên điện thoại, bằng việc hợp tác cùng nhà sản xuất ống kính nổi tiếng mang thương hiệu ZEISS.', '19000000', '2022-10-14 11:54:52'),
+('SP019', ' Samsung Galaxy Z Flip4 5G', '600x600-thumb-qua-dac-biet-600x600.jpg', '4', 'Điện thoại', 'Samsung', 'Samsung Galaxy Z Flip4 5G Đặc Biệt được cho ra mắt coi như lời cảm ơn dành cho người dùng vì đã dành nhiều sự quan tâm đến với các thiết bị di động của hãng,', '23000000', '2022-11-09 08:36:29'),
+('SP020', 'Vivo X80', 'vivo-x80-xanh-thumb-600x600.jpg', '5', 'Điện thoại', 'ViVo', 'Vivo X80 được xem là thiết bị hướng đến đối tượng người dùng chuyên nhiếp ảnh trên điện thoại, bằng việc hợp tác cùng nhà sản xuất ống kính nổi tiếng mang thương hiệu ZEISS.', '19000000', '2022-11-09 01:37:25'),
 ('SP022', 'iPhone 12', 'iphone-12-blue-select-2020_cae77d30ac99435880af61542f7b1efd.webp', '10', 'Điện thoại', 'Iphone', 'iPhone 12 ra mắt với vai trò mở ra một kỷ nguyên hoàn toàn mới. Tốc độ mạng 5G siêu tốc, bộ vi xử lý A14 Bionic nhanh nhất thế giới smartphone, màn hình OLED tràn cạnh tuyệt đẹp và camera siêu chụp đêm, tất cả đều có mặt trên iPhone 12.\r\n\r\n', '16500000', '2022-10-14 12:27:00');
 
 -- --------------------------------------------------------
@@ -347,7 +352,7 @@ ALTER TABLE `bang_hieu`
 -- AUTO_INCREMENT cho bảng `chi_tiet_don_hang`
 --
 ALTER TABLE `chi_tiet_don_hang`
-  MODIFY `idCT` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `idCT` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT cho bảng `thong_tin_chi_tiet`

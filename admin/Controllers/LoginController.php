@@ -35,7 +35,7 @@ class LoginController extends BaseController
                 $result = $this->loginModel->Login();
                 if ($result >= 1) {
                     $_SESSION['admin_login'] = 'Chào Mừng Bạn Đến Với Trang Chủ';
-                    header('Location: http://localhost/doan-mvc/HomeController/index');
+                    header('Location: '.DIR_HTTP.'/HomeController/index');
                     exit();
                 } else {
                     $_SESSION['error'] = 'Kiểm Tra lại';

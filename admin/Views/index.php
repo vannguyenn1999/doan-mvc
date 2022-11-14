@@ -2,12 +2,12 @@
 <html lang="en">
 
 <head>
-  <title>Quản Lý SHOP 123</title>
+  <title>Quản Lý SHOP 666</title>
 
   <!-- Required meta tags -->
   <meta charset="utf-8">
-  <link rel="stylesheet" href="http://localhost/doan-mvc/admin/assets/css/style.css">
-  <link rel="stylesheet" href="http://localhost/doan-mvc/admin/assets/css/css.css">
+  <link rel="stylesheet" href="<?php echo DIR_HTTP ?>/admin/assets/css/style.css">
+  <link rel="stylesheet" href="<?php echo DIR_HTTP ?>/admin/assets/css/css.css">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="shortcut icon" href="https://img.freepik.com/vector-premium/logo-apple-gradient-estilo-colorido_116762-694.jpg" />
 
@@ -40,7 +40,7 @@
   if (!isset($_SESSION['admin_login'])) {
     $message = "Vui Lòng Đăng Nhập";
     echo "<script type='text/javascript'>alert('$message');</script>";
-    header('Location: http://localhost/doan-mvc/LoginController/Login');
+    header('Location: '.DIR_HTTP.'/LoginController/Login');
     exit();
   }
 

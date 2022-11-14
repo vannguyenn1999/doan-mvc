@@ -36,7 +36,7 @@
                 <div class="form-group">
                     <button type="submit" name="submit" class="btn btn-primary">Sửa Thông Tin</button>
                     <button type="reset" class="btn btn-primary">Làm Mới</button>
-                    <a class="btn btn-primary" href="http://localhost/doan-mvc/DetailController/Index" role="button">Trở Lại</a>
+                    <a class="btn btn-primary" href="<?php echo DIR_HTTP ?>/DetailController/Index" role="button">Trở Lại</a>
                 </div>
 
             </form>

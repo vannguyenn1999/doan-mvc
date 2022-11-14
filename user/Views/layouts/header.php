@@ -7,7 +7,7 @@
                     <i class="fas fa-phone-alt"></i> 0528448515
                 </a>
                 <a class="info-contact" href="mailto:mid0203@gmail.com">
-                    <i class="far fa-envelope"></i> mid0203@gmail.com
+                    <i class="far fa-envelope"></i> miss0203@gmail.com
                 </a>
             </div>
             <div class="col-md-8 col-sm-8 col-xs-12">

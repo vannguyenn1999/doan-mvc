@@ -93,11 +93,9 @@
                 <div class="form-group">
                     <button type="submit" name="submit" class="btn btn-primary">Thêm Sản Phẩm</button>
                     <button type="reset" class="btn btn-primary">Làm Mới</button>
-                    <a class="btn btn-primary" href="http://localhost/doan-mvc/ProductController/Index" role="button">Trở Lại</a>
+                    <a class="btn btn-primary" href="<?php echo DIR_HTTP ?>/ProductController/Index" role="button">Trở Lại</a>
                 </div>
             </form>
         </table>
     </div>
 </div>
-<script src="http://localhost/doan-mvc/admin/assets/js/validate.js"></script>
-<script src="http://localhost/doan-mvc/admin/assets/js/add-product.js"></script>

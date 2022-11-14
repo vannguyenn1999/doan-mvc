@@ -4,5 +4,5 @@ require_once "./admin/DB/Database.php";
 require_once "./admin/Core/BaseController.php";
 require_once "./admin/Core/BaseModel.php";
 
-
+const DIR_HTTP = 'http://localhost/doan-mvc';
 ?>

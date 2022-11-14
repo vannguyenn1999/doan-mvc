@@ -9,7 +9,7 @@
                         <?php
                         if ($data['data'][0] == null) {
                             $_SESSION['error'] = 'Không có sản phẩm nào cần thêm thông tin mới';
-                            header('Location: http://localhost/doan-mvc/DetailController/Index');
+                            header('Location: '.DIR_HTTP.'/DetailController/Index');
                             exit();
                         } else {
                             for ($i = 0; $i < count($data['data']); $i++) { ?>
@@ -78,7 +78,7 @@
                 <div class="form-group">
                     <button type="submit" name="submit" class="btn btn-primary">Thêm Thông Tin Sản Phẩm</button>
                     <button type="reset" class="btn btn-primary">Làm Mới</button>
-                    <a class="btn btn-primary" href="http://localhost/doan-mvc/DetailController/Index" role="button">Trở Lại</a>
+                    <a class="btn btn-primary" href="<?php echo DIR_HTTP ?>/DetailController/Index" role="button">Trở Lại</a>
 
                 </div>
             </form>`

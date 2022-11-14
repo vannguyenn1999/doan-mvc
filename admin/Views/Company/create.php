@@ -25,7 +25,7 @@
                 <div class="form-group">
                     <button type="submit" name="submit" class="btn btn-primary">Thêm Hãng Sản Phẩm</button>
                     <button type="reset" class="btn btn-primary">Làm Mới</button>
-                    <a class="btn btn-primary" href="http://localhost/doan-mvc/CompanyController/Index" role="button">Trở Lại</a>
+                    <a class="btn btn-primary" href="<?php echo DIR_HTTP ?>/CompanyController/Index" role="button">Trở Lại</a>
 
                 </div>
             </form>

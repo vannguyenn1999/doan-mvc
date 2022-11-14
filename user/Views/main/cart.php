@@ -1,8 +1,5 @@
 <div class="main-content">
     <?php
-    // echo "<pre>";
-    // print_r($_SESSION['cart']);
-    // echo "</pre>";
     if(isset($_SESSION['cart'])){
         $data = $_SESSION['cart'];
     }
@@ -32,14 +29,14 @@
                                    
                                     <td>
                                         <a href="" class="content-product-a">
-                                            <img class="product-avatar img-responsive" src="http://localhost/doan-mvc/admin/assets/image/uploads/<?php echo $r['anh'] ?>" height="80">
+                                            <img class="product-avatar img-responsive" src="<?php echo DIR_HTTP ?>/admin/assets/image/uploads/<?php echo $r['anh'] ?>" height="80">
                                             <span class="content-product">
                                                 <?php echo $r['ten_san_pham'] ?>
                                             </span>
                                         </a>
                                     </td>
                                     <td>
-                                        <input type="number" min="0" max="<?php echo $r['so_luong'] ?>" name="sl" class="product-amount form-control" value="<?php echo $r['tyt'] ?>">
+                                        <input type="number" min="0" max="<?php echo $r['so_luong'] ?>" name="sl" class="product-amount form-control" value="<?php echo isset($r['tyt']) ? $r['tyt'] : 1 ?>">
                                     
                                     </td>
                                     <td>
@@ -49,7 +46,7 @@
                                         <?php  echo number_format($r['gia'] * $r['tyt']); ?> đ
                                     </td>
                                     <td>
-                                        <a class="content-product-a" onclick="return confirm('bạn có muốn xoá sản phẩm này không ?')" href="http://localhost/doan-mvc/UserHomeController/Remove?id=<?php echo $r['ma_san_pham'] ?>">
+                                        <a class="content-product-a" onclick="return confirm('bạn có muốn xoá sản phẩm này không ?')" href="<?php echo DIR_HTTP ?>/UserHomeController/Remove?id=<?php echo $r['ma_san_pham'] ?>">
                                             <i class="fa fa-trash"></i>
                                         </a>
                                     </td>
@@ -80,7 +77,7 @@
                             <tr>
                                 <td colspan="5" class="product-payment">
                                     <input type="submit" name="submit" value="Cập nhật lại giá" class="btn btn-primary">
-                                    <a href="http://localhost/doan-mvc/UserHomeController/Payment" class="btn btn-success">Đến trang thanh toán</a>
+                                    <a href="<?php echo DIR_HTTP ?>/UserHomeController/Payment" class="btn btn-success">Đến trang thanh toán</a>
                                 </td>
                             </tr>
                         </tbody>

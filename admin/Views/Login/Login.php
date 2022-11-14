@@ -20,12 +20,10 @@ if (isset($_SESSION['error'])) {
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link rel="stylesheet" href="http://localhost/doan-mvc/admin/assets/css/login.css">
+    <link rel="stylesheet" href="<?php echo DIR_HTTP ?>/admin/assets/css/login.css">
     <link rel="shortcut icon" href="https://img.freepik.com/vector-premium/logo-apple-gradient-estilo-colorido_116762-694.jpg" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- <script src="http://localhost/doan-mvc/admin/assets/js/validate.js"></script>
-    <script src="http://localhost/doan-mvc/admin/assets/js/login.js"></script> -->
     <title>Đăng Nhập Hệ Thông</title>
 </head>
 
@@ -56,13 +54,11 @@ if (isset($_SESSION['error'])) {
             </div>
             <div class="form-group">
                 <input type="submit" name="submit" value="Đăng nhập" class="form-submit">
-                <button class="form-submit"><a href="http://localhost/doan-mvc">Trang Chủ</a></button>
+                <button class="form-submit"><a href="<?php echo DIR_HTTP ?>">Trang Chủ</a></button>
             </div>
         </form>
 
     </div>
-    <!-- <script src="http://localhost/doan-mvc/admin/assets/js/validate.js"></script>
-    <script src="http://localhost/doan-mvc/admin/assets/js/login.js"></script> -->
 </body>
 
 </html>

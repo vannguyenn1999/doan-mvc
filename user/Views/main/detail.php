@@ -5,18 +5,17 @@
             <div class="detail-content-wrap con-md-8 col-sm-8 col-xs-12">
                 <div class="product-info-wrap">
                     <div class="product-image-info">
-                        <img src="http://localhost/doan-mvc/admin/assets/image/uploads/<?php echo $data['detail']['anh'] ?>" width="260" title="Samsung Note 10">
+                        <img src="<?php echo DIR_HTTP ?>/admin/assets/image/uploads/<?php echo $data['detail']['anh'] ?>" width="260" title="Samsung Note 10">
                     </div>
                     <div class="product-info">
                         <h3 class="product-title"> <?php echo $data['detail']['ten_san_pham'] ?></h3>
                         <div class="product-price">
-                            
                             <?php echo number_format($data['detail']['gia']) ?> đ
                         </div>
                         <div class="product-cart">
-                            <a href="http://localhost/doan-mvc/UserHomeController/Cart?id=<?php echo $data['detail']['ma_san_pham'] ?>" class="">
+                            <a href="<?php echo DIR_HTTP ?>/UserHomeController/Cart?id=<?php echo $data['detail']['ma_san_pham'] ?>" class="">
                                 <span data-id="92084" class="add-to-cart-now">
-                                    <i class="fa fa-cart-plus"></i> Thêm vào giỏ</span>
+                                <i class="fa fa-cart-plus"></i> Thêm vào giỏ</span>
                             </a>
                         </div>
 
@@ -49,9 +48,9 @@
                 <ul class="news-relative">
                     <?php foreach ($data['more'] as $more) : ?>
                         <li>
-                            <a href='http://localhost/doan-mvc/UserHomeController/Detail?id=<?php echo $more['ma_san_pham'] ?>' class="news-relative-link">
+                            <a href='<?php echo DIR_HTTP ?>/UserHomeController/Detail?id=<?php echo $more['ma_san_pham'] ?>' class="news-relative-link">
                                 <span class="news-relative-img">
-                                    <img src="http://localhost/doan-mvc/admin/assets/image/uploads/<?php echo $more['anh'] ?>" alt="no-image" title="SamSung Note 10" class="detail-relative-img" />
+                                    <img src="<?php echo DIR_HTTP ?>/admin/assets/image/uploads/<?php echo $more['anh'] ?>" alt="no-image" title="SamSung Note 10" class="detail-relative-img" />
                                 </span>
                                 <span class="detail-relative-content">
                                     <?php echo $more['ten_san_pham'] ?>
