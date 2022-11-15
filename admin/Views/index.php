@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-  <title>Quản Lý SHOP 666</title>
+  <title><?php echo $this->title_page ?></title>
 
   <!-- Required meta tags -->
   <meta charset="utf-8">
@@ -40,19 +40,17 @@
   if (!isset($_SESSION['admin_login'])) {
     $message = "Vui Lòng Đăng Nhập";
     echo "<script type='text/javascript'>alert('$message');</script>";
-    header('Location: '.DIR_HTTP.'/LoginController/Login');
+    header('Location: ' . DIR_HTTP . '/LoginController/Login');
     exit();
   }
-
-
   require_once 'header.php';
-
-
   ?>
-
-
-
-
+  <script src="https://cdn.ckeditor.com/4.20.0/standard/ckeditor.js"></script>
+  <script>
+    $(document).ready(function() {
+      CKEDITOR.replace('thongtin')
+    });
+  </script>
 </body>
 
 </html>

@@ -9,6 +9,7 @@ class BillController extends BaseController {
     }
 
     public function Index(){
+        $this->title_page = 'Quản Lý Hoá Đơn Đã Xử Lý';
         $this->main_content = $this->billModel->getTable();
         $this->view('','index');
         $this->view('Bill','main',$this->main_content);
@@ -20,6 +21,8 @@ class BillController extends BaseController {
     }
 
     public function Detail(){
+        $this->title_page = 'Chi Tiết Hoá Đơn Đã Xử Lý';
+
         $check = $this->billModel->getMaHD();
 
         $id = $_GET['id'];

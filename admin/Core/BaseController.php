@@ -2,7 +2,8 @@
 
 class BaseController
 
-{
+{   
+    public $title_page;
     protected $main_content;
     public $error = [];
     public function model($model)

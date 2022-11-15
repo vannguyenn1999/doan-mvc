@@ -8,7 +8,7 @@
       href="<?php echo DIR_HTTP ?>/admin/assets/css/404.css"
     />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ERROR 404</title>
+    <title>Không Tìm Thấy Trang</title>
   </head>
   <body>
     <div class="container">

@@ -2,8 +2,6 @@
     <h1 style="margin-top: 70px ;">Thống Kê Hoá Đơn</h1>
     <a href="<?php echo DIR_HTTP ?>/BillController/Index" class="btn btn-success" id="a_func"> <i class="fa-solid fa-check"></i> Hoá Đơn Đã Xử Lý</a>
     <a href="<?php echo DIR_HTTP ?>/BillController/Handle" class="btn btn-success" id="a_func"><i class="fa-regular fa-flag"></i> Hoá Đơn Chờ Xử Lý </a>
-    <a href="<?php echo DIR_HTTP ?>/StatisticalController/Chart" class="btn btn-success" id="a_func"><i class="fa-solid fa-chart-line"></i>  Sản Phẩm Sắp Hết Hàng </a>
-
     <div id="piechart" style="width: 900px; height: 600px; margin-left: 150px"></div><br>
     <!-- <div id="piechart" style="width: 900px; height: 600px; margin-left: 150px"></div> -->
 

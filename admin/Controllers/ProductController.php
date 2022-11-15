@@ -17,7 +17,8 @@ class ProductController extends BaseController
         $this->brandModel = new BrandModel();
     }
     public function Index()
-    {
+    {   
+        $this->title_page = 'Danh Sách Sản Phẩm';
         $product = $this->productModel->getTable();
         $this->view("", 'index');
         $this->main_content = $product;
@@ -27,6 +28,8 @@ class ProductController extends BaseController
 
     public function AddProduct()
     {
+        $this->title_page = 'Thêm Sản Phẩm';
+
         if (isset($_POST['submit'])) {
             $ma_san_pham = $_POST['masp'];
             $ten_san_pham = $_POST['tensp'];
@@ -126,6 +129,8 @@ class ProductController extends BaseController
 
     public function UpdateProduct()
     {
+        $this->title_page = 'Thông Tin Sản Phẩm';
+
         $check = $this->productModel->getMaSP();
 
         $id = $_GET['id'];

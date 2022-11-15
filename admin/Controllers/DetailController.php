@@ -10,7 +10,9 @@ class DetailController extends BaseController
         $this->detailModel = new DetailModel();
     }
     public function Index()
-    {
+    {   
+        $this->title_page = 'Danh Sách Thông Tin Chi Tiết Sản Phẩm';
+
         $this->main_content =  $this->detailModel->getTable();
         $this->view("", 'index');
         $this->view("Detail", 'main', $this->main_content);
@@ -24,7 +26,9 @@ class DetailController extends BaseController
     }
 
     public function UpdateDetail()
-    {
+    {   
+        $this->title_page = 'Chi Tiết Sản Phẩm';
+
 
         $check = $this->detailModel->getMaSP();
 
@@ -65,6 +69,7 @@ class DetailController extends BaseController
 
     public function AddDetail()
     {
+        $this->title_page = 'Thêm Thông Tin Chi Tiết Sản Phẩm';
         $result = $this->detailModel->getSP();
        
 
@@ -120,7 +125,8 @@ class DetailController extends BaseController
     }
 
     public function SearchDetail()
-    {
+    {   
+        $this->title_page = 'Tìm Kiếm Thông Tin Chi Tiết Sản Phẩm';
         $result = [0, []];
         if (isset($_POST['submit'])) {
             $search = addslashes($_POST['search']);
@@ -148,12 +154,4 @@ class DetailController extends BaseController
         exit();
     }
 
-    public function test()
-    {
-        // $result = [];
-        $result = $this->detailModel->check();
-
-
-        $this->view('Detail', '1', $result);
-    }
 }

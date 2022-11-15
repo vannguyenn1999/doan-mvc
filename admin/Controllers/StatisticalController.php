@@ -14,6 +14,8 @@ class StatisticalController extends BaseController {
     }
 
     public function Index(){
+        $this->title_page = 'Thống Kê';
+
         $result = $this->statisticalModel->getAll();
         foreach($result as $row){
             $data[] = $row;
@@ -22,13 +24,5 @@ class StatisticalController extends BaseController {
         $this->view('Statistical','main', $data);
     }
 
-    public function Chart(){
-        $result = $this->statisticalModel->getNum();
-        foreach($result as $row){
-            $data[] = $row;
-        }
-        $this->view('','index');
-        $this->view('Statistical','chart',$data);
-
-    }
+  
 }

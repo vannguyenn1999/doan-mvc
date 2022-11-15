@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Shop 666</title>
+    <title><?php echo $this->title_page ?></title>
     <link rel="shortcut icon" href="http://localhost/doan-mvc/user/assets/images/logo.webp" />
     <link rel="canonical" href="http://localhost" />
     <link rel="alternate" href="http://localhost" hreflang="vi-vn" />

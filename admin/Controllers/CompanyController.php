@@ -11,6 +11,8 @@ class CompanyController extends BaseController
     }
     public function Index()
     {
+        $this->title_page = 'Quản Lý Hãng Điện Thoại';
+
         $this->main_content = $this->companyModel->getTable();
         $this->view('', 'index');
         $this->view('Company', 'main', $this->main_content);
@@ -45,23 +47,27 @@ class CompanyController extends BaseController
                 } else {
                     $_SESSION['error'] = 'Thêm thất bại';
                 }
-                header('Location: '.DIR_HTTP.'/CompanyController/Index');
+                header('Location: ' . DIR_HTTP . '/CompanyController/Index');
                 exit();
             }
         }
+        $this->title_page = 'Thêm Hãng Điện Thoại';
         // $this->productModel->addProduct($data);
         $this->view("", 'index');
 
-        $this->view('Company', 'create',$this->error);
+
+        $this->view('Company', 'create', $this->error);
     }
 
     public function UpdateCompany()
     {
+        $this->title_page = 'Sửa Thông Tin Hãng Điện Thoại';
+
         $id = $_GET['id'];
         $check = $this->companyModel->check();
-        if (empty($id) || !in_array($id,$check)) {
+        if (empty($id) || !in_array($id, $check)) {
             $_SESSION['error'] = 'id không hợp lệ';
-            header('Location: '.DIR_HTTP.'/CompanyController/Index');
+            header('Location: ' . DIR_HTTP . '/CompanyController/Index');
             exit();
         }
         if (isset($_POST['submit'])) {
@@ -75,7 +81,7 @@ class CompanyController extends BaseController
             } else {
                 $_SESSION['error'] = 'Sửa thất bại';
             }
-            header('Location: '.DIR_HTTP.'/CompanyController/Index');
+            header('Location: ' . DIR_HTTP . '/CompanyController/Index');
             exit();
         }
         $this->GetCompany($id);
@@ -96,7 +102,7 @@ class CompanyController extends BaseController
         } else {
             $_SESSION['error'] = 'Xóa thất bại';
         }
-        header('Location: '.DIR_HTTP.'/CompanyController/Index');
+        header('Location: ' . DIR_HTTP . '/CompanyController/Index');
         exit();
     }
 }

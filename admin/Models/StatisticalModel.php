@@ -14,14 +14,5 @@ class StatisticalModel extends BaseModel
         return $result;
     }
 
-    public function getNum()
-    {
-        $obj_sql = $this->connect->prepare("SELECT ten_san_pham , so_luong FROM san_pham WHERE so_luong < 5");
-        if ($obj_sql->execute()) {
-            if ($obj_sql->rowCount() > 0) {
-                $result = $obj_sql->fetchAll(PDO::FETCH_ASSOC);
-            }
-        }
-        return $result;
-    }
+   
 }
