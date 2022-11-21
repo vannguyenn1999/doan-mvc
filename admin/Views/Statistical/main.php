@@ -1,7 +1,12 @@
 <div class="container">
-    <h1 style="margin-top: 70px ;">Thống Kê Hoá Đơn</h1>
+    <h1 style="margin-top: 70px ;">Thống Kê</h1>
     <a href="<?php echo DIR_HTTP ?>/BillController/Index" class="btn btn-success" id="a_func"> <i class="fa-solid fa-check"></i> Hoá Đơn Đã Xử Lý</a>
     <a href="<?php echo DIR_HTTP ?>/BillController/Handle" class="btn btn-success" id="a_func"><i class="fa-regular fa-flag"></i> Hoá Đơn Chờ Xử Lý </a>
+    <a href="<?php echo DIR_HTTP ?>/StatisticalController/mostProduct" class="btn btn-success" id="a_func"><i class="fa fa-line-chart"></i> Sản Phẩm Bán Chạy Nhất </a>
+    <a href="<?php echo DIR_HTTP ?>/StatisticalController/StillProduct" class="btn btn-success" id="a_func"><i class="fa-brands fa-product-hunt"></i> Sản Phẩm Còn Lại </a>
+    <a href="<?php echo DIR_HTTP ?>/StatisticalController/Turnover" class="btn btn-success" id="a_func"><i class="fa-solid fa-hand-holding-dollar"></i> Doanh Thu Cửa Hàng </a>
+
+
     <div id="piechart" style="width: 900px; height: 600px; margin-left: 150px"></div><br>
     <!-- <div id="piechart" style="width: 900px; height: 600px; margin-left: 150px"></div> -->
 

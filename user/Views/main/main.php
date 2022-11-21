@@ -4,7 +4,7 @@
         <!-- Sản Phẩm -->
         <div class="product container">
             <h1 class="post-list-title">
-                <a href="<?php echo DIR_HTTP ?>/UserHomeController/Product" class="link-category-item">Sản phẩm mới nhất</a>
+                <a href="<?php echo DIR_HTTP ?>/UserHomeController/Product" class="link-category-item">Sản Phẩm Bán Chạy Nhất</a>
             </h1>
             <div class="link-secondary-wrap row">
                 <?php foreach ($data as $product) : ?>

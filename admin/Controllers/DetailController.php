@@ -10,13 +10,23 @@ class DetailController extends BaseController
         $this->detailModel = new DetailModel();
     }
     public function Index()
-    {   
+    {
+        if (isset($_GET['trang'])) {
+            $id = $_GET['trang'];
+            if ($_GET['trang'] < 1) {
+                $id = 1;
+            }
+        } else {
+            $id = 1;
+        }
         $this->title_page = 'Danh Sách Thông Tin Chi Tiết Sản Phẩm';
 
-        $this->main_content =  $this->detailModel->getTable();
+        $this->main_content =  $this->detailModel->getTable($id);
         $this->view("", 'index');
         $this->view("Detail", 'main', $this->main_content);
     }
+
+
 
     public function GetDetail($id)
     {
@@ -26,7 +36,7 @@ class DetailController extends BaseController
     }
 
     public function UpdateDetail()
-    {   
+    {
         $this->title_page = 'Chi Tiết Sản Phẩm';
 
 
@@ -35,7 +45,7 @@ class DetailController extends BaseController
         $id = $_GET['id'];
         if (empty($id) || !in_array($id, $check)) {
             $_SESSION['error'] = 'id không hợp lệ';
-            header('Location: '.DIR_HTTP.'/DetailController/Index');
+            header('Location: ' . DIR_HTTP . '/DetailController/Index');
             exit();
         }
 
@@ -60,7 +70,7 @@ class DetailController extends BaseController
             } else {
                 $_SESSION['error'] = 'Sửa thất bại';
             }
-            header('Location: '.DIR_HTTP.'/DetailController/Index');
+            header('Location: ' . DIR_HTTP . '/DetailController/Index');
             exit();
         }
 
@@ -71,7 +81,7 @@ class DetailController extends BaseController
     {
         $this->title_page = 'Thêm Thông Tin Chi Tiết Sản Phẩm';
         $result = $this->detailModel->getSP();
-       
+
 
         if (isset($_POST['submit'])) {
             $masp = $_POST['masp'];
@@ -112,7 +122,7 @@ class DetailController extends BaseController
                 } else {
                     $_SESSION['error'] = 'Thêm thất bại';
                 }
-                header('Location: '.DIR_HTTP.'/DetailController/Index');
+                header('Location: ' . DIR_HTTP . '/DetailController/Index');
                 exit();
             }
         }
@@ -125,7 +135,7 @@ class DetailController extends BaseController
     }
 
     public function SearchDetail()
-    {   
+    {
         $this->title_page = 'Tìm Kiếm Thông Tin Chi Tiết Sản Phẩm';
         $result = [0, []];
         if (isset($_POST['submit'])) {
@@ -150,8 +160,7 @@ class DetailController extends BaseController
         } else {
             $_SESSION['error'] = 'Xóa thất bại';
         }
-        header('Location: '.DIR_HTTP.'/DetailController/Index');
+        header('Location: ' . DIR_HTTP . '/DetailController/Index');
         exit();
     }
-
 }

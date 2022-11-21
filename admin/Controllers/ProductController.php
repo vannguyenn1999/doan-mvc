@@ -18,8 +18,16 @@ class ProductController extends BaseController
     }
     public function Index()
     {   
+        if (isset($_GET['trang'])) {
+            $id = $_GET['trang'];
+            if ($_GET['trang'] < 1) {
+              $id = 1;
+            }
+          } else {
+            $id = 1;
+          }
         $this->title_page = 'Danh Sách Sản Phẩm';
-        $product = $this->productModel->getTable();
+        $product = $this->productModel->getTable($id);
         $this->view("", 'index');
         $this->main_content = $product;
         $this->view("Product", 'main', $this->main_content);

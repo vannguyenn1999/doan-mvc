@@ -13,18 +13,18 @@
             <div class="col-md-8 col-sm-8 col-xs-12">
                 <ul class="header-navigation" data-show-menu-on-mobile="">
                     <li>
-                        <a href="http://localhost/doan-mvc/UserHomeController/Contact" class="material-button submenu-toggle">Liên hệ</a>
+                        <a href="<?php echo DIR_HTTP ?>/UserHomeController/Contact" class="material-button submenu-toggle">Liên hệ</a>
                     </li>
                     <li>
                         <a href="#" class="link-icon-laguage material-button submenu-toggle">
-                            <img src="http://localhost/doan-mvc/user/assets/images/icon-flag-vn.png" class="icon-language">
+                            <img src="<?php echo DIR_HTTP ?>/user/assets/images/icon-flag-vn.png" class="icon-language">
                         </a>
                         <a href="#" class="link-icon-laguage material-button submenu-toggle">
-                            <img src="http://localhost/doan-mvc/user/assets/images/icon-flag-en.png" class="icon-language">
+                            <img src="<?php echo DIR_HTTP ?>/user/assets/images/icon-flag-en.png" class="icon-language">
                         </a>
                     </li>
                     <li>
-                        <a href="http://localhost/doan-mvc/UserHomeController/Cart" class="cart-link">
+                        <a href="<?php echo DIR_HTTP ?>/UserHomeController/Cart" class="cart-link">
                             <i class="fa fa-cart-plus"></i>
                             <span class="cart-amount">
                                 <?php if (isset($_SESSION['cart'])) {
@@ -63,24 +63,24 @@
             <!-- header left menu start -->
             <ul class="header-navigation" data-show-menu-on-mobile>
                 <li>
-                    <a href="http://localhost/doan-mvc" class="home-link material-button submenu-toggle">
-                        <img src="http://localhost/doan-mvc/user/assets/images/logo.webp" alt="" height="50px" width="50px" /></a>
+                    <a href="<?php echo DIR_HTTP ?>" class="home-link material-button submenu-toggle">
+                        <img src="<?php echo DIR_HTTP ?>/user/assets/images/logo.webp" alt="" height="50px" width="50px" /></a>
                     </a>
                 </li>
                 <li>
-                    <a href="http://localhost/doan-mvc" class="material-button submenu-toggle">Trang chủ</a>
+                    <a href="<?php echo DIR_HTTP ?>" class="material-button submenu-toggle">Trang chủ</a>
                 </li>
 
                 <li>
-                    <a href="http://localhost/doan-mvc/UserHomeController/Product" class="material-button submenu-toggle">Sản phẩm</a>
+                    <a href="<?php echo DIR_HTTP ?>/UserHomeController/Product" class="material-button submenu-toggle">Sản phẩm</a>
                 </li>
                 <li>
-                    <a href="http://localhost/doan-mvc/UserHomeController/Cart" class="material-button submenu-toggle">Giỏ hàng</a>
+                    <a href="<?php echo DIR_HTTP ?>/UserHomeController/Cart" class="material-button submenu-toggle">Giỏ hàng</a>
                 <li>
-                    <a href="http://localhost/doan-mvc/UserHomeController/Service" class="material-button submenu-toggle">Dịch Vụ</a>
+                    <a href="<?php echo DIR_HTTP ?>/UserHomeController/Service" class="material-button submenu-toggle">Dịch Vụ</a>
                 </li>
                 <li>
-                    <a href="http://localhost/doan-mvc/UserHomeController/Quality" class="material-button submenu-toggle">Chất Lượng</a>
+                    <a href="<?php echo DIR_HTTP ?>/UserHomeController/Quality" class="material-button submenu-toggle">Chất Lượng</a>
                 </li>
                 </li>
 
@@ -91,7 +91,7 @@
             <!-- header right menu start -->
             <ul class="header-navigation">
                 <li>
-                    <a href="http://localhost/doan-mvc/UserHomeController/Cart" class="">
+                    <a href="<?php echo DIR_HTTP ?>/UserHomeController/Cart" class="">
                         <i class="fa fa-cart-plus"></i>
                         <span class="cart-amount-mobile">
                             <?php if (isset($_SESSION['cart'])) {
@@ -132,19 +132,19 @@
         <!-- sidebar menu start -->
         <ul class="sidebar-menu">
             <li>
-                <a href="http://localhost/doan-mvc" class="material-button submenu-toggle">Trang chủ</a>
+                <a href="<?php echo DIR_HTTP ?>" class="material-button submenu-toggle">Trang chủ</a>
             </li>
             <li>
-                <a href="http://localhost/doan-mvc/UserHomeController/Product" class="material-button submenu-toggle">Sản phẩm</a>
+                <a href="<?php echo DIR_HTTP ?>/UserHomeController/Product" class="material-button submenu-toggle">Sản phẩm</a>
             </li>
             <li>
-                <a href="http://localhost/doan-mvc/UserHomeController/Cart" class="material-button submenu-toggle">Giỏ Hàng</a>
+                <a href="<?php echo DIR_HTTP ?>/UserHomeController/Cart" class="material-button submenu-toggle">Giỏ Hàng</a>
             </li>
             <li>
-                <a href="http://localhost/doan-mvc/UserHomeController/Service" class="material-button submenu-toggle">Dịch Vụ</a>
+                <a href="<?php echo DIR_HTTP ?>/UserHomeController/Service" class="material-button submenu-toggle">Dịch Vụ</a>
             </li>
             <li>
-                <a href="http://localhost/doan-mvc/UserHomeController/Quality" class="material-button submenu-toggle">Chất Lượng</a>
+                <a href="<?php echo DIR_HTTP ?>/UserHomeController/Quality" class="material-button submenu-toggle">Chất Lượng</a>
             </li>
 
         </ul>

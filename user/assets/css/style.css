@@ -4564,6 +4564,7 @@ button:focus {
 }
 
 ul.pagination a {
+    align-items: center;
     color: #21431e;
     display: inline-block;
     border: 1px solid #cde0dc;

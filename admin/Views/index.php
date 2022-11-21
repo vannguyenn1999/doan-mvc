@@ -51,6 +51,7 @@
       CKEDITOR.replace('thongtin')
     });
   </script>
+  
 </body>
 
 </html>

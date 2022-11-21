@@ -14,17 +14,18 @@ class DetailModel extends BaseModel
     public $dung_luong;
     public $giam_gia;
 
-    public function getTable()
+    public function getTable($id)
     {
+        $page = ($id - 1) * 5;
         $obj_select = $this->connect
             ->prepare("SELECT san_pham.ten_san_pham , thong_tin_chi_tiet.* FROM san_pham INNER JOIN thong_tin_chi_tiet ON san_pham.ma_san_pham = thong_tin_chi_tiet.ma_san_pham
-                    ORDER BY create_at DESC");
+                    ORDER BY create_at DESC LIMIT $page ,5");
         $arr_select = [];
         $obj_select->execute($arr_select);
         $result = $obj_select->fetchAll(PDO::FETCH_ASSOC);
         return $result;
     }
-
+   
 
     public function check()
     {

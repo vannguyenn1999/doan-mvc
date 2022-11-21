@@ -23,7 +23,9 @@ class UserModel extends BaseModel
 
     public function getTable()
     {
-        $obj_select = $this->connect->prepare("SELECT * FROM san_pham ORDER BY create_at DESC LIMIT 8");
+        $obj_select = $this->connect->prepare("SELECT san_pham.* , chi_tiet_don_hang.ma_san_pham , chi_tiet_don_hang.so_luong FROM chi_tiet_don_hang
+        INNER JOIN san_pham ON san_pham.ma_san_pham = chi_tiet_don_hang.ma_san_pham WHERE chi_tiet_don_hang.so_luong >= 3 LIMIT 8;
+        ");
         $arr = [];
         $obj_select->execute($arr);
         $result = $obj_select->fetchAll(PDO::FETCH_ASSOC);

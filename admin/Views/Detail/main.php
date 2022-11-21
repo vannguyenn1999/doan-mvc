@@ -16,7 +16,7 @@
                     <th>CAM SAU</th>
                     <TH>CHIP</TH>
                     <TH>DUNG LƯỢNG</TH>
-                    <TH>GIẢM GIÁ</TH>
+                    <TH>NGÀY TẠO</TH>
                     <TH colspan="2">THAO TÁC</TH>
                 </tr>
             </thead>
@@ -29,7 +29,7 @@
                         <td><?php echo $r['cam_sau'] ?></td>
                         <td><?php echo $r['ram'] ?></td>
                         <td><?php echo $r['dung_luong'] ?></td>
-                        <td><?php echo $r['giam_gia'] ?></td>
+                        <!-- <td><?php echo $r['giam_gia'] ?></td> -->
                         <td><?php echo $r['create_at'] ?></td>
                         <td><a href="<?php echo DIR_HTTP ?>/DetailController/UpdateDetail?id=<?php echo $r['ma_san_pham'] ?>" class="btn btn-info">Sửa</a></td>
                         <td><a onclick="return confirm('bạn có muốn xoá thông tin này không ??')" href="<?php echo DIR_HTTP ?>/DetailController/DeleteDetail/<?php echo $r['ma_san_pham'] ?>" class="btn btn-danger"> <i class="fa fa-trash"></i></a></td>
@@ -40,5 +40,18 @@
             </tbody>
 
         </table>
+
+        <nav aria-label="Page navigation example">
+            <ul class="pagination">
+                <li class="page-item"><a class="page-link" href="<?php echo DIR_HTTP ?>/DetailController/Index?trang=<?php echo ($trang - 1) ?>">Sau</a></li>
+                <li class="page-item"><a class="page-link" href="<?php echo DIR_HTTP ?>/DetailController/Index?trang=1">1</a></li>
+                <li class="page-item"><a class="page-link" href="<?php echo DIR_HTTP ?>/DetailController/Index?trang=2">2</a></li>
+                <li class="page-item"><a class="page-link" href="<?php echo DIR_HTTP ?>/DetailController/Index?trang=3">3</a></li>
+                <li class="page-item"><a class="page-link" href="<?php echo DIR_HTTP ?>/DetailController/Index?trang=4">4</a></li>
+                <!-- <li class="page-item"><a class="page-link" href="<?php echo DIR_HTTP ?>/DetailController/Index?trang=5">5</a></li> -->
+                <!-- <li class="page-item"><a class="page-link" href="<?php echo DIR_HTTP ?>/DetailController/Index?trang=6">6</a></li> -->
+                <li class="page-item"><a class="page-link" href="<?php echo DIR_HTTP ?>/UserHomeController/Product?trang=<?php echo ($trang +1 ) ?>">Tiếp</a></li>
+            </ul>
+        </nav>
     </div>
 </div>

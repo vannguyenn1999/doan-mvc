@@ -13,9 +13,16 @@ class ProductModel extends BaseModel
 
     const  TABLE_NAME = 'san_pham';
 
-    public function getTable()
+    public function getTable($id)
     {
-        return $this->_SelectAll(self::TABLE_NAME);
+        $page = ($id - 1) * 8;
+        $obj_select = $this->connect->prepare("SELECT * FROM san_pham LIMIT $page , 8");
+        $arr = [
+            // ':id' => $page,
+        ];
+        $obj_select->execute($arr);
+        $result = $obj_select->fetchAll(PDO::FETCH_ASSOC);
+        return $result;
     }
     public function addProduct()
     {
