@@ -15,8 +15,8 @@ class ProductModel extends BaseModel
 
     public function getTable($id)
     {
-        $page = ($id - 1) * 8;
-        $obj_select = $this->connect->prepare("SELECT * FROM san_pham LIMIT $page , 8");
+        $page = ($id - 1) * 5;
+        $obj_select = $this->connect->prepare("SELECT * FROM san_pham LIMIT $page , 5");
         $arr = [
             // ':id' => $page,
         ];

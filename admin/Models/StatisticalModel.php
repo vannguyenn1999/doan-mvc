@@ -42,4 +42,14 @@ class StatisticalModel extends BaseModel
         ];
         return $obj_sql->execute($arr);
     }
+
+    public function turnover(){
+        $obj_sql = $this->connect->prepare("SELECT tong  FROM don_hang WHERE trang_thai = 'đã xử lý'");
+        if ($obj_sql->execute()) {
+            if ($obj_sql->rowCount() > 0) {
+                $result = $obj_sql->fetchAll(PDO::FETCH_ASSOC);
+            }
+        }
+        return $result;
+    }
 }

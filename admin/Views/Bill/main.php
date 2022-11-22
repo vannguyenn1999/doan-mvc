@@ -13,12 +13,12 @@
          <th>Tổng</th>
          <th>Phương Thức</th>
          <th>Ngày Xử Lý</th>
-         <th>Chi Tiết</th>
+         <th colspan="2">Chi Tiết</th>
        </tr>
        <?php foreach ($data as $r) : ?>
          <tr>
            <td><?php echo $r['ma_don_hang'] ?></td>
-           <td><?php echo $r['ten_nguoi_dat'] ?></td>
+           <td><?php echo $r['ten_nguoi_dat'] ?></td> 
            <td><?php echo $r['email_nguoi_nhan'] ?></td>
            <td><?php echo $r['sdt_nguoi_nhan'] ?></td>
            <td><?php echo $r['dc_nguoi_nhan'] ?></td>
@@ -27,8 +27,7 @@
            <td><?php echo $r['phuong_thuc'] ?></td>
            <td><?php echo $r['create_at'] ?></td>
            <td><a href="<?php echo DIR_HTTP ?>/BillController/Detail?id=<?php echo $r['ma_don_hang'] ?>"><i class="fa fa-pencil fa-2x"></i></a></td>
-
-
+           <td><a href="<?php echo DIR_HTTP ?>/BillController/Print?id=<?php echo $r['ma_don_hang'] ?>"><i class="fa fa-print fa-2x"></i></a></td>
          </tr>
        <?php endforeach; ?>
      </table>

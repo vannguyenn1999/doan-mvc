@@ -29,8 +29,8 @@
 
       var options = {
        
-        width: 600,
-        height: 400,
+        width: 1000,
+        height: 600,
         bar: {groupWidth: "95%"},
         legend: { position: "none" },
       };

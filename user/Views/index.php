@@ -8,7 +8,9 @@
     <link rel="shortcut icon" href="http://localhost/doan-mvc/user/assets/images/logo.webp" />
     <link rel="canonical" href="http://localhost" />
     <link rel="alternate" href="http://localhost" hreflang="vi-vn" />
-   
+    <!-- <link rel="preconnect" href="https://fonts.googleapis.com"> -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
 
     <meta name="robots" content="index,follow,noodp">
     <meta name="author" content="http://localhost">
@@ -21,7 +23,7 @@
     <meta name="title" content="">
     <meta name="keywords" content="">
     <meta name="description" content="" />
-    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,600,700,900&amp;subset=latin-ext" rel="stylesheet">
+    <!-- <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,600,700,900&amp;subset=latin-ext" rel="stylesheet"> -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <link rel="stylesheet" href="<?php echo DIR_HTTP ?>/user/assets/css/bootstrap.min.css" />
@@ -44,7 +46,7 @@
 <body class="">
 
     <?php
-    
+
     if (isset($_SESSION['success'])) {
         $message = $_SESSION['success'];
         echo "<script type='text/javascript'>alert('$message');</script>";
@@ -56,7 +58,7 @@
         unset($_SESSION['error']);
     }
     require_once 'layouts/header.php';
-    
+
     echo $this->main_content;
     require_once 'layouts/footer.php';
     ?>

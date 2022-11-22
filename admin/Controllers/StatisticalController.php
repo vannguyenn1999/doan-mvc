@@ -74,8 +74,19 @@ class StatisticalController extends BaseController
         ]);
     }
 
-    public function Turnover(){
+    public function Turnover()
+    {
+        $this->title_page = 'Doanh Thu Cửa Hàng';
+        $sum = 0;
+        $result = $this->statisticalModel->turnover();
+
+        for ($i = 0; $i < count($result); $i++) {
+            $sum += $result[$i]['tong'];
+
+        }
+        // $data = number_format($sum);
+
         $this->view('', 'index');
-        $this->view('Statistical', 'turnover');
+        $this->view('Statistical', 'turnover',$sum);
     }
 }

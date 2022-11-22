@@ -58,13 +58,14 @@ button, hr, input {
 }
 
 html {
-    font-family: sans-serif;
+    font-family: 'Roboto', sans-serif;
     -ms-text-size-adjust: 100%;
     -webkit-text-size-adjust: 100%
 }
 
 body {
     margin: 0;
+   
 }
 
 figcaption, menu, article, aside, details, figure, footer, header, main, nav, section, summary {
@@ -239,7 +240,7 @@ h1, h2, h3, h4, h5, h6 {
 [1. Body]
 *------------------------------------------------------------------*/
 body {
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Roboto', sans-serif;
     font-weight: 400;
     font-size: 15px;
     line-height: 1.5;

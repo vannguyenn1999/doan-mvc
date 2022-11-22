@@ -7,7 +7,7 @@
     <a href="<?php echo DIR_HTTP ?>/StatisticalController/Turnover" class="btn btn-success" id="a_func"><i class="fa-solid fa-hand-holding-dollar"></i> Doanh Thu Cửa Hàng </a>
 
 
-    <div id="piechart" style="width: 900px; height: 600px; margin-left: 150px"></div><br>
+    <div id="piechart" style="margin-left: 150px"></div><br>
     <!-- <div id="piechart" style="width: 900px; height: 600px; margin-left: 150px"></div> -->
 
 
@@ -26,16 +26,18 @@
 
         var data = google.visualization.arrayToDataTable([
             ['trang_thai', 'num_status'],
-            <?php 
-            foreach ($data as $key){
-            echo "['". $key['trang_thai'] ."' , ". $key['num_status'] ."],";
+            <?php
+            foreach ($data as $key) {
+                echo "['" . $key['trang_thai'] . "' , " . $key['num_status'] . "],";
             }
             ?>
-           
+
         ]);
 
         var options = {
-            
+            'width': 1000,
+            'height': 700,
+
             title: 'Thống Kê Đơn Hàng',
             is3D: true,
         };
@@ -44,4 +46,3 @@
         chart.draw(data, options);
     }
 </script>
-

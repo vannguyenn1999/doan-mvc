@@ -26,7 +26,7 @@
              <td><?php echo "<img src='" . DIR_HTTP . "/admin/assets/image/uploads/" . $product['anh'] . "'  width='150' height='150'>" ?></td>
              <td><?php echo $product['so_luong'] ?></td>
              <td><?php echo $product['ten_nhan_hieu'] ?></td>
-             <td style="height: 50px;"><?php echo $product['thong_tin'] ?></td>
+             <td style="font-size: 13px;"><?php echo $product['thong_tin'] ?></td>
              <td><?php echo number_format($product['gia']) ?></td>
              <td><?php echo $product['create_at'] ?></td>
              <td><a href="<?php echo DIR_HTTP ?>/ProductController/UpdateProduct?id=<?php echo $product['ma_san_pham'] ?>"><i class="fa fa-pencil fa-2x"></i></a></td>
@@ -44,6 +44,8 @@
          <li class="page-item"><a class="page-link" href="<?php echo DIR_HTTP ?>/ProductController/Index?trang=2">2</a></li>
          <li class="page-item"><a class="page-link" href="<?php echo DIR_HTTP ?>/ProductController/Index?trang=3">3</a></li>
          <li class="page-item"><a class="page-link" href="<?php echo DIR_HTTP ?>/ProductController/Index?trang=4">4</a></li>
+         <li class="page-item"><a class="page-link" href="<?php echo DIR_HTTP ?>/ProductController/Index?trang=5">5</a></li>
+
          <li class="page-item"><a class="page-link" href="<?php echo DIR_HTTP ?>/ProductController/Index?trang=<?php echo ($trang + 1) ?>">Tiếp</a></li>
        </ul>
      </nav>
