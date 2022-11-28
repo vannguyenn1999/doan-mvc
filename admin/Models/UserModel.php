@@ -87,8 +87,8 @@ class UserModel extends BaseModel
 
     public function page($id)
     {
-        $page = ($id - 1) * 8;
-        $obj_select = $this->connect->prepare("SELECT * FROM san_pham LIMIT $page , 8");
+        $page = ($id - 1) * 12;
+        $obj_select = $this->connect->prepare("SELECT * FROM san_pham LIMIT $page , 12");
         $arr = [
             // ':id' => $page,
         ];
@@ -168,5 +168,13 @@ class UserModel extends BaseModel
         ];
         return $obj_sql->execute($arr);
 
+    }
+    public function search($id){
+        $sql_obj = $this->connect->prepare("SELECT * FROM san_pham Where ten_san_pham LIKE :tensp ");
+        $arr_select = [
+            ':tensp' => '%' . $id . '%',
+        ];
+        $sql_obj->execute($arr_select);
+        return $sql_obj->fetchAll(PDO::FETCH_ASSOC);
     }
 }

@@ -1,35 +1,39 @@
 <div class="container">
-    <div class="product">
-     <h1>Danh Sách Hoá Đơn Đã Xử Lý </h1>
-     <br>
-     <table class="table table-dark table-hover">
-       <tr>
-         <th>Mã Đơn Hàng</th>
-         <th>Tên Khách Hàng</th>
-         <th>Email</th>
-         <th>SĐT</th>
-         <th>Địa Chỉ</th>
-         <th>Ghi Chú</th>
-         <th>Tổng</th>
-         <th>Phương Thức</th>
-         <th>Ngày Xử Lý</th>
-         <th colspan="2">Chi Tiết</th>
-       </tr>
-       <?php foreach ($data as $r) : ?>
-         <tr>
-           <td><?php echo $r['ma_don_hang'] ?></td>
-           <td><?php echo $r['ten_nguoi_dat'] ?></td> 
-           <td><?php echo $r['email_nguoi_nhan'] ?></td>
-           <td><?php echo $r['sdt_nguoi_nhan'] ?></td>
-           <td><?php echo $r['dc_nguoi_nhan'] ?></td>
-           <td><?php echo $r['ghi_chu'] ?></td>
-           <td><?php echo number_format($r['tong'])  ?></td>
-           <td><?php echo $r['phuong_thuc'] ?></td>
-           <td><?php echo $r['create_at'] ?></td>
-           <td><a href="<?php echo DIR_HTTP ?>/BillController/Detail?id=<?php echo $r['ma_don_hang'] ?>"><i class="fa fa-pencil fa-2x"></i></a></td>
-           <td><a href="<?php echo DIR_HTTP ?>/BillController/Print?id=<?php echo $r['ma_don_hang'] ?>"><i class="fa fa-print fa-2x"></i></a></td>
-         </tr>
-       <?php endforeach; ?>
-     </table>
-   </div>
-   </div>
+    <h1 style="margin-top: 70px ;">Thống Kê Hoá Đơn</h1>
+    <a href="<?php echo DIR_HTTP ?>/BillController/Done" class="btn btn-success" id="a_func"> <i class="fa-solid fa-check"></i> Hoá Đơn Đã Xử Lý</a>
+    <a href="<?php echo DIR_HTTP ?>/BillController/Handle" class="btn btn-success" id="a_func"><i class="fa-regular fa-flag"></i> Hoá Đơn Chờ Xử Lý </a>
+    <div id="piechart" style="margin-left: 150px"></div><br>
+    <!-- <div id="piechart" style="width: 900px; height: 600px; margin-left: 150px"></div> -->
+</div>
+
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+    google.charts.load('current', {
+        'packages': ['corechart']
+    });
+    google.charts.setOnLoadCallback(drawChart);
+
+    function drawChart() {
+
+        var data = google.visualization.arrayToDataTable([
+            ['trang_thai', 'num_status'],
+            <?php
+            foreach ($data as $key) {
+                echo "['" . $key['trang_thai'] . "' , " . $key['num_status'] . "],";
+            }
+            ?>
+
+        ]);
+
+        var options = {
+            'width': 1000,
+            'height': 700,
+
+            title: 'Thống Kê Đơn Hàng',
+            is3D: true,
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+        chart.draw(data, options);
+    }
+</script>

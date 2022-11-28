@@ -38,15 +38,16 @@
 
      </div>
      <nav aria-label="Page navigation example">
-       <ul style="text-align: center;" class="pagination" >
-         <li class="page-item"><a class="page-link" href="<?php echo DIR_HTTP ?>/ProductController/Index?trang=<?php echo ($trang - 1) ?>">Sau</a></li>
+       <ul style="text-align: center;" class="pagination">
+         <li class="page-item"><a class="page-link" href="<?php echo DIR_HTTP ?>/ProductController/Index?trang=<?php echo (isset($_GET['trang']) && $_GET['trang'] - 1 > 0) ? $_GET['trang'] - 1 : 1  ?>">Sau</a></li>
          <li class="page-item"><a class="page-link" href="<?php echo DIR_HTTP ?>/ProductController/Index?trang=1">1</a></li>
          <li class="page-item"><a class="page-link" href="<?php echo DIR_HTTP ?>/ProductController/Index?trang=2">2</a></li>
          <li class="page-item"><a class="page-link" href="<?php echo DIR_HTTP ?>/ProductController/Index?trang=3">3</a></li>
          <li class="page-item"><a class="page-link" href="<?php echo DIR_HTTP ?>/ProductController/Index?trang=4">4</a></li>
          <li class="page-item"><a class="page-link" href="<?php echo DIR_HTTP ?>/ProductController/Index?trang=5">5</a></li>
-
-         <li class="page-item"><a class="page-link" href="<?php echo DIR_HTTP ?>/ProductController/Index?trang=<?php echo ($trang + 1) ?>">Tiếp</a></li>
+         <li class="page-item"><a class="page-link" href="<?php echo DIR_HTTP ?>/ProductController/Index?trang=6">6</a></li>
+         <li class="page-item"><a class="page-link" href="<?php echo DIR_HTTP ?>/ProductController/Index?trang=7">7</a></li>
+         <li class="page-item"><a class="page-link" href="<?php echo DIR_HTTP ?>/ProductController/Index?trang=<?php echo (isset($_GET['trang']) && $_GET['trang'] + 1 < 8) ? $_GET['trang'] + 1 : 1  ?>">Sau</a></li>
        </ul>
      </nav>
    </div>

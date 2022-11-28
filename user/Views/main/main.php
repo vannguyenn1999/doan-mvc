@@ -9,7 +9,7 @@
             <div class="link-secondary-wrap row">
                 <?php foreach ($data as $product) : ?>
                     <div class="service-link col-md-3 col-sm-6 col-xs-12">
-                        <a href="<?php echo DIR_HTTP ?>/UserHomeController/Detail?id=<?php echo $product['ma_san_pham'] ?>">
+                        <a href="<?php echo DIR_HTTP ?>/UserHomeController/Detail/<?php echo $product['ma_san_pham'] ?>">
                             <img class="secondary-img img-responsive" title=" <?php echo $product['ten_san_pham'] ?>" src="<?php echo DIR_HTTP ?>/admin/assets/image/uploads/<?php echo $product['anh'] ?>" alt=" <?php echo $product['ten_san_pham'] ?>" />
                             <span class="shop-title">
                                 <?php echo $product['ten_san_pham'] ?>

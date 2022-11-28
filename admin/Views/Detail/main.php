@@ -9,7 +9,7 @@
         <table class="table table-dark table-striped">
 
             <thead>
-            <tr>
+                <tr>
                     <th>TÊN SẢN PHẨM</th>
                     <TH>CẤU HÌNH</TH>
                     <TH>CAM TRƯỚC</TH>
@@ -43,14 +43,15 @@
 
         <nav aria-label="Page navigation example">
             <ul class="pagination">
-                <li class="page-item"><a class="page-link" href="<?php echo DIR_HTTP ?>/DetailController/Index?trang=<?php echo ($trang - 1) ?>">Sau</a></li>
+                <li class="page-item"><a class="page-link" href="<?php echo DIR_HTTP ?>/DetailController/Index?trang=<?php echo (isset($_GET['trang']) && $_GET['trang'] - 1 > 0) ? $_GET['trang'] - 1 : 1  ?>">Sau</a></li>
                 <li class="page-item"><a class="page-link" href="<?php echo DIR_HTTP ?>/DetailController/Index?trang=1">1</a></li>
                 <li class="page-item"><a class="page-link" href="<?php echo DIR_HTTP ?>/DetailController/Index?trang=2">2</a></li>
                 <li class="page-item"><a class="page-link" href="<?php echo DIR_HTTP ?>/DetailController/Index?trang=3">3</a></li>
                 <li class="page-item"><a class="page-link" href="<?php echo DIR_HTTP ?>/DetailController/Index?trang=4">4</a></li>
-                <!-- <li class="page-item"><a class="page-link" href="<?php echo DIR_HTTP ?>/DetailController/Index?trang=5">5</a></li> -->
-                <!-- <li class="page-item"><a class="page-link" href="<?php echo DIR_HTTP ?>/DetailController/Index?trang=6">6</a></li> -->
-                <li class="page-item"><a class="page-link" href="<?php echo DIR_HTTP ?>/UserHomeController/Product?trang=<?php echo ($trang +1 ) ?>">Tiếp</a></li>
+                <li class="page-item"><a class="page-link" href="<?php echo DIR_HTTP ?>/DetailController/Index?trang=5">5</a></li>
+                <li class="page-item"><a class="page-link" href="<?php echo DIR_HTTP ?>/DetailController/Index?trang=6">6</a></li>
+                <li class="page-item"><a class="page-link" href="<?php echo DIR_HTTP ?>/DetailController/Index?trang=7">7</a></li>
+                <li class="page-item"><a class="page-link" href="<?php echo DIR_HTTP ?>/DetailController/Index?trang=<?php echo (isset($_GET['trang']) && $_GET['trang'] + 1 < 8 ) ? $_GET['trang'] + 1 : 1  ?>">Sau</a></li>
             </ul>
         </nav>
     </div>

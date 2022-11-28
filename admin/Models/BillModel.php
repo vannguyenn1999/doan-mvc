@@ -2,7 +2,16 @@
 
 class BillModel extends BaseModel
 {
-   
+    public function dataChart()
+    {
+        $obj_sql = $this->connect->prepare('SELECT trang_thai , COUNT(trang_thai)AS num_status FROM don_hang GROUP BY trang_thai');
+        if ($obj_sql->execute()) {
+            if ($obj_sql->rowCount() > 0) {
+                $result = $obj_sql->fetchAll(PDO::FETCH_ASSOC);
+            }
+        }
+        return $result;
+    }
 
     public function getTable()
     {
@@ -48,6 +57,19 @@ class BillModel extends BaseModel
         return $data;
     }
 
+    public function deletebyId($id)
+    {
+
+        $obj_delete2 = $this->connect->prepare("DELETE FROM chi_tiet_don_hang WHERE ma_don_hang = '$id'");
+        $result2 =  $obj_delete2->execute();
+        $obj_delete = $this->connect->prepare("DELETE FROM don_hang WHERE ma_don_hang = '$id'");
+        $result1 =  $obj_delete->execute();
+        if($result1 && $result2) {
+            return true;
+        }
+
+        return false;
+    }
     public function update($id)
     {
         $obj_update = $this->connect->prepare("UPDATE don_hang SET trang_thai = 'đã xử lý'  WHERE ma_don_hang = :id ");

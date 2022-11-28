@@ -48,7 +48,7 @@
                 <ul class="news-relative">
                     <?php foreach ($data['more'] as $more) : ?>
                         <li>
-                            <a href='<?php echo DIR_HTTP ?>/UserHomeController/Detail?id=<?php echo $more['ma_san_pham'] ?>' class="news-relative-link">
+                            <a href='<?php echo DIR_HTTP ?>/UserHomeController/Detail/<?php echo $more['ma_san_pham'] ?>' class="news-relative-link">
                                 <span class="news-relative-img">
                                     <img src="<?php echo DIR_HTTP ?>/admin/assets/image/uploads/<?php echo $more['anh'] ?>" alt="no-image" title="SamSung Note 10" class="detail-relative-img" />
                                 </span>

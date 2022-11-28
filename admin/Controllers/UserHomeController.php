@@ -12,13 +12,17 @@ class UserHomeController extends BaseController
   {
     $this->title_page = 'Shop 666';
     $result = $this->userHomeModel->getTable();
+    if(isset($_GET['submit'])){
+      $search = addslashes($_GET['search']);
+      $result = $this->userHomeModel->search($search);
+    }
     $this->main_content = $this->render('./user/Views/main/main.php', $result);
     require_once './user/Views/index.php';
   }
 
-  public function Detail()
+  public function Detail($id)
   {
-    $id = $_GET['id'];
+    // $id = $_GET['id'];
     $check = $this->userHomeModel->check($id);
     if (empty($id) || (!in_array($id, $check))) {
       $_SESSION['error'] = 'mã sản phẩm không hợp lệ';

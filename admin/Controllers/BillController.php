@@ -11,11 +11,22 @@ class BillController extends BaseController
 
     public function Index()
     {
-        $this->title_page = 'Quản Lý Hoá Đơn Đã Xử Lý';
+        $this->title_page = 'Thống Kê';
+
+        $result = $this->billModel->dataChart();
+        foreach ($result as $row) {
+            $data[] = $row;
+        }
+        $this->view('', 'index');
+        $this->view('Bill', 'main', $data);
+    }
+    public function Done()
+    {
         $this->main_content = $this->billModel->getTable();
         $this->view('', 'index');
-        $this->view('Bill', 'main', $this->main_content);
+        $this->view('Bill', 'bill', $this->main_content);
     }
+
     public function Handle()
     {
         $this->main_content = $this->billModel->getTableHandle();
@@ -23,13 +34,13 @@ class BillController extends BaseController
         $this->view('Bill', 'handle', $this->main_content);
     }
 
-    public function Detail()
+    public function Detail($id)
     {
         $this->title_page = 'Chi Tiết Hoá Đơn Đã Xử Lý';
 
         $check = $this->billModel->getMaHD();
 
-        $id = $_GET['id'];
+        // $id = $_GET['id'];
         if (empty($id) || !in_array($id, $check)) {
             $_SESSION['error'] = 'id không hợp lệ';
             header('Location: BillController/Index');
@@ -40,9 +51,8 @@ class BillController extends BaseController
         $this->view('Bill', 'detail', $this->main_content);
     }
 
-    public function BillHandle()
+    public function BillHandle($id)
     {
-        $id = $_GET['id'];
         $is_update = $this->billModel->update($id);
         if ($is_update) {
             $_SESSION['success'] = 'Xử Lý thành công';
@@ -53,11 +63,22 @@ class BillController extends BaseController
         exit();
     }
 
-    public function Print()
+    public function deleteBill($id){
+        $is_delete = $this->billModel->deletebyId($id);
+        if ($is_delete) {
+            $_SESSION['success'] = 'Xóa thành công';
+        } else {
+            $_SESSION['error'] = 'Xóa thất bại';
+        }
+        header('Location: '.DIR_HTTP.'/BillController/Handle');
+        exit();
+    }
+
+    public function Print($id)
     {
         $this->title_page = 'In Hoá Đơn';
         $check = $this->billModel->getMaHD();
-        $id = $_GET['id'];
+        
         if (empty($id) || !in_array($id, $check)) {
             $_SESSION['error'] = 'id không hợp lệ';
             header('Location: ' . DIR_HTTP . '/BillController/Index');

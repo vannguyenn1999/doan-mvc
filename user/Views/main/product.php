@@ -7,7 +7,7 @@
         <div class="link-secondary-wrap row">
             <?php foreach ($data as $product) : ?>
                 <div class="service-link col-md-3 col-sm-6 col-xs-12">
-                    <a href="<?php echo DIR_HTTP ?>/UserHomeController/Detail?id=<?php echo $product['ma_san_pham'] ?>">
+                    <a href="<?php echo DIR_HTTP ?>/UserHomeController/Detail/<?php echo $product['ma_san_pham'] ?>">
                         <img class="secondary-img img-responsive" title=" <?php echo $product['ten_san_pham'] ?>" src="<?php echo DIR_HTTP ?>/admin/assets/image/uploads/<?php echo $product['anh'] ?>" alt=" <?php echo $product['ten_san_pham'] ?>" />
                         <span class="shop-title">
                             <?php echo $product['ten_san_pham'] ?>
@@ -25,11 +25,11 @@
         </div>
         <nav aria-label="Page navigation example">
             <ul class="pagination">
-                <li class="page-item"><a class="page-link" href="<?php echo DIR_HTTP ?>/UserHomeController/Product?trang=<?php echo ($trang - 1) ?>">Sau</a></li>
+                <li class="page-item"><a class="page-link" href="<?php echo DIR_HTTP ?>/UserHomeController/Product?trang=<?php echo (isset($_GET['trang']) && $_GET['trang'] - 1 > 0 ) ? $_GET['trang'] - 1 : 1  ?>">Sau</a></li>
                 <li class="page-item"><a class="page-link" href="<?php echo DIR_HTTP ?>/UserHomeController/Product?trang=1">1</a></li>
                 <li class="page-item"><a class="page-link" href="<?php echo DIR_HTTP ?>/UserHomeController/Product?trang=2">2</a></li>
                 <li class="page-item"><a class="page-link" href="<?php echo DIR_HTTP ?>/UserHomeController/Product?trang=3">3</a></li>
-                <li class="page-item"><a class="page-link" href="<?php echo DIR_HTTP ?>/UserHomeController/Product?trang=<?php echo ($trang +1 ) ?>">Tiếp</a></li>
+                <li class="page-item"><a class="page-link" href="<?php echo DIR_HTTP ?>/UserHomeController/Product?trang=<?php echo (isset($_GET['trang']) && $_GET['trang'] + 1 < 5 ) ? $_GET['trang'] + 1 : 3  ?>">Tiếp</a></li>
             </ul>
         </nav>
     </div>

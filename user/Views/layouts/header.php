@@ -76,12 +76,25 @@
                 </li>
                 <li>
                     <a href="<?php echo DIR_HTTP ?>/UserHomeController/Cart" class="material-button submenu-toggle">Giỏ hàng</a>
+                </li>
                 <li>
                     <a href="<?php echo DIR_HTTP ?>/UserHomeController/Service" class="material-button submenu-toggle">Dịch Vụ</a>
                 </li>
                 <li>
                     <a href="<?php echo DIR_HTTP ?>/UserHomeController/Quality" class="material-button submenu-toggle">Chất Lượng</a>
                 </li>
+                <li>
+                    <form action="" method="get" style="display: flex;">
+                        <input type="text" name="search" placeholder="Tìm kiếm sản phẩm..." class="form-control"/>
+                        <!--
+                        Khi phương thức của form là GET, bắt buộc phải thêm 2 input ẩn với type=hidden,
+                         để giữ lại giá trị của 2 tham số controller và action sau khi submit form,
+                         theo như cách sau:
+                         -->
+                        <input type="hidden" name="controller" value="Product" />
+                        <input type="hidden" name="action" value="search" />
+                        <button type="button" name="submit" class="btn btn-success"><i class="fa-solid fa-magnifying-glass"></i></button>
+                    </form>
                 </li>
 
             </ul>
